@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -15,19 +16,29 @@ public class Player : MonoBehaviour
     public float stylemultiplier = 1; //amount of style points earnt per style thing (not implemented yet)
     public float boostmultiplier = 1; //the amount of boost the kart gets from boosting on boost panels (not implemented yet)
 
+    [Header("Crayon Stats")]
+    public float shootspeed;
+
 
 
     [Header("Everything else")]
     public GameObject mesh;
     public GameObject parentobject;
-    public GameObject fakecam;
-    public GameObject cam;
+    public GameObject fakecam; //camera that moves based on velocity
+    public GameObject cam; //camera that lerps to movement based on velocity
+    public GameObject maincamera;
+    public GameObject campos1;
+    public GameObject campos2;
+    public GameObject campos3;
+    public GameObject mousecam; //camera that moves based on mouse movement
     public LayerMask groundLayer;
     public Text Speedometer;
     public Transform wheel1;
     public Transform wheel2;
     public Transform frontthing;
     public Transform cyclemain;
+    public GameObject crosshair;
+    public GameObject delivery;
     
     SphereCollider coll;
     Rigidbody rb;
@@ -38,12 +49,15 @@ public class Player : MonoBehaviour
     bool drifting;
     Quaternion rot;
     bool isgrounded;
+    bool aimmode;
     void Start()
     {
         coll = GetComponent<SphereCollider>();
         rb = GetComponent<Rigidbody>();
         mesh.transform.parent = parentobject.transform;
         rb.mass = weight;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
     void FixedUpdate()
     {
@@ -56,18 +70,32 @@ public class Player : MonoBehaviour
 
     private void LateUpdate()
     {
-
         cam.transform.position = mesh.transform.position;
         fakecam.transform.position = mesh.transform.position;
+        //mousecam.transform.position = mesh.transform.position;
         if (rb.velocity.magnitude > 0.1f) fakecam.transform.rotation = Quaternion.LookRotation(rb.velocity);// + new Vector3(0, input * 20f, 0);
         if (rb.velocity.magnitude > 0.1f) fakecam.transform.rotation = Quaternion.Euler(0, fakecam.transform.rotation.eulerAngles.y + driftdir * 45, 0);// + new Vector3(0, input * 20f, 0);
-        cam.transform.rotation = Quaternion.Lerp(cam.transform.rotation, fakecam.transform.rotation, 0.05f);
-
+        cam.transform.rotation = Quaternion.Euler( Quaternion.Lerp(cam.transform.rotation, fakecam.transform.rotation, 0.05f).eulerAngles + (!aimmode?new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0): Vector3.zero));
+        //mousecam.transform.rotation = Quaternion.Euler(mousecam.transform.rotation.eulerAngles + new Vector3(0, Input.GetAxis("Mouse X"), 0));
+        if (!aimmode)
+        {
+            maincamera.transform.position = Vector3.Lerp(maincamera.transform.position, campos1.transform.position, 0.05f);
+            maincamera.transform.rotation = Quaternion.Lerp(maincamera.transform.rotation, campos1.transform.rotation, 0.05f);
+        }
+        else
+        {
+            maincamera.transform.position = Vector3.Lerp(maincamera.transform.position, (campos2.transform.localRotation.eulerAngles.y  > 180?campos2:campos3).transform.position, 0.05f);
+            maincamera.transform.rotation = Quaternion.Lerp(maincamera.transform.rotation, (campos2.transform.localRotation.eulerAngles.y > 180 ? campos2 : campos3).transform.rotation, 0.05f);
+            campos2.transform.localRotation = Quaternion.Euler(campos2.transform.localRotation.eulerAngles + new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0));
+            campos3.transform.localRotation = Quaternion.Euler(campos2.transform.localRotation.eulerAngles + new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0));
+        }
     }
 
     private void Update()
     {
         AlignKart();
+
+        if (Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);  //Restart code
 
         if (Input.GetButton("Drift") && !drifting && isgrounded && rb.velocity.magnitude > 0.5f)
         {
@@ -118,6 +146,31 @@ public class Player : MonoBehaviour
         }
 
         Speedometer.text = ((int)(20f * rb.velocity.magnitude)).ToString();
+
+        //Aim Mode 
+        if (Input.GetButtonDown("Aim"))
+        {
+            aimmode = true;
+            Time.timeScale = 0.1f;
+            campos2.transform.localRotation = Quaternion.Euler(0,-90,0);
+            campos3.transform.localRotation = Quaternion.Euler(0,90,0);
+            crosshair.SetActive(true);
+        }
+        if (Input.GetButtonUp("Aim"))
+        {
+            aimmode = false;
+            crosshair.SetActive(false);
+            Time.timeScale = 1;
+        }
+
+        if (aimmode && Input.GetButtonDown("Shoot"))
+        {
+            Rigidbody ShotDelivery = Instantiate(delivery,mesh.transform.position,Quaternion.Euler(Vector3.zero),null).GetComponent<Rigidbody>();
+            ShotDelivery.velocity = maincamera.transform.forward * shootspeed;
+            aimmode = false;
+            crosshair.SetActive(false);
+            Time.timeScale = 1;
+        }
     }
 
 
