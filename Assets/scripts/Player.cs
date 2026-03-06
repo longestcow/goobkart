@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
     public Transform cyclemain;
     public GameObject crosshair;
     public GameObject delivery;
+    public ProceduralGeneration proceduralgen;
     
     SphereCollider coll;
     Rigidbody rb;
@@ -56,8 +57,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         mesh.transform.parent = parentobject.transform;
         rb.mass = weight;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        rb.mass = weight;
     }
     void FixedUpdate()
     {
@@ -155,12 +155,16 @@ public class Player : MonoBehaviour
             campos2.transform.localRotation = Quaternion.Euler(0,-90,0);
             campos3.transform.localRotation = Quaternion.Euler(0,90,0);
             crosshair.SetActive(true);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
         if (Input.GetButtonUp("Aim"))
         {
             aimmode = false;
             crosshair.SetActive(false);
             Time.timeScale = 1;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true; 
         }
 
         if (aimmode && Input.GetButtonDown("Shoot"))
@@ -191,6 +195,15 @@ public class Player : MonoBehaviour
             //rot.z = mesh.transform.rotation.z;
             //rot.y = mesh.transform.rotation.y;
             //mesh.transform.rotation = rot;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == 8)
+        {
+            proceduralgen.laststate = proceduralgen.GenerateNextThing(proceduralgen.laststate);
+            Destroy(other.gameObject);
         }
     }
 }
