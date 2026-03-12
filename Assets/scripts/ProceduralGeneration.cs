@@ -77,8 +77,10 @@ public class ProceduralGeneration : MonoBehaviour
 
     public int GenerateNextThing(int laststate)
     {
-        if (laststate == 1 || laststate == 2 || laststate == 3)
+        int whichonetodelete = 0;
+        if (laststate > 0)
         {
+            whichonetodelete = laststate;
             laststate = 0;
             goto spawn;
         }
@@ -91,25 +93,29 @@ public class ProceduralGeneration : MonoBehaviour
                 transform.position += transform.forward * (length / 2 + width / 2);
                 GameObject objj = Instantiate(flatground, transform.position, transform.rotation, null);
                 objj.transform.localScale = new Vector3(width, 0.01f, width);
-                objj.layer = 0;
+                objj.layer = 13;
                 lastobjects.Enqueue(objj);
                 if (Random.Range(0, 2) < 1)
                 {
                     transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y + 90, 0);
                     Destroy(objj.transform.GetChild(3).GetChild(1).gameObject);
                     objj.GetComponent<Renderer>().material = turnmat1;
+                    Destroy(objj.transform.GetChild(1).gameObject);
+                    objj.transform.GetChild(6).gameObject.SetActive(true);
+                    laststate = 3;
                 }
                 else
                 {
                     transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y + -90, 0);
                     Destroy(objj.transform.GetChild(3).GetChild(0).gameObject);
                     objj.GetComponent<Renderer>().material = turnmat2;
+                    Destroy(objj.transform.GetChild(2).gameObject);
+                    objj.transform.GetChild(5).gameObject.SetActive(true);
+                    laststate = 4;
                 }
-                Destroy(objj.transform.GetChild(2).gameObject);
-                Destroy(objj.transform.GetChild(1).gameObject);
                 if (lastobjects.Count > RenderDistance) Destroy(lastobjects.Dequeue());
                 transform.position += transform.forward * ((width - length) / 2);
-                return 3;
+                return laststate;
             }
             else if (Random.Range(0, 10) < 2)
             {
@@ -131,7 +137,7 @@ public class ProceduralGeneration : MonoBehaviour
                 transform.position += transform.forward * (length / 2 + width / 2);
                 GameObject objj = Instantiate(flatground, transform.position, transform.rotation, null);
                 objj.transform.localScale = new Vector3(width, 0.01f, width);
-                objj.layer = 0;
+                objj.layer = 13;
                 lastobjects.Enqueue(objj);
                 Destroy(objj.transform.GetChild(4).gameObject);
                 if (transform.rotation.eulerAngles.y < 170)
@@ -139,15 +145,19 @@ public class ProceduralGeneration : MonoBehaviour
                     transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y + 90, 0);
                     Destroy(objj.transform.GetChild(3).GetChild(1).gameObject);
                     objj.GetComponent<Renderer>().material = turnmat1;
+                    Destroy(objj.transform.GetChild(1).gameObject);
+                    objj.transform.GetChild(6).gameObject.SetActive(true);
+                    laststate = 3;
                 }
                 else if (transform.rotation.eulerAngles.y > 190)
                 {
                     transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y - 90, 0);
                     Destroy(objj.transform.GetChild(3).GetChild(0).gameObject);
                     objj.GetComponent<Renderer>().material = turnmat2;
+                    Destroy(objj.transform.GetChild(2).gameObject);
+                    objj.transform.GetChild(5).gameObject.SetActive(true);
+                    laststate = 4;
                 }
-                Destroy(objj.transform.GetChild(2).gameObject);
-                Destroy(objj.transform.GetChild(1).gameObject);
                 if (lastobjects.Count > RenderDistance) Destroy(lastobjects.Dequeue());
                 transform.position += transform.forward * ((width - length) / 2);
                 return 3;
@@ -155,7 +165,6 @@ public class ProceduralGeneration : MonoBehaviour
         }
         spawn:
         transform.position += transform.forward * length;
-        print(laststate);
         GameObject obj = Instantiate(flatground, transform.position + new Vector3(0, laststate == 2 ? height / 2 : laststate == 1 ? -(height / 2) : 0, 0), Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(laststate == 2 ? angle : laststate == 1 ? -angle : 0, 0, 0)), null);
         obj.transform.localScale = new Vector3(width,0.01f,(laststate == 0)?length:slopeheight);
         if (!(transform.rotation.eulerAngles.y > 170 && transform.rotation.eulerAngles.y < 190))
@@ -170,6 +179,14 @@ public class ProceduralGeneration : MonoBehaviour
         }
         else
         {
+            if (whichonetodelete == 3)
+            {
+                //Destroy(obj.transform.GetChild(2).gameObject);
+            }
+            else if (whichonetodelete == 4)
+            {
+                //Destroy(obj.transform.GetChild(1).gameObject);
+            }
             if (Random.Range(0, 5) < 4)
             {
                 if (Random.Range(0, 2) < 1)

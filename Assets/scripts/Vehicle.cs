@@ -19,7 +19,7 @@ public class Vehicle : MonoBehaviour
     void FixedUpdate()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position + new Vector3(0,3f,0), -Vector3.up, out hit, 5, LayerMask.GetMask("ground","TurnL","TurnR")))
+        if (Physics.Raycast(transform.position + new Vector3(0,3f,0), -Vector3.up, out hit, 5, LayerMask.GetMask("ground","TurnL","TurnR","groundb")))
         {
             if (hit.collider.gameObject.layer == 6)
             {
@@ -29,10 +29,14 @@ public class Vehicle : MonoBehaviour
             {
                 idealrotation = Quaternion.Euler(new Vector3(hit.collider.gameObject.transform.rotation.eulerAngles.z, hit.collider.gameObject.transform.rotation.eulerAngles.y, hit.collider.gameObject.transform.rotation.eulerAngles.x) + new Vector3(0, backwards?135:45, 0));
             }
-            else
+            else if (hit.collider.gameObject.layer == 11)
             {
                 idealrotation = Quaternion.Euler(new Vector3(hit.collider.gameObject.transform.rotation.eulerAngles.z, hit.collider.gameObject.transform.rotation.eulerAngles.y, hit.collider.gameObject.transform.rotation.eulerAngles.x) + new Vector3(0, backwards?45:135, 0));
             }
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
