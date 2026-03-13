@@ -33,6 +33,8 @@ public class Vehicle : MonoBehaviour
             {
                 idealrotation = Quaternion.Euler(new Vector3(hit.collider.gameObject.transform.rotation.eulerAngles.z, hit.collider.gameObject.transform.rotation.eulerAngles.y, hit.collider.gameObject.transform.rotation.eulerAngles.x) + new Vector3(0, backwards?45:135, 0));
             }
+            transform.position += (idealrotation * Vector3.right) * 0.1f;
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, idealrotation, 0.2f);
         }
         else
         {
@@ -42,7 +44,5 @@ public class Vehicle : MonoBehaviour
 
     private void Update()
     {
-        transform.position += 15f * (idealrotation * Vector3.right) * Time.deltaTime;
-        transform.localRotation = Quaternion.Lerp(transform.localRotation, idealrotation, 10 * Time.deltaTime);
     }
 }

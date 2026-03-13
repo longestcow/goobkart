@@ -11,7 +11,7 @@ public class SpawnHouse : MonoBehaviour
     void Start()
     {
         RaycastHit hit;
-        if (!Physics.Raycast(transform.position + Vector3.up * 50, -Vector3.up, out hit, 50f, LayerMask.GetMask("House")))
+        if (!Physics.Raycast(transform.position + Vector3.up * 50, -Vector3.up, out hit, 50f, LayerMask.GetMask("HouseCheck")))
         {
             Instantiate(house, transform.position, transform.rotation, null);
         }
