@@ -24,21 +24,12 @@ public class ProceduralGeneration : MonoBehaviour
     public static int RenderDistance = 20;
     public int latestindex;
 
-    public Slider widthslider;
-    public Slider heightslider;
-    public Slider lengthslider;
     public Slider renderdistanceslider;
 
-    public Text widthtext;
-    public Text heighttext;
-    public Text lengthtext;
     public Text renderdistancetext;
 
     void Start()
     {
-        widthslider.value = width;
-        lengthslider.value = length;
-        heightslider.value = height;
         renderdistanceslider.value = RenderDistance;
 
         angle = (Mathf.Atan2(height,length) * Mathf.Rad2Deg);
@@ -64,14 +55,8 @@ public class ProceduralGeneration : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        width = widthslider.value;
-        length = lengthslider.value;
-        height = heightslider.value;
         RenderDistance = (int)renderdistanceslider.value;
 
-        widthtext.text = "Width - " + width;
-        heighttext.text = "Height - " + height;
-        lengthtext.text = "Length - " + length;
         renderdistancetext.text = "Render Distance - " + RenderDistance;
     }
 
@@ -95,13 +80,14 @@ public class ProceduralGeneration : MonoBehaviour
                 objj.transform.localScale = new Vector3(width, 0.01f, width);
                 objj.layer = 13;
                 lastobjects.Enqueue(objj);
+                objj.GetComponent<GeneratedRoad>().index = ++latestindex;
                 if (Random.Range(0, 2) < 1)
                 {
                     transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y + 90, 0);
                     Destroy(objj.transform.GetChild(3).GetChild(1).gameObject);
                     objj.GetComponent<Renderer>().material = turnmat1;
                     Destroy(objj.transform.GetChild(1).gameObject);
-                    objj.transform.GetChild(6).gameObject.SetActive(true);
+                    objj.transform.GetChild(5).gameObject.SetActive(true);
                     laststate = 3;
                 }
                 else
@@ -139,6 +125,7 @@ public class ProceduralGeneration : MonoBehaviour
                 objj.transform.localScale = new Vector3(width, 0.01f, width);
                 objj.layer = 13;
                 lastobjects.Enqueue(objj);
+                objj.GetComponent<GeneratedRoad>().index = ++latestindex;
                 Destroy(objj.transform.GetChild(4).gameObject);
                 if (transform.rotation.eulerAngles.y < 170)
                 {
@@ -146,7 +133,7 @@ public class ProceduralGeneration : MonoBehaviour
                     Destroy(objj.transform.GetChild(3).GetChild(1).gameObject);
                     objj.GetComponent<Renderer>().material = turnmat1;
                     Destroy(objj.transform.GetChild(1).gameObject);
-                    objj.transform.GetChild(6).gameObject.SetActive(true);
+                    objj.transform.GetChild(5).gameObject.SetActive(true);
                     laststate = 3;
                 }
                 else if (transform.rotation.eulerAngles.y > 190)
@@ -174,6 +161,7 @@ public class ProceduralGeneration : MonoBehaviour
         Destroy(obj.transform.GetChild(3).gameObject);
         if (laststate != 0)
         {
+            obj.GetComponent<GeneratedRoad>().slope = true;
             Destroy(obj.transform.GetChild(2).gameObject);
             Destroy(obj.transform.GetChild(1).gameObject);
         }
@@ -191,15 +179,16 @@ public class ProceduralGeneration : MonoBehaviour
             {
                 if (Random.Range(0, 2) < 1)
                 {
-                    Instantiate(cars[Random.Range(0, 4)], transform.position + (transform.right * width / 4f), transform.rotation, null);
+                    Instantiate(cars[Random.Range(0, 4)], transform.position - (transform.right * width / 4f), transform.rotation, null);
                 }
                 else
                 {
-                    Instantiate(cars[Random.Range(0, 4)], transform.position - (transform.right * width / 4f), transform.rotation, null).GetComponent<Vehicle>().backwards = true;
+                    Instantiate(cars[Random.Range(0, 4)], transform.position + (transform.right * width / 4f), transform.rotation, null).GetComponent<Vehicle>().backwards = true;
                 }
             }
         }
         lastobjects.Enqueue(obj);
+        obj.GetComponent<GeneratedRoad>().index = ++latestindex;
         if(lastobjects.Count > RenderDistance) Destroy(lastobjects.Dequeue());
         return laststate;
 

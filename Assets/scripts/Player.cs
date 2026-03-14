@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -44,6 +45,7 @@ public class Player : MonoBehaviour
     public GameObject delivery;
     public ProceduralGeneration proceduralgen;
     public Scrollbar strengthscrollbar;
+    public DeliverySystem deliverysys;
     
     SphereCollider coll;
     Rigidbody rb;
@@ -59,9 +61,14 @@ public class Player : MonoBehaviour
     float shootstrength;
     bool shootstrengthincreasing;
     bool deliverycam;
+    [NonSerialized]
+    public int latestindex;
     GameObject latestdelivery;
     Rigidbody latestdeliveryrb;
     Vector3 savedvelocity;
+    public int[] deliveriesqueue = {0,0,0,0,0};
+    int currentdelivery;
+    int queueddeliveries;
     void Start()
     {
         coll = GetComponent<SphereCollider>();
@@ -69,6 +76,12 @@ public class Player : MonoBehaviour
         mesh.transform.parent = parentobject.transform;
         rb.mass = weight;
         rb.mass = weight;
+        for (int i = 0; i < deliveriesqueue.Length; i++)
+        {
+            deliveriesqueue[i] = 0;
+        }
+        currentdelivery = 0;
+        queueddeliveries = 0;
     }
     void FixedUpdate()
     {
@@ -261,8 +274,36 @@ public class Player : MonoBehaviour
         if (other.gameObject.layer == 8)
         {
             proceduralgen.laststate = proceduralgen.GenerateNextThing(proceduralgen.laststate);
+            latestindex = other.transform.parent.gameObject.GetComponent<GeneratedRoad>().index;
             Destroy(other.gameObject);
+            if (UnityEngine.Random.Range(0,30) < 15 && queueddeliveries < deliveriesqueue.Length)
+            {
+                UpdateDeliveryQueue(deliverysys.DecideDelivery(),true);
+            }
         }
+    }
+
+    void UpdateDeliveryQueue(int roadnumber, bool enqueue)
+    {
+        if (enqueue)
+        {
+            for (int i = deliveriesqueue.Length-1; i > 0; i--)
+            {
+                deliveriesqueue[i] = deliveriesqueue[i - 1];
+            }
+            deliveriesqueue[0] = roadnumber;
+            queueddeliveries++;
+        }
+        else
+        {
+            for (int i = 0; i < deliveriesqueue.Length - 1; i++)
+            {
+                deliveriesqueue[i] = deliveriesqueue[i + 1];
+            }
+            deliveriesqueue[deliveriesqueue.Length - 1] = 0;
+            queueddeliveries--;
+        }
+        //print(deliveriesqueue[0] + "\n" + deliveriesqueue[1] + "\n" + deliveriesqueue[2] + "\n" + deliveriesqueue[3] + "\n" + deliveriesqueue[4] + "\n");
     }
 
     IEnumerator deliverycamtimeout()
