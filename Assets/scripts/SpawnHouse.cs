@@ -25,6 +25,10 @@ public class SpawnHouse : MonoBehaviour
                 obj.transform.parent.GetComponent<GeneratedRoad>().houses[1] = obj;
             }
         }
+        else
+        {
+            transform.parent.GetComponent<GeneratedRoad>().modified = true;
+        }
     }
 
     // Update is called once per frame

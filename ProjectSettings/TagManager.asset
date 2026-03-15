@@ -21,7 +21,7 @@ TagManager:
   - groundb
   - HouseCheck
   - Grass
-  - 
+  - Line
   - 
   - 
   - 
@@ -40,4 +40,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Line
+    uniqueID: 41348939
     locked: 0

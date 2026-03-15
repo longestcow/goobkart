@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 4748495179642103462}
   - component: {fileID: 5103502916298057730}
   m_Layer: 12
-  m_Name: House
+  m_Name: Epic Mart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
