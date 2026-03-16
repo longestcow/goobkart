@@ -5,8 +5,11 @@ using UnityEngine;
 public class SpawnHouse : MonoBehaviour
 {
 
-    public GameObject house;
+    public GameObject[] housesprefabs;
+    public GameObject[] nonhousesprefabs;
     public GameObject obj;
+
+    public float chanceofnonhouse;
 
     // Start is called before the first frame update
     void Start()
@@ -14,7 +17,16 @@ public class SpawnHouse : MonoBehaviour
         RaycastHit hit;
         if (!Physics.Raycast(transform.position + Vector3.up * 50, -Vector3.up, out hit, 50f, LayerMask.GetMask("HouseCheck")))
         {
-            obj = Instantiate(house, transform.position, transform.rotation, null);
+            GameObject objtobespawned;
+            if (Random.Range(0, 100) < chanceofnonhouse)
+            {
+                objtobespawned = nonhousesprefabs[Random.Range(0, nonhousesprefabs.Length)];
+            }
+            else
+            {
+                objtobespawned = housesprefabs[Random.Range(0, housesprefabs.Length)];
+            }
+            obj = Instantiate(objtobespawned, transform.position, transform.rotation, null);
             obj.transform.parent = this.transform.parent;
             if (obj.transform.parent.GetComponent<GeneratedRoad>().houses[0] == null)
             {
