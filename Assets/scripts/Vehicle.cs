@@ -41,12 +41,12 @@ public class Vehicle : MonoBehaviour
         }
     }
 
-    private void LateUpdate()
+    private void Update()
     {
         if (Player.deliverycam != 0)
         {
             return;
         }
-        transform.position += (idealrotation * Vector3.right) * 100 * 0.1f * Time.deltaTime;
+        transform.position += (idealrotation * Vector3.right) * 60 * 0.1f * Time.deltaTime;
     }
 }

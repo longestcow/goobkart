@@ -76,6 +76,7 @@ public class Player : MonoBehaviour
     {
         public GeneratedRoad road;
         public GameObject house;
+        public float starttime;
     }
     public DeliveryRequest[] deliveriesqueue = new DeliveryRequest[5];
     public int currentdelivery;
@@ -131,6 +132,7 @@ public class Player : MonoBehaviour
         if (rb.velocity.magnitude > 0.1f) fakecam.transform.rotation = Quaternion.Euler(0, fakecam.transform.rotation.eulerAngles.y + driftdir * 45, 0);// + new Vector3(0, input * 20f, 0);
         cam.transform.rotation = Quaternion.Euler( Quaternion.Lerp(cam.transform.rotation, fakecam.transform.rotation, 0.05f).eulerAngles + (!aimmode && (deliverycam == 0)?new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0): Vector3.zero));
         //mousecam.transform.rotation = Quaternion.Euler(mousecam.transform.rotation.eulerAngles + new Vector3(0, Input.GetAxis("Mouse X"), 0));
+        print(1f / Time.deltaTime);
         if (!aimmode && deliverycam == 0)
         {
             maincamera.transform.position = Vector3.Lerp(maincamera.transform.position, campos1.transform.position, 0.05f * 250 * Time.deltaTime);
@@ -138,8 +140,8 @@ public class Player : MonoBehaviour
         }
         else if (deliverycam == 0)
         {
-            maincamera.transform.position = Vector3.Lerp(maincamera.transform.position, (campos2.transform.localRotation.eulerAngles.y  > 180?campos2:campos3).transform.position, 0.05f);
-            maincamera.transform.rotation = Quaternion.Lerp(maincamera.transform.rotation, (campos2.transform.localRotation.eulerAngles.y > 180 ? campos2 : campos3).transform.rotation, 0.05f);
+            maincamera.transform.position = Vector3.Lerp(maincamera.transform.position, (campos2.transform.localRotation.eulerAngles.y  > 180?campos2:campos2).transform.position, 0.05f * 4);
+            maincamera.transform.rotation = Quaternion.Lerp(maincamera.transform.rotation, (campos2.transform.localRotation.eulerAngles.y > 180 ? campos2 : campos2).transform.rotation, 0.05f * 4);
             campos2.transform.localRotation = Quaternion.Euler(campos2.transform.localRotation.eulerAngles + new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0));
             campos3.transform.localRotation = Quaternion.Euler(campos2.transform.localRotation.eulerAngles + new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0));
         }
@@ -242,15 +244,15 @@ public class Player : MonoBehaviour
         //Aim Mode 
         if (Input.GetButtonDown("Aim"))
         {
-            aimmode = true;
             Time.timeScale = 0.1f;
+            aimmode = true;
             bool leftside = true;
             if (currentdelivery != 0)
             {
                 leftside = !(Vector3.SignedAngle(mesh.transform.forward, currentdeliveryhouse.transform.position - transform.position, Vector3.up) > 0);
             }
-            campos2.transform.localRotation = Quaternion.Euler(0,leftside?-90:90,0);
-            campos3.transform.localRotation = Quaternion.Euler(0,leftside?90:-90,0);
+            campos2.transform.LookAt(currentdeliveryhouse.transform.GetChild(0).position + Vector3.up * 2);
+            //campos3.transform.localRotation = Quaternion.Euler(0, 180 + Vector3.SignedAngle(maincamera.transform.forward, currentdeliveryhouse.transform.position - transform.position, Vector3.up), 0);
             crosshair.SetActive(true);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -379,10 +381,10 @@ public class Player : MonoBehaviour
         DeliveryRequest nullreq;
         nullreq.house = null;
         nullreq.road = null;
+        nullreq.starttime = 0;
         currentdeliveryreq = nullreq;
 
-        updatedeliverytext:
-        DeliveryQueueText.text = ((deliveriesqueue[0].road != null? deliveriesqueue[0].road.index: 0) + "\n" + (deliveriesqueue[1].road != null ? deliveriesqueue[1].road.index : 0) + "\n" + (deliveriesqueue[2].road != null ? deliveriesqueue[2].road.index : 0) + "\n" + (deliveriesqueue[3].road != null ? deliveriesqueue[3].road.index : 0) + "\n" + (deliveriesqueue[4].road != null ? deliveriesqueue[4].road.index : 0) + "\n Current - " + currentdelivery);
+    updatedeliverytext:;
     }
 
     IEnumerator deliverycamtimeout()

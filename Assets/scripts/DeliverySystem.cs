@@ -27,6 +27,7 @@ public class DeliverySystem : MonoBehaviour
         Player.DeliveryRequest req;
         req.road = deliveryroad.GetComponent<GeneratedRoad>();
         req.house = deliveryroad.GetComponent<GeneratedRoad>().houses[housenumber];
+        req.starttime = Time.time;
         return req;
     }
 
