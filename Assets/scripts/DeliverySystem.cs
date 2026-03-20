@@ -27,6 +27,14 @@ public class DeliverySystem : MonoBehaviour
         req.road = deliveryroad.GetComponent<GeneratedRoad>();
         req.house = deliveryroad.GetComponent<GeneratedRoad>().houses[housenumber];
         req.starttime = Time.time;
+
+
+        int timelimit = (int)((55f / 2f) * (3.2f - player.difficulty));
+        int distlimit = (int)(50 * (4 - player.difficulty)) - 25;
+
+        req.timelimit = timelimit;
+        req.distlimit = distlimit;
+
         return req;
     }
 

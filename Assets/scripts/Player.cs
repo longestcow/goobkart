@@ -52,10 +52,18 @@ public class Player : MonoBehaviour
     public Transform linepoint1;
     public GameObject linelengthcanvas;
     public Text linelengthtext;
-    public Text ratingaddingshowcase;
+    public Text starstext;
+    public Text scoretext;
+    public Text multipliertext;
+    public String starascii;
+    public String nostarascii;
+    public AudioSource successjingle;
+    public AudioSource failurejingle;
 
     public static int score;
     public float difficulty;
+    int stars;
+    int multiplier;
 
     SphereCollider coll;
     Rigidbody rb;
@@ -81,6 +89,8 @@ public class Player : MonoBehaviour
         public GeneratedRoad road;
         public GameObject house;
         public float starttime;
+        public int timelimit;
+        public int distlimit;
     }
     public DeliveryRequest[] deliveriesqueue = new DeliveryRequest[5];
     public int currentdelivery;
@@ -93,6 +103,8 @@ public class Player : MonoBehaviour
     bool pausenewdeliveries;
     void Start()
     {
+        stars = 1;
+        multiplier = 1;
         pausenewdeliveries = false;
         difficulty = 1;
         score = 500;
@@ -316,7 +328,13 @@ public class Player : MonoBehaviour
         for (int i = 0; i < deliveriesqueue.Length; i++)
         {
             if (deliveriesqueue[i].road == null) break;
-            DeliveryQueueText.text += ((Time.time - deliveriesqueue[i].starttime).ToString("F2")) + " - " + deliveriesqueue[i].road.index + "\n";
+            if (Time.time - deliveriesqueue[i].starttime > deliveriesqueue[i].timelimit + 1)
+            {
+                AddRating(deliveriesqueue[i], false);
+                UpdateDeliveryQueue(deliveriesqueue[i], false); 
+                continue;
+            }
+            DeliveryQueueText.text += "Order: " + deliveriesqueue[i].road.index + "\nTime - " + ((deliveriesqueue[i].timelimit - (Time.time - deliveriesqueue[i].starttime)).ToString("F2")) + "\nMax Dist - " + deliveriesqueue[i].distlimit + "\n---------\n";
         }
     }
 
@@ -341,16 +359,55 @@ public class Player : MonoBehaviour
         }
     }
 
-    void AddRating()
+    void AddRating(DeliveryRequest req,bool passed)
     {
-        int timelimit = (int)((55f / 2f) * (3.2f - difficulty));
-        score += (int)(((timelimit - (Time.time - currentdeliveryreq.starttime))/timelimit) * 50);
-        int distlimit = (int)(50 * (4 - difficulty)) - 25;
-        score += (int)(((distlimit - (linepoint0.position - linepoint1.position).magnitude * 10)/distlimit) * 50);
-        ratingaddingshowcase.text = (timelimit + " - " + (Time.time - currentdeliveryreq.starttime).ToString("F2") + " = " + (timelimit - (Time.time - currentdeliveryreq.starttime)).ToString("F2")) + "\n";
-        ratingaddingshowcase.text += distlimit + " - " + (linelengthtext.text) + " = " + (distlimit - (linepoint0.position - linepoint1.position).magnitude * 10).ToString("F1");
-        ratingaddingshowcase.text += "\n" + score;
-        difficulty += (((timelimit - (Time.time - currentdeliveryreq.starttime)) / timelimit) * 0.001f + (((distlimit - (linepoint0.position - linepoint1.position).magnitude * 10) / distlimit) * 50) * 0.001f);
+        if ((linepoint0.position - linepoint1.position).magnitude * 10 > req.distlimit + 1)
+        {
+            passed = false;
+        }
+        if (passed)
+        {
+            successjingle.Play();
+            if (stars < 5)
+            {
+                stars++;
+            }
+            else
+            {
+                multiplier++;
+                successjingle.pitch += 0.1f;
+            }
+            score += 100 * multiplier;
+        }
+        else
+        {
+            failurejingle.Play();
+            successjingle.pitch = 1;
+            if (stars < 5)
+            {
+                stars--;
+            }
+            else
+            {
+                multiplier = 1;
+                stars--;
+            }
+        }
+        multipliertext.text = multiplier + "x";
+        multipliertext.fontSize = 35 + multiplier;
+        scoretext.text = score.ToString();
+        starstext.text = "";
+        for (int i = 1; i <= 5; i++)
+        {
+            if (stars >= i)
+            {
+                starstext.text += starascii;
+            }
+            else
+            {
+                starstext.text += nostarascii;
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -362,6 +419,8 @@ public class Player : MonoBehaviour
             Destroy(other.gameObject);
             if (latestindex > currentdelivery + 3)
             {
+                if (Time.time - currentdeliveryreq.starttime < 0.5f && Time.time > 1)
+                    AddRating(currentdeliveryreq, false);
                 UpdateDeliveryQueue(currentdeliveryreq, false);
             }
             if (difficulty > 2)
@@ -371,7 +430,7 @@ public class Player : MonoBehaviour
                     StartCoroutine("breakfromdeliveries");
                 }
             }
-            if (UnityEngine.Random.Range(0,100) < (queueddeliveries == 0?20:2) && queueddeliveries < deliveriesqueue.Length && Time.timeSinceLevelLoad > 1f && (!pausenewdeliveries || UnityEngine.Random.Range(0,10) < 1 ))
+            if (UnityEngine.Random.Range(0,100) < (queueddeliveries == 0?20 * difficulty:2) && queueddeliveries < deliveriesqueue.Length && Time.timeSinceLevelLoad > 1f && (!pausenewdeliveries || UnityEngine.Random.Range(0,10) < 1 ))
             {
                 UpdateDeliveryQueue(deliverysys.DecideDelivery(),true);
             }
@@ -395,6 +454,7 @@ public class Player : MonoBehaviour
         }
         else
         {
+            req.house.transform.GetChild(0).gameObject.SetActive(false);
             for (int i = deliveriesqueue.Length - 1; i >= 0; i--)
             {
                 if ((deliveriesqueue[i].road != null ? deliveriesqueue[i].road.index : 0) == roadnumber)
@@ -426,6 +486,8 @@ public class Player : MonoBehaviour
         nullreq.house = null;
         nullreq.road = null;
         nullreq.starttime = 0;
+        nullreq.timelimit = 0;
+        nullreq.distlimit = 0;
         currentdeliveryreq = nullreq;
 
     updatedeliverytext:;
@@ -459,11 +521,10 @@ public class Player : MonoBehaviour
         currentdeliveryreq.starttime += Time.time - deliverycamstarttime;
         if (currentdelivery != 0)
         {
-            AddRating();
+            AddRating(currentdeliveryreq,true);
             liner.enabled = false;
             linelengthtext.gameObject.SetActive(false);
             linelengthtext.text = "";
-            currentdeliveryhouse.transform.GetChild(0).gameObject.SetActive(false);
             UpdateDeliveryQueue(currentdeliveryreq, false);
         }
     }
