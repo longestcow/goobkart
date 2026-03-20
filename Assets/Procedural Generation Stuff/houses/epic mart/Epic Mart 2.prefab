@@ -712,6 +712,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: epicmart
       objectReference: {fileID: 0}
+    - target: {fileID: 3325054431419400455, guid: e38ad2de7caf3cc45a790610b36bdef6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c63205fac87fae64ba25ee4d7cd768d9, type: 2}
     - target: {fileID: 5060272794668416791, guid: e38ad2de7caf3cc45a790610b36bdef6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

@@ -24,6 +24,8 @@ public class ProceduralGeneration : MonoBehaviour
     public static int RenderDistance = 20;
     public int latestindex;
 
+    public bool americanmode;
+
     public Slider renderdistanceslider;
 
     public Text renderdistancetext;
@@ -175,15 +177,16 @@ public class ProceduralGeneration : MonoBehaviour
             {
                 //Destroy(obj.transform.GetChild(1).gameObject);
             }
-            if (Random.Range(0, 5) < 4)
+            if (Random.Range(0, 100) < player.GetComponent<Player>().difficulty* 25)
             {
+                //Spawn car
                 if (Random.Range(0, 2) < 1)
                 {
-                    Instantiate(cars[Random.Range(0, 4)], transform.position - (transform.right * width / 4f), transform.rotation, null);
+                    Instantiate(cars[Random.Range(0, 4)], transform.position + (americanmode ? -1 : 1) * (transform.right * width / 4f), transform.rotation, null);
                 }
                 else
                 {
-                    Instantiate(cars[Random.Range(0, 4)], transform.position + (transform.right * width / 4f), transform.rotation, null).GetComponent<Vehicle>().backwards = true;
+                    Instantiate(cars[Random.Range(0, 4)], transform.position - (americanmode ? -1 : 1) * (transform.right * width / 4f), transform.rotation, null).GetComponent<Vehicle>().backwards = true;
                 }
             }
         }

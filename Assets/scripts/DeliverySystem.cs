@@ -10,11 +10,10 @@ public class DeliverySystem : MonoBehaviour
 
     public Player.DeliveryRequest DecideDelivery()
     {
-        int roadnumber = UnityEngine.Random.Range(Mathf.Max((player.deliveriesqueue[0].road != null ? player.deliveriesqueue[0].road.index : 0) + 1,player.latestindex + 1), Mathf.Min(progen.latestindex-2,player.latestindex + 10));
+        int roadnumber = UnityEngine.Random.Range(Mathf.Max((player.deliveriesqueue[0].road != null ? player.deliveriesqueue[0].road.index : 0) + 1,Mathf.Min(player.latestindex + 10, progen.latestindex - 2)), Mathf.Min(progen.latestindex-2,player.latestindex + 20));
         GameObject[] arr = progen.lastobjects.ToArray();
         GameObject deliveryroad = arr[roadnumber - arr[0].GetComponent<GeneratedRoad>().index];
-        checkifmodified:
-        print(roadnumber);
+        checkifmodified:    
         if (deliveryroad.GetComponent<GeneratedRoad>().slope)
         {
             roadnumber++;

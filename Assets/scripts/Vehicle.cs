@@ -7,11 +7,14 @@ public class Vehicle : MonoBehaviour
     public Rigidbody self;
     Quaternion idealrotation;
     public bool backwards;
+    bool pushing;
+    Rigidbody playerb;
 
     // Start is called before the first frame update
     void Start()
     {
         self = gameObject.GetComponent<Rigidbody>();
+        pushing = false;
         //transform.localScale = new Vector3(0.02890174f, 50f, 0.05f);
     }
 
@@ -39,6 +42,11 @@ public class Vehicle : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (pushing)
+        {
+            playerb.velocity = (-10 * (transform.position - playerb.transform.position).normalized);
+        }
     }
 
     private void Update()
@@ -48,5 +56,21 @@ public class Vehicle : MonoBehaviour
             return;
         }
         transform.position += (idealrotation * Vector3.right) * 60 * 0.1f * Time.deltaTime;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == 17)
+        {
+            print("collision");
+            playerb = other.transform.parent.gameObject.GetComponent<Rigidbody>();
+            pushing = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == 17)
+        pushing = false;
     }
 }

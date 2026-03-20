@@ -52,7 +52,11 @@ public class Player : MonoBehaviour
     public Transform linepoint1;
     public GameObject linelengthcanvas;
     public Text linelengthtext;
-    
+    public Text ratingaddingshowcase;
+
+    public static int score;
+    public float difficulty;
+
     SphereCollider coll;
     Rigidbody rb;
     float input = 0f;
@@ -82,11 +86,16 @@ public class Player : MonoBehaviour
     public int currentdelivery;
     public GameObject currentdeliveryhouse;
     public DeliveryRequest currentdeliveryreq;
+    float deliverycamstarttime;
     int queueddeliveries;
     float aspectratio;
     float tanfov;
+    bool pausenewdeliveries;
     void Start()
     {
+        pausenewdeliveries = false;
+        difficulty = 1;
+        score = 500;
         liner.positionCount = 2;
         liner.enabled = false;
         coll = GetComponent<SphereCollider>();
@@ -121,6 +130,10 @@ public class Player : MonoBehaviour
         {
             cyclemain.localRotation = Quaternion.Euler(0.3f * ((Vector3.SignedAngle(mesh.transform.forward, rb.velocity, mesh.transform.up))), 270, 0);
         }
+
+        difficulty = Mathf.Clamp(difficulty + 0.0001f,1,3);
+        print(difficulty);
+        spe = difficulty * 10;
     }
 
     private void LateUpdate()
@@ -132,18 +145,20 @@ public class Player : MonoBehaviour
         if (rb.velocity.magnitude > 0.1f) fakecam.transform.rotation = Quaternion.Euler(0, fakecam.transform.rotation.eulerAngles.y + driftdir * 45, 0);// + new Vector3(0, input * 20f, 0);
         cam.transform.rotation = Quaternion.Euler( Quaternion.Lerp(cam.transform.rotation, fakecam.transform.rotation, 0.05f).eulerAngles + (!aimmode && (deliverycam == 0)?new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0): Vector3.zero));
         //mousecam.transform.rotation = Quaternion.Euler(mousecam.transform.rotation.eulerAngles + new Vector3(0, Input.GetAxis("Mouse X"), 0));
-        print(1f / Time.deltaTime);
         if (!aimmode && deliverycam == 0)
         {
             maincamera.transform.position = Vector3.Lerp(maincamera.transform.position, campos1.transform.position, 0.05f * 250 * Time.deltaTime);
             maincamera.transform.rotation = Quaternion.Lerp(maincamera.transform.rotation, campos1.transform.rotation, 0.05f * 250 * Time.deltaTime);
+            maincamera.GetComponent<Camera>().fieldOfView = Mathf.Lerp(maincamera.GetComponent<Camera>().fieldOfView, 80 + rb.velocity.magnitude * 2.5f, 0.05f * 250 * Time.deltaTime);
         }
         else if (deliverycam == 0)
         {
-            maincamera.transform.position = Vector3.Lerp(maincamera.transform.position, (campos2.transform.localRotation.eulerAngles.y  > 180?campos2:campos2).transform.position, 0.05f * 4);
-            maincamera.transform.rotation = Quaternion.Lerp(maincamera.transform.rotation, (campos2.transform.localRotation.eulerAngles.y > 180 ? campos2 : campos2).transform.rotation, 0.05f * 4);
+            maincamera.transform.position = Vector3.Lerp(maincamera.transform.position, (campos2.transform.localRotation.eulerAngles.y > 180 ? campos2 : campos3).transform.position, 1 - Mathf.Exp(0.69315f * (-Time.deltaTime / 0.01f)));
+            maincamera.transform.rotation = Quaternion.Lerp(maincamera.transform.rotation, (campos2.transform.localRotation.eulerAngles.y > 180 ? campos2 : campos3).transform.rotation, 1 - Mathf.Exp(0.69315f * (-Time.deltaTime / 0.01f)));
             campos2.transform.localRotation = Quaternion.Euler(campos2.transform.localRotation.eulerAngles + new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0));
             campos3.transform.localRotation = Quaternion.Euler(campos2.transform.localRotation.eulerAngles + new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0));
+
+            maincamera.GetComponent<Camera>().fieldOfView = Mathf.Lerp(maincamera.GetComponent<Camera>().fieldOfView, 100, 0.05f * 250 * Time.deltaTime);
         }
         else 
         {
@@ -165,16 +180,17 @@ public class Player : MonoBehaviour
                 camposdelivery.transform.position =  midpoint + (transform.position - latestdelivery.transform.position).normalized * 2 * (offset + deliverycamoffset);
                 camposdelivery.transform.position = new Vector3(camposdelivery.transform.position.x, latestdelivery.transform.position.y + 1, camposdelivery.transform.position.z);
                 //camposdelivery.transform.LookAt(midpoint);
-                linepoint0.position = Vector3.Lerp(linepoint0.position, latestdelivery.transform.position, Time.deltaTime * 10);
-                linepoint1.position = Vector3.Lerp(linepoint1.position, currentdeliveryhouse.transform.GetChild(0).transform.position, Time.deltaTime * 10);
+                linepoint0.position = Vector3.Lerp(linepoint0.position, latestdelivery.transform.position, Time.deltaTime * 10 * difficulty);
+                linepoint1.position = Vector3.Lerp(linepoint1.position, currentdeliveryhouse.transform.GetChild(0).transform.position, Time.deltaTime * 10 * difficulty);
                 liner.SetPosition(0, linepoint0.transform.position);
                 liner.SetPosition(1, linepoint1.transform.position);
                 linelengthcanvas.transform.position = ((currentdeliveryhouse.transform.GetChild(0).position + latestdelivery.transform.position) / 2f) + Vector3.up;
                 linelengthcanvas.transform.LookAt(camposdelivery.transform.position);
-                linelengthtext.text = ((int)((linepoint0.position - linepoint1.position).magnitude * 100)).ToString();
+                linelengthtext.text = ((linepoint0.position - linepoint1.position).magnitude * 10).ToString("F1");
             }
             maincamera.transform.position = Vector3.Lerp(maincamera.transform.position, camposdelivery.transform.position, 0.05f * 250 * Time.deltaTime);
             maincamera.transform.rotation = Quaternion.Lerp(maincamera.transform.rotation, camposdelivery.transform.rotation, 0.05f * 250 * Time.deltaTime);
+            maincamera.GetComponent<Camera>().fieldOfView = Mathf.Lerp(maincamera.GetComponent<Camera>().fieldOfView, 100, 0.05f * 250 * Time.deltaTime);
         }
     }
 
@@ -190,6 +206,7 @@ public class Player : MonoBehaviour
         }
 
         AlignKart();
+
 
         if (Input.GetButton("Drift") && !drifting && isgrounded && rb.velocity.magnitude > 0.5f)
         {
@@ -251,8 +268,9 @@ public class Player : MonoBehaviour
             {
                 leftside = !(Vector3.SignedAngle(mesh.transform.forward, currentdeliveryhouse.transform.position - transform.position, Vector3.up) > 0);
             }
-            campos2.transform.LookAt(currentdeliveryhouse.transform.GetChild(0).position + Vector3.up * 2);
-            //campos3.transform.localRotation = Quaternion.Euler(0, 180 + Vector3.SignedAngle(maincamera.transform.forward, currentdeliveryhouse.transform.position - transform.position, Vector3.up), 0);
+            campos2.transform.localRotation = Quaternion.Euler(0, leftside ? -90 : 90, 0);
+            campos3.transform.localRotation = Quaternion.Euler(0, leftside ? 90 : -90, 0);
+            //campos2.transform.LookAt(currentdeliveryhouse.transform.GetChild(0).position + Vector3.up * 2);
             crosshair.SetActive(true);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -287,11 +305,18 @@ public class Player : MonoBehaviour
             latestdeliveryrb.velocity = maincamera.transform.forward * shootspeed * shootstrength;
             aimmode = false;
             deliverycam = 1;
+            deliverycamstarttime = Time.time;
             StartCoroutine("deliverycamtimeout");
             crosshair.SetActive(false);
             savedvelocity = rb.velocity;
             Time.timeScale = 1;
             strengthscrollbar.gameObject.SetActive(false);
+        }
+        DeliveryQueueText.text = "";
+        for (int i = 0; i < deliveriesqueue.Length; i++)
+        {
+            if (deliveriesqueue[i].road == null) break;
+            DeliveryQueueText.text += ((Time.time - deliveriesqueue[i].starttime).ToString("F2")) + " - " + deliveriesqueue[i].road.index + "\n";
         }
     }
 
@@ -316,9 +341,21 @@ public class Player : MonoBehaviour
         }
     }
 
+    void AddRating()
+    {
+        int timelimit = (int)((55f / 2f) * (3.2f - difficulty));
+        score += (int)(((timelimit - (Time.time - currentdeliveryreq.starttime))/timelimit) * 50);
+        int distlimit = (int)(50 * (4 - difficulty)) - 25;
+        score += (int)(((distlimit - (linepoint0.position - linepoint1.position).magnitude * 10)/distlimit) * 50);
+        ratingaddingshowcase.text = (timelimit + " - " + (Time.time - currentdeliveryreq.starttime).ToString("F2") + " = " + (timelimit - (Time.time - currentdeliveryreq.starttime)).ToString("F2")) + "\n";
+        ratingaddingshowcase.text += distlimit + " - " + (linelengthtext.text) + " = " + (distlimit - (linepoint0.position - linepoint1.position).magnitude * 10).ToString("F1");
+        ratingaddingshowcase.text += "\n" + score;
+        difficulty += (((timelimit - (Time.time - currentdeliveryreq.starttime)) / timelimit) * 0.001f + (((distlimit - (linepoint0.position - linepoint1.position).magnitude * 10) / distlimit) * 50) * 0.001f);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 8)
+        if (other.gameObject.layer == 8 && gameObject.layer == 3)
         {
             proceduralgen.laststate = proceduralgen.GenerateNextThing(proceduralgen.laststate);
             latestindex = other.transform.parent.gameObject.GetComponent<GeneratedRoad>().index;
@@ -327,7 +364,14 @@ public class Player : MonoBehaviour
             {
                 UpdateDeliveryQueue(currentdeliveryreq, false);
             }
-            if (UnityEngine.Random.Range(0,30) < 15 && queueddeliveries < deliveriesqueue.Length && Time.timeSinceLevelLoad > 1f)
+            if (difficulty > 2)
+            {
+                if (UnityEngine.Random.Range(0,100) < 2 && !pausenewdeliveries)
+                {
+                    StartCoroutine("breakfromdeliveries");
+                }
+            }
+            if (UnityEngine.Random.Range(0,100) < (queueddeliveries == 0?20:2) && queueddeliveries < deliveriesqueue.Length && Time.timeSinceLevelLoad > 1f && (!pausenewdeliveries || UnityEngine.Random.Range(0,10) < 1 ))
             {
                 UpdateDeliveryQueue(deliverysys.DecideDelivery(),true);
             }
@@ -404,17 +448,30 @@ public class Player : MonoBehaviour
             linepoint0.position = (currentdeliveryhouse.transform.GetChild(0).position + latestdelivery.transform.position) / 2f;
             linepoint1.position = (currentdeliveryhouse.transform.GetChild(0).position + latestdelivery.transform.position) / 2f;
             linelengthcanvas.transform.position = (currentdeliveryhouse.transform.GetChild(0).position + latestdelivery.transform.position) / 2f;
-            yield return new WaitForSeconds(1);
-            liner.enabled = false;
-            linelengthtext.gameObject.SetActive(false);
-            linelengthtext.text = "";
+            yield return new WaitForSeconds(1/difficulty);
         }
         deliverycam = 0;
         rb.velocity = savedvelocity;
+        for (int i = 0; i < deliveriesqueue.Length; i++)
+        {
+            deliveriesqueue[i].starttime += Time.time - deliverycamstarttime;
+        }
+        currentdeliveryreq.starttime += Time.time - deliverycamstarttime;
         if (currentdelivery != 0)
         {
+            AddRating();
+            liner.enabled = false;
+            linelengthtext.gameObject.SetActive(false);
+            linelengthtext.text = "";
             currentdeliveryhouse.transform.GetChild(0).gameObject.SetActive(false);
             UpdateDeliveryQueue(currentdeliveryreq, false);
         }
+    }
+
+    IEnumerator breakfromdeliveries()
+    {
+        pausenewdeliveries = true;
+        yield return new WaitForSecondsRealtime(15);
+        pausenewdeliveries = false;
     }
 }
