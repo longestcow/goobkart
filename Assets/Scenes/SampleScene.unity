@@ -2080,7 +2080,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c82c85dd88feb824abff18984da4bd25, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b333e0e34427d6842adfb66feef18b69, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -3303,7 +3303,7 @@ Skybox:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1187420162}
   m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: 55e744ffccb721648be3d0dc24cceaee, type: 2}
+  m_CustomSkybox: {fileID: 2100000, guid: 6abe918ee1229b34f8557fc2a5a39825, type: 2}
 --- !u!114 &1187420165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4329,7 +4329,7 @@ Skybox:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1425189866}
   m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: 55e744ffccb721648be3d0dc24cceaee, type: 2}
+  m_CustomSkybox: {fileID: 2100000, guid: 6abe918ee1229b34f8557fc2a5a39825, type: 2}
 --- !u!114 &1425189869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4392,7 +4392,7 @@ Camera:
   m_GameObject: {fileID: 1425189866}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.13363297, g: 0.8584906, b: 0.8584906, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -4741,7 +4741,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &1551261978
 AudioSource:
   m_ObjectHideFlags: 0
