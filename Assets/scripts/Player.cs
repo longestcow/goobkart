@@ -36,7 +36,6 @@ public class Player : MonoBehaviour
     public GameObject camposdelivery;
     public GameObject mousecam; //camera that moves based on mouse movement
     public LayerMask groundLayer;
-    public Text Speedometer;
     public Transform wheel1;
     public Transform wheel2;
     public Transform frontthing;
@@ -268,7 +267,6 @@ public class Player : MonoBehaviour
             input = 0;
         }
 
-        Speedometer.text = ((int)(20f * rb.velocity.magnitude)).ToString();
 
         //Aim Mode 
         if (Input.GetButtonDown("Aim"))

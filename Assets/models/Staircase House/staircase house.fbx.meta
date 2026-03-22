@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: fc16df94b5ac61f40a3959168673ead0
+guid: cb21afa6e23b97c46b559c8eb09bf1e8
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: staircase house.png
-    second: {fileID: 2100000, guid: e2dcf1e79f7889b45843bc9edaf1d8d4, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

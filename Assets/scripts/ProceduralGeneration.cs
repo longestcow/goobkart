@@ -90,6 +90,8 @@ public class ProceduralGeneration : MonoBehaviour
                     objj.GetComponent<Renderer>().material = turnmat1;
                     Destroy(objj.transform.GetChild(1).gameObject);
                     objj.transform.GetChild(5).gameObject.SetActive(true);
+                    objj.transform.GetChild(5).GetChild(1).gameObject.SetActive(true);
+                    objj.transform.GetChild(7).gameObject.SetActive(false);
                     laststate = 3;
                 }
                 else
@@ -99,6 +101,8 @@ public class ProceduralGeneration : MonoBehaviour
                     objj.GetComponent<Renderer>().material = turnmat2;
                     Destroy(objj.transform.GetChild(2).gameObject);
                     objj.transform.GetChild(5).gameObject.SetActive(true);
+                    objj.transform.GetChild(5).GetChild(0).gameObject.SetActive(true);
+                    objj.transform.GetChild(6).gameObject.SetActive(false);
                     laststate = 4;
                 }
                 if (lastobjects.Count > RenderDistance) Destroy(lastobjects.Dequeue());
@@ -136,6 +140,8 @@ public class ProceduralGeneration : MonoBehaviour
                     objj.GetComponent<Renderer>().material = turnmat1;
                     Destroy(objj.transform.GetChild(1).gameObject);
                     objj.transform.GetChild(5).gameObject.SetActive(true);
+                    objj.transform.GetChild(5).GetChild(1).gameObject.SetActive(true);
+                    objj.transform.GetChild(7).gameObject.SetActive(false);
                     laststate = 3;
                 }
                 else if (transform.rotation.eulerAngles.y > 190)
@@ -145,6 +151,8 @@ public class ProceduralGeneration : MonoBehaviour
                     objj.GetComponent<Renderer>().material = turnmat2;
                     Destroy(objj.transform.GetChild(2).gameObject);
                     objj.transform.GetChild(5).gameObject.SetActive(true);
+                    objj.transform.GetChild(5).GetChild(0).gameObject.SetActive(true);
+                    objj.transform.GetChild(6).gameObject.SetActive(false);
                     laststate = 4;
                 }
                 if (lastobjects.Count > RenderDistance) Destroy(lastobjects.Dequeue());

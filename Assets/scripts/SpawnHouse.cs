@@ -8,6 +8,7 @@ public class SpawnHouse : MonoBehaviour
     public GameObject[] housesprefabs;
     public GameObject[] nonhousesprefabs;
     public GameObject obj;
+    public bool unimportanthouse;
 
     public float chanceofnonhouse;
 
@@ -28,18 +29,22 @@ public class SpawnHouse : MonoBehaviour
             }
             obj = Instantiate(objtobespawned, transform.position, transform.rotation, null);
             obj.transform.parent = this.transform.parent;
-            if (obj.transform.parent.GetComponent<GeneratedRoad>().houses[0] == null)
+            if (!unimportanthouse)
             {
-                obj.transform.parent.GetComponent<GeneratedRoad>().houses[0] = obj;
-            }
-            else
-            {
-                obj.transform.parent.GetComponent<GeneratedRoad>().houses[1] = obj;
+                if (obj.transform.parent.GetComponent<GeneratedRoad>().houses[0] == null)
+                {
+                    obj.transform.parent.GetComponent<GeneratedRoad>().houses[0] = obj;
+                }
+                else
+                {
+                    obj.transform.parent.GetComponent<GeneratedRoad>().houses[1] = obj;
+                }
             }
         }
         else
         {
-            transform.parent.GetComponent<GeneratedRoad>().modified = true;
+            if (!unimportanthouse)
+                transform.parent.GetComponent<GeneratedRoad>().modified = true;
         }
     }
 
