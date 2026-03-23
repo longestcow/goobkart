@@ -91,6 +91,7 @@ public class ProceduralGeneration : MonoBehaviour
                     Destroy(objj.transform.GetChild(1).gameObject);
                     objj.transform.GetChild(5).gameObject.SetActive(true);
                     objj.transform.GetChild(5).GetChild(1).gameObject.SetActive(true);
+                    objj.transform.GetChild(6).gameObject.SetActive(false);
                     objj.transform.GetChild(7).gameObject.SetActive(false);
                     laststate = 3;
                 }
@@ -103,6 +104,7 @@ public class ProceduralGeneration : MonoBehaviour
                     objj.transform.GetChild(5).gameObject.SetActive(true);
                     objj.transform.GetChild(5).GetChild(0).gameObject.SetActive(true);
                     objj.transform.GetChild(6).gameObject.SetActive(false);
+                    objj.transform.GetChild(7).gameObject.SetActive(false);
                     laststate = 4;
                 }
                 if (lastobjects.Count > RenderDistance) Destroy(lastobjects.Dequeue());
@@ -141,6 +143,7 @@ public class ProceduralGeneration : MonoBehaviour
                     Destroy(objj.transform.GetChild(1).gameObject);
                     objj.transform.GetChild(5).gameObject.SetActive(true);
                     objj.transform.GetChild(5).GetChild(1).gameObject.SetActive(true);
+                    objj.transform.GetChild(6).gameObject.SetActive(false);
                     objj.transform.GetChild(7).gameObject.SetActive(false);
                     laststate = 3;
                 }
@@ -153,6 +156,7 @@ public class ProceduralGeneration : MonoBehaviour
                     objj.transform.GetChild(5).gameObject.SetActive(true);
                     objj.transform.GetChild(5).GetChild(0).gameObject.SetActive(true);
                     objj.transform.GetChild(6).gameObject.SetActive(false);
+                    objj.transform.GetChild(7).gameObject.SetActive(false);
                     laststate = 4;
                 }
                 if (lastobjects.Count > RenderDistance) Destroy(lastobjects.Dequeue());
@@ -171,6 +175,14 @@ public class ProceduralGeneration : MonoBehaviour
         Destroy(obj.transform.GetChild(3).gameObject);
         if (laststate != 0)
         {
+            if (laststate == 1)
+            {
+                obj.transform.GetChild(8).gameObject.SetActive(true);
+            }
+            if (laststate == 2)
+            {
+                obj.transform.GetChild(9).gameObject.SetActive(true);
+            }
             obj.GetComponent<GeneratedRoad>().slope = true;
             Destroy(obj.transform.GetChild(2).gameObject);
             Destroy(obj.transform.GetChild(1).gameObject);
