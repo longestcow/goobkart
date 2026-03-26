@@ -44,7 +44,14 @@ public class SpawnHouse : MonoBehaviour
         else
         {
             if (!unimportanthouse)
-                transform.parent.GetComponent<GeneratedRoad>().modified = true;
+                if (!transform.parent.GetComponent<GeneratedRoad>().modified)
+                {
+                    transform.parent.GetComponent<GeneratedRoad>().modified = true;
+                }
+                else
+                {
+                    transform.parent.GetComponent<GeneratedRoad>().slope = true;
+                }
         }
     }
 

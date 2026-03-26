@@ -6,6 +6,8 @@ using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using DG.Tweening;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -53,11 +55,17 @@ public class Player : MonoBehaviour
     public Text linelengthtext;
     public Text starstext;
     public Text scoretext;
-    public Text multipliertext;
-    public String starascii;
-    public String nostarascii;
+    public TextMeshProUGUI multipliertext;
+    public Image[] starsobjs;
     public AudioSource successjingle;
     public AudioSource failurejingle;
+    public GameObject NotificationTemplate;
+    public Transform notifrestspot;
+    public Transform notifpushedspot;
+    public Transform notifhiddenspot;
+    public Transform notifdiespot;
+    public Material linem;
+    public Transform minimapcamhinge;
 
     public static int score;
     public float difficulty;
@@ -80,6 +88,7 @@ public class Player : MonoBehaviour
     public static int deliverycam;
     [NonSerialized]
     public int latestindex;
+    public GeneratedRoad latestroad;
     GameObject latestdelivery;
     Rigidbody latestdeliveryrb;
     Vector3 savedvelocity;
@@ -90,8 +99,9 @@ public class Player : MonoBehaviour
         public float starttime;
         public int timelimit;
         public int distlimit;
+        public DeliveryNotification notif;
     }
-    public DeliveryRequest[] deliveriesqueue = new DeliveryRequest[5];
+    public DeliveryRequest[] deliveriesqueue = new DeliveryRequest[2];
     public int currentdelivery;
     public GameObject currentdeliveryhouse;
     public DeliveryRequest currentdeliveryreq;
@@ -102,11 +112,11 @@ public class Player : MonoBehaviour
     bool pausenewdeliveries;
     void Start()
     {
-        stars = 1;
+        stars = 5;
         multiplier = 1;
         pausenewdeliveries = false;
         difficulty = 1;
-        score = 500;
+        score = 0;
         liner.positionCount = 2;
         liner.enabled = false;
         coll = GetComponent<SphereCollider>();
@@ -156,6 +166,8 @@ public class Player : MonoBehaviour
         if (rb.velocity.magnitude > 0.1f) fakecam.transform.rotation = Quaternion.Euler(0, fakecam.transform.rotation.eulerAngles.y + driftdir * 45, 0);// + new Vector3(0, input * 20f, 0);
         cam.transform.rotation = Quaternion.Euler( Quaternion.Lerp(cam.transform.rotation, fakecam.transform.rotation, 0.05f).eulerAngles + (!aimmode && (deliverycam == 0)?new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0): Vector3.zero));
         //mousecam.transform.rotation = Quaternion.Euler(mousecam.transform.rotation.eulerAngles + new Vector3(0, Input.GetAxis("Mouse X"), 0));
+        minimapcamhinge.rotation = Quaternion.Lerp(minimapcamhinge.rotation, latestroad.transform.rotation, 0.05f * 250 * Time.deltaTime);
+        minimapcamhinge.position = mesh.transform.position;
         if (!aimmode && deliverycam == 0)
         {
             maincamera.transform.position = Vector3.Lerp(maincamera.transform.position, campos1.transform.position, 0.05f * 250 * Time.deltaTime);
@@ -198,6 +210,17 @@ public class Player : MonoBehaviour
                 linelengthcanvas.transform.position = ((currentdeliveryhouse.transform.GetChild(0).position + latestdelivery.transform.position) / 2f) + Vector3.up;
                 linelengthcanvas.transform.LookAt(camposdelivery.transform.position);
                 linelengthtext.text = ((linepoint0.position - linepoint1.position).magnitude * 10).ToString("F1");
+                if (float.Parse(linelengthtext.text) > 50)
+                {
+                    linem.color = Color.red;
+                    linelengthtext.color = Color.red;
+                }
+                else
+                {
+                    linem.color = Color.black;
+                    linelengthtext.color = Color.black;
+                }
+
             }
             maincamera.transform.position = Vector3.Lerp(maincamera.transform.position, camposdelivery.transform.position, 0.05f * 250 * Time.deltaTime);
             maincamera.transform.rotation = Quaternion.Lerp(maincamera.transform.rotation, camposdelivery.transform.rotation, 0.05f * 250 * Time.deltaTime);
@@ -332,7 +355,9 @@ public class Player : MonoBehaviour
                 UpdateDeliveryQueue(deliveriesqueue[i], false); 
                 continue;
             }
-            DeliveryQueueText.text += "Order: " + deliveriesqueue[i].road.index + "\nTime - " + ((deliveriesqueue[i].timelimit - (Time.time - deliveriesqueue[i].starttime)).ToString("F2")) + "\nMax Dist - " + deliveriesqueue[i].distlimit + "\n---------\n";
+            deliveriesqueue[i].notif.timeleft.text = (Mathf.Clamp((deliveriesqueue[i].timelimit - (Time.time - deliveriesqueue[i].starttime)),0,60).ToString("F2")) + "s";
+            deliveriesqueue[i].notif.distance.text = Vector3.Distance(transform.position, deliveriesqueue[i].house.transform.position).ToString("F1") + "m";
+            DeliveryQueueText.text += "Order: " + deliveriesqueue[i].road.index + "\nTime - " + ((deliveriesqueue[i].timelimit - (Time.time - deliveriesqueue[i].starttime)).ToString("F2")) + "\nDistance - " + Vector3.Distance(transform.position, deliveriesqueue[i].house.transform.position).ToString("F0") + "\n---------\n";
         }
     }
 
@@ -342,7 +367,6 @@ public class Player : MonoBehaviour
         RaycastHit info;
 
         isgrounded = Physics.Raycast(ray, out info, groundLayer);
-
         if (Physics.Raycast(ray, out info, 2f, groundLayer))
         {
             // mesh.transform.rotation = Quaternion.Lerp(mesh.transform.rotation, 
@@ -359,21 +383,29 @@ public class Player : MonoBehaviour
 
     void AddRating(DeliveryRequest req,bool passed)
     {
-        if ((linepoint0.position - linepoint1.position).magnitude * 10 > req.distlimit + 1)
+        if ((linepoint0.position - linepoint1.position).magnitude * 10 > 51)
         {
             passed = false;
         }
         if (passed)
         {
+            multiplier++;
+            successjingle.pitch += 0.1f;
             successjingle.Play();
-            if (stars < 5)
+            if (stars < 5 && multiplier % 5 == 0)
             {
                 stars++;
-            }
-            else
-            {
-                multiplier++;
-                successjingle.pitch += 0.1f;
+                for (int i = 0; i < 5; i++)
+                {
+                    if (stars > i)
+                    {
+                        starsobjs[i].color = Color.white;
+                    }
+                    else
+                    {
+                        starsobjs[i].color = Color.black;
+                    }
+                }
             }
             score += 100 * multiplier;
         }
@@ -381,31 +413,24 @@ public class Player : MonoBehaviour
         {
             failurejingle.Play();
             successjingle.pitch = 1;
-            if (stars < 5)
+            stars--;
+            multiplier = 1;
+            for (int i = 0; i < 5; i++)
             {
-                stars--;
-            }
-            else
-            {
-                multiplier = 1;
-                stars--;
+                if (stars > i)
+                {
+                    starsobjs[i].color = Color.white;
+                }
+                else
+                {
+                    starsobjs[i].color = Color.black;
+                }
             }
         }
         multipliertext.text = multiplier + "x";
-        multipliertext.fontSize = 35 + multiplier;
+        multipliertext.fontSize = 73 + multiplier;
         scoretext.text = score.ToString();
         starstext.text = "";
-        for (int i = 1; i <= 5; i++)
-        {
-            if (stars >= i)
-            {
-                starstext.text += starascii;
-            }
-            else
-            {
-                starstext.text += nostarascii;
-            }
-        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -414,6 +439,7 @@ public class Player : MonoBehaviour
         {
             proceduralgen.laststate = proceduralgen.GenerateNextThing(proceduralgen.laststate);
             latestindex = other.transform.parent.gameObject.GetComponent<GeneratedRoad>().index;
+            latestroad = other.transform.parent.gameObject.GetComponent<GeneratedRoad>();
             Destroy(other.gameObject);
             if (latestindex > currentdelivery + 3)
             {
@@ -428,7 +454,7 @@ public class Player : MonoBehaviour
                     StartCoroutine("breakfromdeliveries");
                 }
             }
-            if (UnityEngine.Random.Range(0,100) < (queueddeliveries == 0?20 * difficulty:2) && queueddeliveries < deliveriesqueue.Length && Time.timeSinceLevelLoad > 1f && (!pausenewdeliveries || UnityEngine.Random.Range(0,10) < 1 ))
+            if (UnityEngine.Random.Range(0,100) < (queueddeliveries == 0?20 * difficulty:2 * difficulty) && queueddeliveries < deliveriesqueue.Length && Time.timeSinceLevelLoad > 1f && (!pausenewdeliveries || UnityEngine.Random.Range(0,10) < 1 ))
             {
                 UpdateDeliveryQueue(deliverysys.DecideDelivery(),true);
             }
@@ -449,10 +475,25 @@ public class Player : MonoBehaviour
             }
             deliveriesqueue[0] = req;
             queueddeliveries++;
+            if (queueddeliveries == 1)
+            {
+                req.notif.transform.DOMove(notifrestspot.position, 0.5f).SetEase(Ease.InOutCubic);
+            }
+            else
+            {
+                req.notif.transform.DOMove(notifhiddenspot.position, 0.5f).SetEase(Ease.InOutCubic);
+                deliveriesqueue[1].notif.transform.DOMove(notifpushedspot.position, 0.5f).SetEase(Ease.InOutCubic);
+            }
         }
         else
         {
             req.house.transform.GetChild(0).gameObject.SetActive(false);
+            req.notif.transform.DOMove(notifdiespot.position, 0.5f).SetEase(Ease.InOutCubic);
+            Destroy(req.notif.gameObject,1);
+            if (queueddeliveries == 2)
+            {
+                deliveriesqueue[0].notif.transform.DOMove(notifrestspot.position,0.5f).SetEase(Ease.InOutCubic);
+            }
             for (int i = deliveriesqueue.Length - 1; i >= 0; i--)
             {
                 if ((deliveriesqueue[i].road != null ? deliveriesqueue[i].road.index : 0) == roadnumber)
@@ -486,6 +527,7 @@ public class Player : MonoBehaviour
         nullreq.starttime = 0;
         nullreq.timelimit = 0;
         nullreq.distlimit = 0;
+        nullreq.notif = null;
         currentdeliveryreq = nullreq;
 
     updatedeliverytext:;

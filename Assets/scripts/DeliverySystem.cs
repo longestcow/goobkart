@@ -2,11 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class DeliverySystem : MonoBehaviour
 {
     public ProceduralGeneration progen;
     public Player player;
+    public GameObject NotifTemp;
+    public Transform canvas;
+    public Transform notifspawnspot;
+
 
     public Player.DeliveryRequest DecideDelivery()
     {
@@ -22,6 +27,7 @@ public class DeliverySystem : MonoBehaviour
         }
         int housenumber = UnityEngine.Random.Range(0,2);
         if (deliveryroad.GetComponent<GeneratedRoad>().modified) housenumber = 0;
+        print(deliveryroad.GetComponent<GeneratedRoad>().index);
         deliveryroad.GetComponent<GeneratedRoad>().houses[housenumber].transform.GetChild(0).gameObject.SetActive(true);
         Player.DeliveryRequest req;
         req.road = deliveryroad.GetComponent<GeneratedRoad>();
@@ -34,6 +40,12 @@ public class DeliverySystem : MonoBehaviour
 
         req.timelimit = timelimit;
         req.distlimit = distlimit;
+
+        GameObject notif = Instantiate(NotifTemp,notifspawnspot.position,Quaternion.Euler(Vector3.zero),canvas);
+        DeliveryNotification notifproperties = notif.GetComponent<DeliveryNotification>();
+        req.notif = notifproperties;
+        notifproperties.req = req;
+        notifproperties.player = player;
 
         return req;
     }
