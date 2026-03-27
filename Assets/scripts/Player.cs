@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
     public GameObject linelengthcanvas;
     public Text linelengthtext;
     public Text starstext;
-    public Text scoretext;
+    public TextMeshProUGUI scoretext;
     public TextMeshProUGUI multipliertext;
     public Image[] starsobjs;
     public AudioSource successjingle;
@@ -66,6 +66,18 @@ public class Player : MonoBehaviour
     public Transform notifdiespot;
     public Material linem;
     public Transform minimapcamhinge;
+    public GameObject newscoreaddedtemplate;
+    public List<ScoreThing> newscoreaddings = new List<ScoreThing>();
+    public Transform canvastrans;
+    public Transform scorenewposition;
+    public Transform scoresecondposition;
+    public Transform scorehiddenposition;
+    public Transform strengthbar;
+    public Transform strengthbarmask;
+    public Transform strengthbarempty;
+    public Transform strengthbaremptypos;
+    public Transform strengthbarfilledpos;
+    public GameObject turnbacknow;
 
     public static int score;
     public float difficulty;
@@ -92,6 +104,8 @@ public class Player : MonoBehaviour
     GameObject latestdelivery;
     Rigidbody latestdeliveryrb;
     Vector3 savedvelocity;
+    float lastdeliverytime;
+    float lastdeliverytimelimit;
     public struct DeliveryRequest
     {
         public GeneratedRoad road;
@@ -153,7 +167,6 @@ public class Player : MonoBehaviour
         }
 
         difficulty = Mathf.Clamp(difficulty + 0.0001f,1,3);
-        print(difficulty);
         spe = difficulty * 10;
     }
 
@@ -166,7 +179,7 @@ public class Player : MonoBehaviour
         if (rb.velocity.magnitude > 0.1f) fakecam.transform.rotation = Quaternion.Euler(0, fakecam.transform.rotation.eulerAngles.y + driftdir * 45, 0);// + new Vector3(0, input * 20f, 0);
         cam.transform.rotation = Quaternion.Euler( Quaternion.Lerp(cam.transform.rotation, fakecam.transform.rotation, 0.05f).eulerAngles + (!aimmode && (deliverycam == 0)?new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0): Vector3.zero));
         //mousecam.transform.rotation = Quaternion.Euler(mousecam.transform.rotation.eulerAngles + new Vector3(0, Input.GetAxis("Mouse X"), 0));
-        minimapcamhinge.rotation = Quaternion.Lerp(minimapcamhinge.rotation, latestroad.transform.rotation, 0.05f * 250 * Time.deltaTime);
+        if (latestroad != null) minimapcamhinge.rotation = Quaternion.Lerp(minimapcamhinge.rotation, latestroad.transform.rotation, 0.05f * 250 * Time.deltaTime);
         minimapcamhinge.position = mesh.transform.position;
         if (!aimmode && deliverycam == 0)
         {
@@ -317,6 +330,7 @@ public class Player : MonoBehaviour
             Cursor.visible = true;
             shootstrengthincreasing = false;
             strengthscrollbar.gameObject.SetActive(false);
+            strengthbarempty.gameObject.SetActive(false);
         }
 
         if (aimmode && Input.GetButtonDown("Shoot"))
@@ -324,11 +338,14 @@ public class Player : MonoBehaviour
             shootstrengthincreasing = true;
             shootstrength = 1;
             strengthscrollbar.gameObject.SetActive(true);
+            strengthbarempty.gameObject.SetActive(true);
         }
         if (aimmode && shootstrengthincreasing)
         {
             shootstrength = Mathf.Clamp(shootstrength+(shootstrengthchargeupspeed * Time.deltaTime),1,20);
             strengthscrollbar.size = (shootstrength-1)/19;
+            strengthbarmask.transform.position = ((strengthbaremptypos.position * (20 - shootstrength)) + (strengthbarfilledpos.position * shootstrength)) / 20f;
+            strengthbar.transform.position = strengthbarempty.transform.position;
         }
         if (aimmode && shootstrengthincreasing && Input.GetButtonUp("Shoot"))
         {
@@ -343,7 +360,10 @@ public class Player : MonoBehaviour
             crosshair.SetActive(false);
             savedvelocity = rb.velocity;
             Time.timeScale = 1;
+            lastdeliverytime = Time.time - currentdeliveryreq.starttime;
+            lastdeliverytimelimit = currentdeliveryreq.timelimit;
             strengthscrollbar.gameObject.SetActive(false);
+            strengthbarempty.gameObject.SetActive(false);
         }
         DeliveryQueueText.text = "";
         for (int i = 0; i < deliveriesqueue.Length; i++)
@@ -372,12 +392,18 @@ public class Player : MonoBehaviour
             // mesh.transform.rotation = Quaternion.Lerp(mesh.transform.rotation, 
             mesh.transform.rotation = Quaternion.Lerp(mesh.transform.rotation,Quaternion.FromToRotation(mesh.transform.up, info.normal) * mesh.transform.rotation,0.01f * 250 * Time.deltaTime);
 
-
-            // Time.deltaTime * 10f);
-            //rot = Quaternion.FromToRotation(Vector3.up, info.normal);
-            //rot.z = mesh.transform.rotation.z;
-            //rot.y = mesh.transform.rotation.y;
-            //mesh.transform.rotation = rot;
+            if (Vector3.Angle(mesh.transform.forward, info.transform.forward) > 120)
+            {
+                turnbacknow.SetActive(true);
+                if (turnbacknow.activeSelf)
+                    turnbacknow.GetComponent<Image>().DOFade(1, 3);
+            }
+            else
+            {
+                turnbacknow.GetComponent<Image>().DOKill();
+                turnbacknow.GetComponent<Image>().color -= new Color(0,0,0,0.01f);
+                turnbacknow.SetActive(false);
+            }
         }
     }
 
@@ -389,6 +415,8 @@ public class Player : MonoBehaviour
         }
         if (passed)
         {
+
+            StartCoroutine("AddScore");
             multiplier++;
             successjingle.pitch += 0.1f;
             successjingle.Play();
@@ -407,7 +435,6 @@ public class Player : MonoBehaviour
                     }
                 }
             }
-            score += 100 * multiplier;
         }
         else
         {
@@ -443,7 +470,7 @@ public class Player : MonoBehaviour
             Destroy(other.gameObject);
             if (latestindex > currentdelivery + 3)
             {
-                if (Time.time - currentdeliveryreq.starttime < 0.5f && Time.time > 1)
+                if (currentdeliveryreq.starttime > 0.1f)
                     AddRating(currentdeliveryreq, false);
                 UpdateDeliveryQueue(currentdeliveryreq, false);
             }
@@ -461,6 +488,94 @@ public class Player : MonoBehaviour
         }
     }
 
+    IEnumerator AddScore()
+    {
+        //base score
+        SpawnScore("Delivery",100 * multiplier);
+
+
+        //midair check
+        if (!Physics.Raycast(mesh.transform.position, -mesh.transform.up, 1, groundLayer))
+        {
+            yield return new WaitForSeconds(0.1f);
+            SpawnScore("Mid-Air",50 * multiplier);
+        }
+
+        //full power check
+        /*if (shootstrength > 19.5f)
+        {
+            yield return new WaitForSeconds(0.1f);
+            SpawnScore("Full Power", 20 * multiplier);
+        }*/
+
+        //by a hair check
+        if (float.Parse(linelengthtext.text) > 45f)
+        {
+            yield return new WaitForSeconds(0.1f);
+            SpawnScore("By A Hair", 20 * multiplier);
+        }
+
+        //by a jiffy check
+        /*if (lastdeliverytimelimit - lastdeliverytime < 1)
+        {
+            yield return new WaitForSeconds(0.1f);
+            SpawnScore("By A Jiffy", 50 * multiplier);
+        }*/
+
+        //microscopic precision check
+        if (float.Parse(linelengthtext.text) < 5f)
+        {
+            yield return new WaitForSeconds(0.1f);
+            SpawnScore("Crazy Precision", 50 * multiplier);
+        }
+
+        //snipe check
+        if (Vector3.Distance(latestdelivery.transform.position,mesh.transform.position) > 30)
+        {
+            yield return new WaitForSeconds(0.1f);
+            SpawnScore("Sniped", 50 * multiplier);
+        }
+        //less than a sec check
+        if (lastdeliverytime < 1f)
+        {
+            yield return new WaitForSeconds(0.1f);
+            SpawnScore("Less Than A Sec", 50 * multiplier);
+        }
+
+        //under truck check
+
+
+        yield return new WaitForSeconds(1);
+
+        while (newscoreaddings.Count > 0)
+        {
+            StartCoroutine(AddScoreThingToScore(newscoreaddings[0]));
+            newscoreaddings.RemoveAt(0);
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+    
+    IEnumerator AddScoreThingToScore(ScoreThing st)
+    {
+        st.transform.DOMoveY(scoretext.transform.position.y,0.5f).SetEase(Ease.InBack);
+        yield return new WaitForSeconds(0.5f);
+        score += st.number;
+        scoretext.text = score.ToString();
+        st.gameObject.SetActive(false);
+        Destroy(st.gameObject, 1f);
+    }
+
+    void SpawnScore(String s,int n)
+    {
+        GameObject mainscore = Instantiate(newscoreaddedtemplate, scorenewposition.position + (newscoreaddings.Count * (scoresecondposition.position-scorenewposition.position)) + (scorehiddenposition.position - scorenewposition.position),Quaternion.Euler(Vector3.zero),canvastrans);
+        ScoreThing mainscorething = mainscore.GetComponent<ScoreThing>();
+        newscoreaddings.Add(mainscorething);
+        mainscorething.number = n;
+        mainscorething.category = s;
+        mainscorething.text.text = mainscorething.category + " +" + mainscorething.number;
+        mainscore.transform.DOMoveX(scorenewposition.position.x, 0.5f).SetEase(Ease.OutCubic);
+        
+    }
     void UpdateDeliveryQueue(DeliveryRequest req, bool enqueue)
     {
         if (req.road == null) return;
@@ -564,7 +679,7 @@ public class Player : MonoBehaviour
             AddRating(currentdeliveryreq,true);
             liner.enabled = false;
             linelengthtext.gameObject.SetActive(false);
-            linelengthtext.text = "";
+            //linelengthtext.text = "";
             UpdateDeliveryQueue(currentdeliveryreq, false);
         }
     }

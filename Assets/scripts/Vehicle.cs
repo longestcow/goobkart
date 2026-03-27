@@ -45,7 +45,14 @@ public class Vehicle : MonoBehaviour
 
         if (pushing)
         {
-            playerb.velocity = (-10 * (transform.position - playerb.transform.position).normalized);
+            if ((transform.position - playerb.transform.position).normalized.y > 0f)
+            {
+                playerb.velocity = new Vector3(playerb.velocity.x, (-10 * (transform.position - playerb.transform.position).normalized.y), playerb.velocity.z);
+            }
+            else
+            {
+                playerb.velocity = (-10 * (transform.position - playerb.transform.position).normalized);
+            }
         }
     }
 

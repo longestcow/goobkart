@@ -28,6 +28,7 @@ public class DeliverySystem : MonoBehaviour
         int housenumber = UnityEngine.Random.Range(0,2);
         if (deliveryroad.GetComponent<GeneratedRoad>().modified) housenumber = 0;
         print(deliveryroad.GetComponent<GeneratedRoad>().index);
+        if (deliveryroad.GetComponent<GeneratedRoad>().houses[0] == null) goto sendnullreq;
         deliveryroad.GetComponent<GeneratedRoad>().houses[housenumber].transform.GetChild(0).gameObject.SetActive(true);
         Player.DeliveryRequest req;
         req.road = deliveryroad.GetComponent<GeneratedRoad>();
@@ -48,6 +49,17 @@ public class DeliverySystem : MonoBehaviour
         notifproperties.player = player;
 
         return req;
+
+        sendnullreq:
+        Player.DeliveryRequest nullreq;
+        nullreq.house = null;
+        nullreq.road = null;
+        nullreq.starttime = 0;
+        nullreq.timelimit = 0;
+        nullreq.distlimit = 0;
+        nullreq.notif = null;
+
+        return nullreq;
     }
 
 }
