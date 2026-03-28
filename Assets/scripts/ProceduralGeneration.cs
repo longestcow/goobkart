@@ -30,10 +30,12 @@ public class ProceduralGeneration : MonoBehaviour
 
     public Text renderdistancetext;
 
+    public GameObject oneofeverything;
+
     void Start()
     {
         renderdistanceslider.value = RenderDistance;
-
+        Destroy(oneofeverything); 
         angle = (Mathf.Atan2(height,length) * Mathf.Rad2Deg);
         slopeheight = Mathf.Sqrt(height * height + length * length);
         transform.position = new Vector3(0,0,0);

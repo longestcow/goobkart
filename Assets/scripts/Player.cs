@@ -80,6 +80,11 @@ public class Player : MonoBehaviour
     public GameObject turnbacknow;
     public Text ReturningText;
     public LayerMask roadandfootpath;
+    public ParticleSystem speedlines;
+    public TrailRenderer trail1;
+    public TrailRenderer trail2;
+    public ParticleSystem particles1;
+    public ParticleSystem particles2;
 
     public static int score;
     public float difficulty;
@@ -172,7 +177,35 @@ public class Player : MonoBehaviour
         difficulty = Mathf.Clamp(difficulty + 0.0001f,1,3);
         spe = difficulty * 10;
 
+        if (drifting)
+        {
+            if (!Physics.Raycast(mesh.transform.position, -mesh.transform.up, 1, groundLayer))
+            {
+                trail1.emitting = false;
+                trail2.emitting = false;
+            }
+            else
+            { 
+                trail1.emitting = true;
+                trail2.emitting = true;
+            }
+        }
 
+        if (input > 0)
+        {
+            var p1e = particles1.emission;
+            var p2e = particles2.emission;
+            p1e.enabled = true;
+            p2e.enabled = true;
+        }
+        else
+        {
+
+            var p1e = particles1.emission;
+            var p2e = particles2.emission;
+            p1e.enabled = false;
+            p2e.enabled = false;
+        }
         //Softlock Checks
         bool onroad = Physics.Raycast(mesh.transform.position, -mesh.transform.up, 10 ,roadandfootpath);
         if ((!onroad || rb.velocity.magnitude < 0.01f) && !returningtimerstarted)
@@ -202,6 +235,18 @@ public class Player : MonoBehaviour
             maincamera.transform.position = Vector3.Lerp(maincamera.transform.position, campos1.transform.position, 0.05f * 250 * Time.deltaTime);
             maincamera.transform.rotation = Quaternion.Lerp(maincamera.transform.rotation, campos1.transform.rotation, 0.05f * 250 * Time.deltaTime);
             maincamera.GetComponent<Camera>().fieldOfView = Mathf.Lerp(maincamera.GetComponent<Camera>().fieldOfView, 80 + rb.velocity.magnitude * 2.5f, 0.05f * 250 * Time.deltaTime);
+            var speedlinesmain = speedlines.main;
+            var speedlinesemission = speedlines.emission;
+            print(rb.velocity);
+            if (rb.velocity.magnitude >= 10)
+            {
+                speedlinesmain.startSpeed = rb.velocity.magnitude / 2;
+                speedlinesemission.rateOverTime = rb.velocity.magnitude * 5;
+            }
+            else
+            {
+                speedlinesemission.rateOverTime = 0;
+            }
         }
         else if (deliverycam == 0)
         {
@@ -209,7 +254,7 @@ public class Player : MonoBehaviour
             maincamera.transform.rotation = Quaternion.Lerp(maincamera.transform.rotation, (campos2.transform.localRotation.eulerAngles.y > 180 ? campos2 : campos3).transform.rotation, 1 - Mathf.Exp(0.69315f * (-Time.deltaTime / 0.01f)));
             campos2.transform.localRotation = Quaternion.Euler(campos2.transform.localRotation.eulerAngles + new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0));
             campos3.transform.localRotation = Quaternion.Euler(campos2.transform.localRotation.eulerAngles + new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0));
-
+            speedlines.gameObject.SetActive(false);
             maincamera.GetComponent<Camera>().fieldOfView = Mathf.Lerp(maincamera.GetComponent<Camera>().fieldOfView, 100, 0.05f * 250 * Time.deltaTime);
         }
         else 
@@ -301,6 +346,8 @@ public class Player : MonoBehaviour
             driftdir = 0;
             drifting = false;
             driftstart = false;
+            trail1.emitting = false;
+            trail2.emitting = false;
         }
 
         rotinput = (driftdir + Input.GetAxisRaw("Horizontal"))/2f;
@@ -330,6 +377,7 @@ public class Player : MonoBehaviour
         {
             Time.timeScale = 0.1f;
             aimmode = true;
+            speedlines.gameObject.SetActive(false);
             bool leftside = true;
             if (currentdelivery != 0)
             {
@@ -345,6 +393,7 @@ public class Player : MonoBehaviour
         if (Input.GetButtonUp("Aim"))
         {
             aimmode = false;
+            speedlines.gameObject.SetActive(true);
             crosshair.SetActive(false);
             Time.timeScale = 1;
             Cursor.lockState = CursorLockMode.None;
@@ -717,6 +766,7 @@ public class Player : MonoBehaviour
             deliveriesqueue[i].starttime += Time.time - deliverycamstarttime;
         }
         currentdeliveryreq.starttime += Time.time - deliverycamstarttime;
+        speedlines.gameObject.SetActive(true);
         if (currentdelivery != 0)
         {
             AddRating(currentdeliveryreq,true);
