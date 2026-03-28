@@ -78,6 +78,8 @@ public class Player : MonoBehaviour
     public Transform strengthbaremptypos;
     public Transform strengthbarfilledpos;
     public GameObject turnbacknow;
+    public Text ReturningText;
+    public LayerMask roadandfootpath;
 
     public static int score;
     public float difficulty;
@@ -124,6 +126,7 @@ public class Player : MonoBehaviour
     float aspectratio;
     float tanfov;
     bool pausenewdeliveries;
+    bool returningtimerstarted;
     void Start()
     {
         stars = 5;
@@ -168,6 +171,19 @@ public class Player : MonoBehaviour
 
         difficulty = Mathf.Clamp(difficulty + 0.0001f,1,3);
         spe = difficulty * 10;
+
+
+        //Softlock Checks
+        bool onroad = Physics.Raycast(mesh.transform.position, -mesh.transform.up, 10 ,roadandfootpath);
+        if ((!onroad || rb.velocity.magnitude < 0.01f) && !returningtimerstarted)
+        {
+            StartCoroutine(returningtoground());
+        }
+        if (rb.velocity.magnitude > 0.5f && onroad)
+        {
+            returningtimerstarted = false;
+            StopCoroutine(returningtoground());
+        }
     }
 
     private void LateUpdate()
@@ -245,6 +261,11 @@ public class Player : MonoBehaviour
     {
 
         if (Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);  //Restart code
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            StartCoroutine(returningtoground());
+        }
 
 
         if (deliverycam != 0)
@@ -418,8 +439,6 @@ public class Player : MonoBehaviour
 
             StartCoroutine("AddScore");
             multiplier++;
-            successjingle.pitch += 0.1f;
-            successjingle.Play();
             if (stars < 5 && multiplier % 5 == 0)
             {
                 stars++;
@@ -470,8 +489,11 @@ public class Player : MonoBehaviour
             Destroy(other.gameObject);
             if (latestindex > currentdelivery + 3)
             {
-                if (currentdeliveryreq.starttime > 0.1f)
+                if (queueddeliveries != 0)
+                {   
+                    print(currentdeliveryreq.starttime + " " + Time.time);
                     AddRating(currentdeliveryreq, false);
+                }
                 UpdateDeliveryQueue(currentdeliveryreq, false);
             }
             if (difficulty > 2)
@@ -498,7 +520,7 @@ public class Player : MonoBehaviour
         if (!Physics.Raycast(mesh.transform.position, -mesh.transform.up, 1, groundLayer))
         {
             yield return new WaitForSeconds(0.1f);
-            SpawnScore("Mid-Air",50 * multiplier);
+            SpawnScore("Mid-Air",30 * multiplier);
         }
 
         //full power check
@@ -512,7 +534,7 @@ public class Player : MonoBehaviour
         if (float.Parse(linelengthtext.text) > 45f)
         {
             yield return new WaitForSeconds(0.1f);
-            SpawnScore("By A Hair", 20 * multiplier);
+            SpawnScore("By A Hair", 50 * multiplier);
         }
 
         //by a jiffy check
@@ -523,10 +545,10 @@ public class Player : MonoBehaviour
         }*/
 
         //microscopic precision check
-        if (float.Parse(linelengthtext.text) < 5f)
+        if (float.Parse(linelengthtext.text) < 5.1f)
         {
             yield return new WaitForSeconds(0.1f);
-            SpawnScore("Crazy Precision", 50 * multiplier);
+            SpawnScore("Crazy Precision", 80 * multiplier);
         }
 
         //snipe check
@@ -539,14 +561,33 @@ public class Player : MonoBehaviour
         if (lastdeliverytime < 1f)
         {
             yield return new WaitForSeconds(0.1f);
-            SpawnScore("Less Than A Sec", 50 * multiplier);
+            SpawnScore("Less Than A Sec", 70 * multiplier);
         }
+
+        //funny number check
+        if ((linelengthtext.text) == "6.9")
+        {
+            yield return new WaitForSeconds(0.1f);
+            SpawnScore("Funny Number", 690);
+        }
+        if ((linelengthtext.text) == "42.0")
+        {
+            yield return new WaitForSeconds(0.1f);
+            SpawnScore("Funny Number", 420);
+        }
+        if (linelengthtext.text == "6.7")
+        {
+            yield return new WaitForSeconds(0.1f);
+            SpawnScore("Funny Number", 670);
+        }
+
+
 
         //under truck check
 
 
         yield return new WaitForSeconds(1);
-
+        successjingle.pitch = 1;
         while (newscoreaddings.Count > 0)
         {
             StartCoroutine(AddScoreThingToScore(newscoreaddings[0]));
@@ -574,7 +615,9 @@ public class Player : MonoBehaviour
         mainscorething.category = s;
         mainscorething.text.text = mainscorething.category + " +" + mainscorething.number;
         mainscore.transform.DOMoveX(scorenewposition.position.x, 0.5f).SetEase(Ease.OutCubic);
-        
+        successjingle.Play();
+        successjingle.pitch += 0.1f;
+
     }
     void UpdateDeliveryQueue(DeliveryRequest req, bool enqueue)
     {
@@ -682,6 +725,25 @@ public class Player : MonoBehaviour
             //linelengthtext.text = "";
             UpdateDeliveryQueue(currentdeliveryreq, false);
         }
+    }
+
+    IEnumerator returningtoground()
+    {
+        returningtimerstarted = true;
+        yield return new WaitForSeconds(3);
+        ReturningText.gameObject.SetActive(true);
+        for (int i = 5; i > 0; i--)
+        {
+            if (!returningtimerstarted) goto basicallytheend;
+            ReturningText.text = "Returning in " + i;
+            yield return new WaitForSeconds(1);
+        }
+        rb.velocity = Vector3.zero;
+        rb.position = latestroad.transform.position + new Vector3(0, 0.5f, 0);
+        transform.rotation = latestroad.transform.rotation;
+        basicallytheend:
+        returningtimerstarted =  false;
+        ReturningText.gameObject.SetActive(false);
     }
 
     IEnumerator breakfromdeliveries()

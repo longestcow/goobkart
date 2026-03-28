@@ -3,7 +3,27 @@ guid: 3848426854c231546a834d4671cedc03
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: footpath corner2.png
+    second: {fileID: 2100000, guid: 0b23f12485ce7b84aa9deb4c0c9f26fd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: footpath slim.png
+    second: {fileID: 2100000, guid: 0b23f12485ce7b84aa9deb4c0c9f26fd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: footpath turn.png
+    second: {fileID: 2100000, guid: 0b23f12485ce7b84aa9deb4c0c9f26fd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: straightroad.png
+    second: {fileID: 2100000, guid: 0b23f12485ce7b84aa9deb4c0c9f26fd, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
