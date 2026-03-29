@@ -7,7 +7,7 @@ public class DeliveryNotification : MonoBehaviour
 {
 
     public Text timeleft;
-    public Text distance;
+    public Text timeleft2;
     public Player player;
     public Player.DeliveryRequest req;
 

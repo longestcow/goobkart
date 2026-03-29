@@ -9,6 +9,7 @@ public class Vehicle : MonoBehaviour
     public bool backwards;
     bool pushing;
     Rigidbody playerb;
+    public AudioSource metalhit;
 
     // Start is called before the first frame update
     void Start()
@@ -72,6 +73,8 @@ public class Vehicle : MonoBehaviour
             print("collision");
             playerb = other.transform.parent.gameObject.GetComponent<Rigidbody>();
             pushing = true;
+            metalhit.pitch = Random.Range(9.9f,1.1f);
+            metalhit.Play();
         }
     }
 

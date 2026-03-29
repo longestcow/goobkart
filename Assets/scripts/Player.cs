@@ -85,6 +85,11 @@ public class Player : MonoBehaviour
     public TrailRenderer trail2;
     public ParticleSystem particles1;
     public ParticleSystem particles2;
+    public AudioSource skid;
+    public AudioSource windres;
+    public AudioSource wheelsound;
+    public AudioSource tapesfx;
+    public AudioSource clicksfx;
 
     public static int score;
     public float difficulty;
@@ -188,6 +193,7 @@ public class Player : MonoBehaviour
             { 
                 trail1.emitting = true;
                 trail2.emitting = true;
+                skid.UnPause();
             }
         }
 
@@ -232,6 +238,7 @@ public class Player : MonoBehaviour
         minimapcamhinge.position = mesh.transform.position;
         if (!aimmode && deliverycam == 0)
         {
+            //maincamera.transform.position += new Vector3(0, UnityEngine.Random.Range(-0.0002f, 0.0002f) * rb.velocity.magnitude, 0);
             maincamera.transform.position = Vector3.Lerp(maincamera.transform.position, campos1.transform.position, 0.05f * 250 * Time.deltaTime);
             maincamera.transform.rotation = Quaternion.Lerp(maincamera.transform.rotation, campos1.transform.rotation, 0.05f * 250 * Time.deltaTime);
             maincamera.GetComponent<Camera>().fieldOfView = Mathf.Lerp(maincamera.GetComponent<Camera>().fieldOfView, 80 + rb.velocity.magnitude * 2.5f, 0.05f * 250 * Time.deltaTime);
@@ -247,6 +254,8 @@ public class Player : MonoBehaviour
             {
                 speedlinesemission.rateOverTime = 0;
             }
+            windres.volume = rb.velocity.magnitude / 30f;
+            wheelsound.volume = rb.velocity.magnitude / 90f;
         }
         else if (deliverycam == 0)
         {
@@ -256,6 +265,8 @@ public class Player : MonoBehaviour
             campos3.transform.localRotation = Quaternion.Euler(campos2.transform.localRotation.eulerAngles + new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0));
             speedlines.gameObject.SetActive(false);
             maincamera.GetComponent<Camera>().fieldOfView = Mathf.Lerp(maincamera.GetComponent<Camera>().fieldOfView, 100, 0.05f * 250 * Time.deltaTime);
+            windres.volume = 0;
+            wheelsound.volume = 0;
         }
         else 
         {
@@ -348,6 +359,7 @@ public class Player : MonoBehaviour
             driftstart = false;
             trail1.emitting = false;
             trail2.emitting = false;
+            skid.Pause();
         }
 
         rotinput = (driftdir + Input.GetAxisRaw("Horizontal"))/2f;
@@ -425,6 +437,7 @@ public class Player : MonoBehaviour
             latestdeliveryrb.velocity = maincamera.transform.forward * shootspeed * shootstrength;
             aimmode = false;
             deliverycam = 1;
+            skid.Pause();
             deliverycamstarttime = Time.time;
             StartCoroutine("deliverycamtimeout");
             crosshair.SetActive(false);
@@ -445,8 +458,8 @@ public class Player : MonoBehaviour
                 UpdateDeliveryQueue(deliveriesqueue[i], false); 
                 continue;
             }
-            deliveriesqueue[i].notif.timeleft.text = (Mathf.Clamp((deliveriesqueue[i].timelimit - (Time.time - deliveriesqueue[i].starttime)),0,60).ToString("F2")) + "s";
-            deliveriesqueue[i].notif.distance.text = Vector3.Distance(transform.position, deliveriesqueue[i].house.transform.position).ToString("F1") + "m";
+            deliveriesqueue[i].notif.timeleft.text = (Mathf.Clamp((deliveriesqueue[i].timelimit - (Time.time - deliveriesqueue[i].starttime)),0,60).ToString("00"));
+            deliveriesqueue[i].notif.timeleft2.text = (Mathf.Clamp((deliveriesqueue[i].timelimit - (Time.time - deliveriesqueue[i].starttime))*100%100, 0, 100).ToString("00"));
             DeliveryQueueText.text += "Order: " + deliveriesqueue[i].road.index + "\nTime - " + ((deliveriesqueue[i].timelimit - (Time.time - deliveriesqueue[i].starttime)).ToString("F2")) + "\nDistance - " + Vector3.Distance(transform.position, deliveriesqueue[i].house.transform.position).ToString("F0") + "\n---------\n";
         }
     }
@@ -650,6 +663,7 @@ public class Player : MonoBehaviour
         st.transform.DOMoveY(scoretext.transform.position.y,0.5f).SetEase(Ease.InBack);
         yield return new WaitForSeconds(0.5f);
         score += st.number;
+        clicksfx.Play();
         scoretext.text = score.ToString();
         st.gameObject.SetActive(false);
         Destroy(st.gameObject, 1f);
@@ -753,6 +767,8 @@ public class Player : MonoBehaviour
             deliverycam = 2;
             yield return new WaitForSeconds(0.2f);
             liner.enabled = true;
+            tapesfx.pitch = difficulty;
+            tapesfx.Play();
             linelengthtext.gameObject.SetActive(true);
             linepoint0.position = (currentdeliveryhouse.transform.GetChild(0).position + latestdelivery.transform.position) / 2f;
             linepoint1.position = (currentdeliveryhouse.transform.GetChild(0).position + latestdelivery.transform.position) / 2f;
@@ -788,9 +804,11 @@ public class Player : MonoBehaviour
             ReturningText.text = "Returning in " + i;
             yield return new WaitForSeconds(1);
         }
-        rb.velocity = Vector3.zero;
+        rb.isKinematic = true;
         rb.position = latestroad.transform.position + new Vector3(0, 0.5f, 0);
-        transform.rotation = latestroad.transform.rotation;
+        mesh.transform.rotation = latestroad.transform.rotation;
+        yield return new WaitForSeconds(0.1f);
+        rb.isKinematic = false;
         basicallytheend:
         returningtimerstarted =  false;
         ReturningText.gameObject.SetActive(false);
