@@ -29,8 +29,10 @@ public class MainMenu : MonoBehaviour
     public Transform camera;
     public Transform maincampos;
     public Transform optionscampos;
+    public Transform creditscampos;
     public Transform mainmainmenu;
     public Transform optionsmenu;
+    public Transform creditsmenu;
     public Transform hidemainmainmenupos;
     public Transform unhidemainmainmenupos;
     public static bool americamode;
@@ -71,6 +73,14 @@ public class MainMenu : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        if (PlayerPrefs.GetFloat("sens",-1) == -1) PlayerPrefs.SetFloat("sens",0.5f);
+        sensitivity = PlayerPrefs.GetFloat("sens");
+        if (PlayerPrefs.GetFloat("music",-1) == -1) PlayerPrefs.SetFloat("music",0.5f);
+        musicvolume = PlayerPrefs.GetFloat("music");
+        if (PlayerPrefs.GetFloat("sfx",-1) == -1) PlayerPrefs.SetFloat("sfx",0.5f);
+        soundvolume = PlayerPrefs.GetFloat("sfx");
+        if (PlayerPrefs.GetInt("america",-1) == -1) PlayerPrefs.SetInt("america",1);
+        americamode = PlayerPrefs.GetInt("america") == 1;
     }
 
     // Update is called once per frame
@@ -85,10 +95,9 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         menumusic.Stop();
-        DontDestroyOnLoad(hitstabecho.gameObject.transform.parent.gameObject);
+        DontDestroyOnLoad(hitstabecho.transform.parent.gameObject);
         hitstabecho.Play();
-        SceneManager.LoadSceneAsync(1);
-        
+        StartCoroutine(hitstabecho.transform.parent.GetComponent<mainmenutoplaytransition>().StartGame());
     }
         
     public void ShowOptions()
@@ -126,6 +135,8 @@ public class MainMenu : MonoBehaviour
 
     public void applysettings()
     {
+        hitstab.Play();
+
         sensitivity = sens.value;
         musicvolume = music.value;
         soundvolume = sfx.value;
@@ -140,6 +151,30 @@ public class MainMenu : MonoBehaviour
         {
             refreshthese[i].RefreshVolume();
         }
+
+        PlayerPrefs.SetFloat("sens",sensitivity);
+        PlayerPrefs.SetFloat("music",musicvolume);
+        PlayerPrefs.SetFloat("sfx",soundvolume);
+        PlayerPrefs.SetInt("america",americamode?1:0);
+
+    }
+
+    public void ShowCredits()
+    {
+        camera.DOMove(creditscampos.position, 0.5f).SetEase(Ease.InOutCubic);
+        camera.DORotateQuaternion(creditscampos.rotation, 0.5f).SetEase(Ease.InOutCubic);
+        mainmainmenu.DOMove(hidemainmainmenupos.position, 0.5f).SetEase(Ease.InOutCubic);
+        creditsmenu.DOMove(unhidemainmainmenupos.position, 0.5f).SetEase(Ease.InOutCubic);
+        hitstab.Play();
+    }
+    
+    public void HideCredits()
+    {
+        camera.DOMove(maincampos.position, 0.5f).SetEase(Ease.InOutCubic);
+        camera.DORotateQuaternion(maincampos.rotation, 0.5f).SetEase(Ease.InOutCubic);
+        mainmainmenu.DOMove(unhidemainmainmenupos.position, 0.5f).SetEase(Ease.InOutCubic);
+        creditsmenu.DOMove(hidemainmainmenupos.position, 0.5f).SetEase(Ease.InOutCubic);
+        hitstab.Play();
     }
 
     public void QuitGame()
