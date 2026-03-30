@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
@@ -39,6 +40,7 @@ public class MainMenu : MonoBehaviour
     public static float sensitivity = 0.5f;
     public static float musicvolume = 0.5f;
     public static float soundvolume = 0.5f;
+    public TextMeshProUGUI highscoretext;
 
     public Slider sens;
     public Slider music;
@@ -81,6 +83,8 @@ public class MainMenu : MonoBehaviour
         soundvolume = PlayerPrefs.GetFloat("sfx");
         if (PlayerPrefs.GetInt("america",-1) == -1) PlayerPrefs.SetInt("america",1);
         americamode = PlayerPrefs.GetInt("america") == 1;
+        if (PlayerPrefs.GetInt("highscore",-1) == -1) PlayerPrefs.SetInt("highscore",0);
+        highscoretext.text = "High Score : " +  PlayerPrefs.GetInt("highscore");
     }
 
     // Update is called once per frame

@@ -318,12 +318,9 @@ public class Player : MonoBehaviour
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);  //Restart code
+        //if (Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);  //Restart code
 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            StartCoroutine(returningtoground());
-        }
+        //if (Input.GetKeyDown(KeyCode.E)) StartCoroutine(returningtoground());
 
 
         if (deliverycam != 0)
@@ -522,6 +519,10 @@ public class Player : MonoBehaviour
             stars--;
             if (stars < 1)
             {
+                if (score > PlayerPrefs.GetInt("highscore"))
+                {
+                    PlayerPrefs.SetInt("highscore", score);
+                }
                 SceneManager.LoadScene(0);
             }
             multiplier = 1;
