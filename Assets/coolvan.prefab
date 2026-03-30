@@ -176,6 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7765537172264845954}
   - component: {fileID: 2954108284756548018}
+  - component: {fileID: 562217025715562993}
   m_Layer: 0
   m_Name: Audio Source
   m_TagString: Untagged
@@ -294,6 +295,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &562217025715562993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2744242569303463365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c33a29110f26849a04f14d89d9ac39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  music: 0
 --- !u!1 &4309403133521927383
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,6 +404,7 @@ GameObject:
   - component: {fileID: 1756346476093919461}
   - component: {fileID: 3762609190961065476}
   - component: {fileID: 6014487751170772746}
+  - component: {fileID: 8804246261075483340}
   m_Layer: 9
   m_Name: coolvan
   m_TagString: Untagged
@@ -573,6 +588,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8804246261075483340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4486520393555943172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c33a29110f26849a04f14d89d9ac39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  music: 0
 --- !u!1 &5641694062428231806
 GameObject:
   m_ObjectHideFlags: 0

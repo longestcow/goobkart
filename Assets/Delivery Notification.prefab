@@ -329,6 +329,7 @@ GameObject:
   - component: {fileID: 523509413820750114}
   - component: {fileID: 6125418373626797632}
   - component: {fileID: 3992481109262815085}
+  - component: {fileID: 1547271438522243545}
   m_Layer: 5
   m_Name: Delivery Notification
   m_TagString: Untagged
@@ -509,6 +510,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1547271438522243545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5351608554312681697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c33a29110f26849a04f14d89d9ac39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  music: 0
 --- !u!1 &6473034980918510991
 GameObject:
   m_ObjectHideFlags: 0

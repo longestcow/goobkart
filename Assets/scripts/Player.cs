@@ -89,7 +89,6 @@ public class Player : MonoBehaviour
     public AudioSource windres;
     public AudioSource wheelsound;
     public AudioSource tapesfx;
-    public AudioSource clicksfx;
 
     public static int score;
     public float difficulty;
@@ -162,6 +161,9 @@ public class Player : MonoBehaviour
 
         aspectratio = Screen.width / Screen.height;
         tanfov = Mathf.Tan(Mathf.Deg2Rad *  maincamera.GetComponent<Camera>().fieldOfView/2f);
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
     void FixedUpdate()
     {
@@ -254,15 +256,15 @@ public class Player : MonoBehaviour
             {
                 speedlinesemission.rateOverTime = 0;
             }
-            windres.volume = rb.velocity.magnitude / 30f;
-            wheelsound.volume = rb.velocity.magnitude / 90f;
+            windres.volume = MainMenu.soundvolume * rb.velocity.magnitude / 30f;
+            wheelsound.volume = MainMenu.soundvolume * rb.velocity.magnitude / 90f;
         }
         else if (deliverycam == 0)
         {
             maincamera.transform.position = Vector3.Lerp(maincamera.transform.position, (campos2.transform.localRotation.eulerAngles.y > 180 ? campos2 : campos3).transform.position, 1 - Mathf.Exp(0.69315f * (-Time.deltaTime / 0.01f)));
             maincamera.transform.rotation = Quaternion.Lerp(maincamera.transform.rotation, (campos2.transform.localRotation.eulerAngles.y > 180 ? campos2 : campos3).transform.rotation, 1 - Mathf.Exp(0.69315f * (-Time.deltaTime / 0.01f)));
-            campos2.transform.localRotation = Quaternion.Euler(campos2.transform.localRotation.eulerAngles + new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0));
-            campos3.transform.localRotation = Quaternion.Euler(campos2.transform.localRotation.eulerAngles + new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0));
+            campos2.transform.localRotation = Quaternion.Euler(campos2.transform.localRotation.eulerAngles + (MainMenu.sensitivity + 0.1f) * 2 * new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0));
+            campos3.transform.localRotation = Quaternion.Euler(campos2.transform.localRotation.eulerAngles + (MainMenu.sensitivity + 0.1f) * 2 * new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0));
             speedlines.gameObject.SetActive(false);
             maincamera.GetComponent<Camera>().fieldOfView = Mathf.Lerp(maincamera.GetComponent<Camera>().fieldOfView, 100, 0.05f * 250 * Time.deltaTime);
             windres.volume = 0;
@@ -287,7 +289,7 @@ public class Player : MonoBehaviour
                 Vector3 midpoint = (currentdeliveryhouse.transform.GetChild(0).position + latestdelivery.transform.position) / 2f;
                 camposdelivery.transform.position =  midpoint + (transform.position - latestdelivery.transform.position).normalized * 2 * (offset + deliverycamoffset);
                 camposdelivery.transform.position = new Vector3(camposdelivery.transform.position.x, latestdelivery.transform.position.y + 1, camposdelivery.transform.position.z);
-                //camposdelivery.transform.LookAt(midpoint);
+                camposdelivery.transform.LookAt(latestdelivery.transform.position);
                 linepoint0.position = Vector3.Lerp(linepoint0.position, latestdelivery.transform.position, Time.deltaTime * 10 * difficulty);
                 linepoint1.position = Vector3.Lerp(linepoint1.position, currentdeliveryhouse.transform.GetChild(0).transform.position, Time.deltaTime * 10 * difficulty);
                 liner.SetPosition(0, linepoint0.transform.position);
@@ -399,8 +401,6 @@ public class Player : MonoBehaviour
             campos3.transform.localRotation = Quaternion.Euler(0, leftside ? 90 : -90, 0);
             //campos2.transform.LookAt(currentdeliveryhouse.transform.GetChild(0).position + Vector3.up * 2);
             crosshair.SetActive(true);
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
         }
         if (Input.GetButtonUp("Aim"))
         {
@@ -408,8 +408,6 @@ public class Player : MonoBehaviour
             speedlines.gameObject.SetActive(true);
             crosshair.SetActive(false);
             Time.timeScale = 1;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
             shootstrengthincreasing = false;
             strengthscrollbar.gameObject.SetActive(false);
             strengthbarempty.gameObject.SetActive(false);
@@ -522,6 +520,10 @@ public class Player : MonoBehaviour
             failurejingle.Play();
             successjingle.pitch = 1;
             stars--;
+            if (stars < 1)
+            {
+                SceneManager.LoadScene(0);
+            }
             multiplier = 1;
             for (int i = 0; i < 5; i++)
             {
@@ -663,7 +665,6 @@ public class Player : MonoBehaviour
         st.transform.DOMoveY(scoretext.transform.position.y,0.5f).SetEase(Ease.InBack);
         yield return new WaitForSeconds(0.5f);
         score += st.number;
-        clicksfx.Play();
         scoretext.text = score.ToString();
         st.gameObject.SetActive(false);
         Destroy(st.gameObject, 1f);

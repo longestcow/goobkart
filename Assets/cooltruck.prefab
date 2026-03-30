@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1756346476093919461}
   - component: {fileID: 3762609190961065476}
   - component: {fileID: -1184268405590139718}
+  - component: {fileID: 6622097634675075346}
   m_Layer: 9
   m_Name: cooltruck
   m_TagString: Untagged
@@ -196,6 +197,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6622097634675075346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4486520393555943172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c33a29110f26849a04f14d89d9ac39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  music: 0
 --- !u!1 &7819036439466397855
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,6 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 317923723319655017}
   - component: {fileID: 6357571291945774295}
+  - component: {fileID: 6385418622066383698}
   m_Layer: 0
   m_Name: Audio Source
   m_TagString: Untagged
@@ -324,6 +339,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6385418622066383698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7819036439466397855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c33a29110f26849a04f14d89d9ac39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  music: 0
 --- !u!1001 &4171855268715832066
 PrefabInstance:
   m_ObjectHideFlags: 0

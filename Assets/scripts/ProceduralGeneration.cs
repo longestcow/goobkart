@@ -204,11 +204,11 @@ public class ProceduralGeneration : MonoBehaviour
                 //Spawn car
                 if (Random.Range(0, 2) < 1)
                 {
-                    Instantiate(cars[Random.Range(0, 4)], transform.position + (americanmode ? -1 : 1) * (transform.right * width / 4f), transform.rotation, null);
+                    Instantiate(cars[Random.Range(0, 4)], transform.position + (MainMenu.americamode ? -1 : 1) * (transform.right * width / 4f), transform.rotation, null);
                 }
                 else
                 {
-                    Instantiate(cars[Random.Range(0, 4)], transform.position - (americanmode ? -1 : 1) * (transform.right * width / 4f), transform.rotation, null).GetComponent<Vehicle>().backwards = true;
+                    Instantiate(cars[Random.Range(0, 4)], transform.position - (MainMenu.americamode ? -1 : 1) * (transform.right * width / 4f), transform.rotation, null).GetComponent<Vehicle>().backwards = true;
                 }
             }
         }
