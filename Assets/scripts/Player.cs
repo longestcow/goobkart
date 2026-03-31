@@ -89,6 +89,22 @@ public class Player : MonoBehaviour
     public AudioSource windres;
     public AudioSource wheelsound;
     public AudioSource tapesfx;
+    public GameObject pausemenu;
+    public Slider sfx;
+    public Slider music;
+    public Slider sens;
+    public audiovolumecontrol[] refreshthese;
+    public GameObject gameovermenu;
+    public Text gameovertextleft;
+    public Text gameovertextright;
+    public Text gameovertextscoredisplay;
+    public AudioSource CRAYON;
+    public Text controlstext1;
+    public Text controlstext2;
+    public Text controlstext3;
+    public Image controlimage1;
+    public Image controlimage2;
+    public Image controlimage3;
 
     public static int score;
     public float difficulty;
@@ -136,8 +152,12 @@ public class Player : MonoBehaviour
     float tanfov;
     bool pausenewdeliveries;
     bool returningtimerstarted;
+    bool paused;
+    bool gameover;
+    bool tutorial;
     void Start()
     {
+        tutorial = false;
         stars = 5;
         multiplier = 1;
         pausenewdeliveries = false;
@@ -158,15 +178,27 @@ public class Player : MonoBehaviour
         deliverycam = 0;
         currentdelivery = 0;
         queueddeliveries = 0;
+        paused = false;
+        gameover = false;
 
         aspectratio = Screen.width / Screen.height;
         tanfov = Mathf.Tan(Mathf.Deg2Rad *  maincamera.GetComponent<Camera>().fieldOfView/2f);
 
+        if (PlayerPrefs.GetInt("highscore") < 1)
+        {
+            StartCoroutine(explaincontrols());
+        }
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
     }
     void FixedUpdate()
     {
+        if (paused ||gameover)
+        {
+            return;
+        }
         if (deliverycam != 0)
         {
             rb.velocity = Vector3.zero;
@@ -229,6 +261,11 @@ public class Player : MonoBehaviour
 
     private void LateUpdate()
     {
+        if(paused || gameover)
+        {
+            return;
+        }
+
         cam.transform.position = mesh.transform.position;
         fakecam.transform.position = mesh.transform.position;
         //mousecam.transform.position = mesh.transform.position;
@@ -320,8 +357,21 @@ public class Player : MonoBehaviour
 
         //if (Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);  //Restart code
 
-        //if (Input.GetKeyDown(KeyCode.E)) StartCoroutine(returningtoground());
+        if (gameover) return;
 
+        if (Input.GetKeyDown(KeyCode.Escape) && !paused)
+        {
+            PauseGame();
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && paused)
+        {
+            UnPauseGame();
+        }
+
+        if (paused)
+        {
+            return;
+        }
 
         if (deliverycam != 0)
         {
@@ -496,6 +546,7 @@ public class Player : MonoBehaviour
 
             StartCoroutine("AddScore");
             multiplier++;
+            if (multiplier > Stats.statcount[1]) Stats.statcount[1] = multiplier;
             if (stars < 5 && multiplier % 5 == 0)
             {
                 stars++;
@@ -519,11 +570,7 @@ public class Player : MonoBehaviour
             stars--;
             if (stars < 1)
             {
-                if (score > PlayerPrefs.GetInt("highscore"))
-                {
-                    PlayerPrefs.SetInt("highscore", score);
-                }
-                SceneManager.LoadScene(0);
+                StartCoroutine(endrun());
             }
             multiplier = 1;
             for (int i = 0; i < 5; i++)
@@ -568,7 +615,7 @@ public class Player : MonoBehaviour
                     StartCoroutine("breakfromdeliveries");
                 }
             }
-            if (UnityEngine.Random.Range(0,100) < (queueddeliveries == 0?20 * difficulty:2 * difficulty) && queueddeliveries < deliveriesqueue.Length && Time.timeSinceLevelLoad > 1f && (!pausenewdeliveries || UnityEngine.Random.Range(0,10) < 1 ))
+            if (UnityEngine.Random.Range(0,100) < (queueddeliveries == 0?20 * difficulty:2 * difficulty) && queueddeliveries < deliveriesqueue.Length && Time.timeSinceLevelLoad > 1f && (!pausenewdeliveries || UnityEngine.Random.Range(0,10) < 1 ) && !tutorial)
             {
                 UpdateDeliveryQueue(deliverysys.DecideDelivery(),true);
             }
@@ -579,13 +626,16 @@ public class Player : MonoBehaviour
     {
         //base score
         SpawnScore("Delivery",100 * multiplier);
-
+        Stats.statcount[0]++;
+        Stats.statcount[2]++;
 
         //midair check
         if (!Physics.Raycast(mesh.transform.position, -mesh.transform.up, 1, groundLayer))
         {
             yield return new WaitForSeconds(0.1f);
             SpawnScore("Mid-Air",30 * multiplier);
+            Stats.statcount[3]++;
+            Stats.statcount[2]++;
         }
 
         //full power check
@@ -600,6 +650,8 @@ public class Player : MonoBehaviour
         {
             yield return new WaitForSeconds(0.1f);
             SpawnScore("By A Hair", 50 * multiplier);
+            Stats.statcount[6]++;
+            Stats.statcount[2]++;
         }
 
         //by a jiffy check
@@ -614,6 +666,8 @@ public class Player : MonoBehaviour
         {
             yield return new WaitForSeconds(0.1f);
             SpawnScore("Crazy Precision", 80 * multiplier);
+            Stats.statcount[4]++;
+            Stats.statcount[2]++;
         }
 
         //snipe check
@@ -621,12 +675,16 @@ public class Player : MonoBehaviour
         {
             yield return new WaitForSeconds(0.1f);
             SpawnScore("Sniped", 50 * multiplier);
+            Stats.statcount[5]++;
+            Stats.statcount[2]++;
         }
         //less than a sec check
         if (lastdeliverytime < 1f)
         {
             yield return new WaitForSeconds(0.1f);
             SpawnScore("Less Than A Sec", 70 * multiplier);
+            Stats.statcount[7]++;
+            Stats.statcount[2]++;
         }
 
         //funny number check
@@ -634,16 +692,22 @@ public class Player : MonoBehaviour
         {
             yield return new WaitForSeconds(0.1f);
             SpawnScore("Funny Number", 690);
+            Stats.statcount[8]++;
+            Stats.statcount[2]++;
         }
         if ((linelengthtext.text) == "42.0")
         {
             yield return new WaitForSeconds(0.1f);
             SpawnScore("Funny Number", 420);
+            Stats.statcount[8]++;
+            Stats.statcount[2]++;
         }
         if (linelengthtext.text == "6.7")
         {
             yield return new WaitForSeconds(0.1f);
             SpawnScore("Funny Number", 670);
+            Stats.statcount[8]++;
+            Stats.statcount[2]++;
         }
 
 
@@ -756,6 +820,77 @@ public class Player : MonoBehaviour
     updatedeliverytext:;
     }
 
+    void PauseGame()
+    {
+        Time.timeScale = 0;
+        paused = true;
+        pausemenu.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        sens.value = MainMenu.sensitivity;
+        music.value = MainMenu.musicvolume;
+        sfx.value = MainMenu.soundvolume;
+    }
+
+    public void UnPauseGame()
+    {
+        Time.timeScale = aimmode ? 0.1f : 1;
+        paused = false;
+        pausemenu.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    public void applysettings()
+    {
+        MainMenu.sensitivity = sens.value;
+        MainMenu.musicvolume = music.value;
+        MainMenu.soundvolume = sfx.value;
+
+        for (int i = 0; i < refreshthese.Length; i++)
+        {
+            refreshthese[i].RefreshVolume();
+        }
+
+        PlayerPrefs.SetFloat("sens", MainMenu.sensitivity);
+        PlayerPrefs.SetFloat("music", MainMenu.musicvolume);
+        PlayerPrefs.SetFloat("sfx", MainMenu.soundvolume);
+
+    }
+
+    public void endrunfunc()
+    {
+        UnPauseGame();
+        StartCoroutine(endrun());
+    }
+
+    IEnumerator endrun()
+    {
+        gameover = true;
+        if (score > PlayerPrefs.GetInt("highscore"))
+        {
+            PlayerPrefs.SetInt("highscore", score);
+        }
+        CRAYON.DOFade(0,1);
+        gameovermenu.SetActive(true);
+        gameovermenu.GetComponent<mainmenutoplaytransition>().StartTrans();
+        gameovertextleft.text = "\n";
+        gameovertextright.text = "\n";
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        gameovertextscoredisplay.text = score.ToString();
+        for (int i = 0; i < Stats.statnames.Length; i++)
+        {
+            if (Stats.statcount[i] > 0)
+            {
+                gameovertextleft.text += "\n" + Stats.statnames[i];
+                gameovertextright.text += "\n" + Stats.statcount[i];
+            }
+        }
+        yield return new WaitForSeconds(1);
+
+    }
+
     IEnumerator deliverycamtimeout()
     {
         yield return new WaitForSeconds(5f);
@@ -821,5 +956,31 @@ public class Player : MonoBehaviour
         pausenewdeliveries = true;
         yield return new WaitForSecondsRealtime(15);
         pausenewdeliveries = false;
+    }
+
+    IEnumerator explaincontrols()
+    {
+        tutorial = true;
+        yield return new WaitForSeconds(1);
+        controlimage1.DOFade(1, 1f);
+        controlstext1.DOFade(1, 1f);
+        yield return new WaitForSeconds(3);
+        controlstext1.DOFade(0, 1f);
+        controlimage1.DOFade(0, 1f);
+        yield return new WaitForSeconds(1.5f);
+        controlimage2.DOFade(1, 1f);
+        controlimage3.DOFade(1, 1f);
+        controlstext2.DOFade(1, 1f);
+        yield return new WaitForSeconds(3);
+        controlstext2.DOFade(0, 1f);
+        controlimage2.DOFade(0, 1f);
+        controlimage3.DOFade(0, 1f);
+        yield return new WaitForSeconds(1.5f);
+        controlstext3.DOFade(1, 1f);
+        yield return new WaitForSeconds(3);
+        controlstext3.DOFade(0, 1f);
+        yield return new WaitForSeconds(1);
+        UpdateDeliveryQueue(deliverysys.DecideDelivery(), true);
+        tutorial = false;
     }
 }

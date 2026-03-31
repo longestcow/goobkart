@@ -41,6 +41,9 @@ public class MainMenu : MonoBehaviour
     public static float musicvolume = 0.5f;
     public static float soundvolume = 0.5f;
     public TextMeshProUGUI highscoretext;
+    public Transform highscore;
+    public Transform highscorehidepos;
+    public Transform highscoreshowpos;
 
     public Slider sens;
     public Slider music;
@@ -67,7 +70,7 @@ public class MainMenu : MonoBehaviour
                 currentresolutionindex = i;
                 print(i);
             }
-            options.Add(resolutions[i].width + " x " + resolutions[i].height + (resolutions[i].width == 640 && resolutions[i].height == 480? " (PS2)":""));
+            options.Add(resolutions[i].width + " x " + resolutions[i].height + " " + resolutions[i].refreshRateRatio + "Hz");
         }
         resolution.AddOptions(options);
         resolution.value = currentresolutionindex;
@@ -109,6 +112,7 @@ public class MainMenu : MonoBehaviour
         camera.DOMove(optionscampos.position, 0.5f).SetEase(Ease.InOutCubic);
         camera.DORotateQuaternion(optionscampos.rotation, 0.5f).SetEase(Ease.InOutCubic);
         mainmainmenu.DOMove(hidemainmainmenupos.position, 0.5f).SetEase(Ease.InOutCubic);
+        highscore.DOMove(highscorehidepos.position, 0.5f).SetEase(Ease.InOutCubic);
         optionsmenu.DOMove(unhidemainmainmenupos.position, 0.5f).SetEase(Ease.InOutCubic);
         hitstab.Play();
 
@@ -119,6 +123,7 @@ public class MainMenu : MonoBehaviour
         fullscreen.value = Screen.fullScreenMode == FullScreenMode.Windowed ? 0 : Screen.fullScreenMode == FullScreenMode.ExclusiveFullScreen? 1 : 2;
 
         americamodetoggle.isOn = !americamode;
+
     }
     public void HideOptions()
     {
@@ -126,6 +131,7 @@ public class MainMenu : MonoBehaviour
         camera.DORotateQuaternion(maincampos.rotation, 0.5f).SetEase(Ease.InOutCubic);
         optionsmenu.DOMove(hidemainmainmenupos.position, 0.5f).SetEase(Ease.InOutCubic);
         mainmainmenu.DOMove(unhidemainmainmenupos.position, 0.5f).SetEase(Ease.InOutCubic);
+        highscore.DOMove(highscoreshowpos.position, 0.5f).SetEase(Ease.InOutCubic);
         hitstab.Play();
 
         sens.value = sensitivity;
@@ -135,6 +141,11 @@ public class MainMenu : MonoBehaviour
         fullscreen.value = Screen.fullScreenMode == FullScreenMode.Windowed ? 0 : Screen.fullScreenMode == FullScreenMode.ExclusiveFullScreen ? 1 : 2;
 
         americamodetoggle.isOn = !americamode;
+
+        mask1.position = new Vector3(left.position.x, mask1.position.y, mask1.position.z);
+        mask2.position = new Vector3(left.position.x, mask1.position.y, mask1.position.z);
+        mask3.position = new Vector3(left.position.x, mask1.position.y, mask1.position.z);
+        mask4.position = new Vector3(left.position.x, mask1.position.y, mask1.position.z);
     }
 
     public void applysettings()
@@ -168,8 +179,10 @@ public class MainMenu : MonoBehaviour
         camera.DOMove(creditscampos.position, 0.5f).SetEase(Ease.InOutCubic);
         camera.DORotateQuaternion(creditscampos.rotation, 0.5f).SetEase(Ease.InOutCubic);
         mainmainmenu.DOMove(hidemainmainmenupos.position, 0.5f).SetEase(Ease.InOutCubic);
+        highscore.DOMove(highscorehidepos.position, 0.5f).SetEase(Ease.InOutCubic);
         creditsmenu.DOMove(unhidemainmainmenupos.position, 0.5f).SetEase(Ease.InOutCubic);
         hitstab.Play();
+
     }
     
     public void HideCredits()
@@ -177,8 +190,15 @@ public class MainMenu : MonoBehaviour
         camera.DOMove(maincampos.position, 0.5f).SetEase(Ease.InOutCubic);
         camera.DORotateQuaternion(maincampos.rotation, 0.5f).SetEase(Ease.InOutCubic);
         mainmainmenu.DOMove(unhidemainmainmenupos.position, 0.5f).SetEase(Ease.InOutCubic);
+        highscore.DOMove(highscoreshowpos.position, 0.5f).SetEase(Ease.InOutCubic);
         creditsmenu.DOMove(hidemainmainmenupos.position, 0.5f).SetEase(Ease.InOutCubic);
         hitstab.Play();
+
+
+        mask1.position = new Vector3(left.position.x, mask1.position.y, mask1.position.z);
+        mask2.position = new Vector3(left.position.x, mask1.position.y, mask1.position.z);
+        mask3.position = new Vector3(left.position.x, mask1.position.y, mask1.position.z);
+        mask4.position = new Vector3(left.position.x, mask1.position.y, mask1.position.z);
     }
 
     public void QuitGame()
@@ -225,6 +245,40 @@ public class MainMenu : MonoBehaviour
     {
         mask4.DOMoveX(left.position.x, 0.3f).SetEase(Ease.InCubic);
     }
+
+    public void rayayoutube()
+    {
+        Application.OpenURL("https://www.youtube.com/@RayaGameDev");
+    }
+    public void rayaitch()
+    {
+        Application.OpenURL("https://rpc29.itch.io/");
+    }
+    public void rayadiscord()
+    {
+        Application.OpenURL("https://discord.gg/528ufkk2C5");
+    }
+    public void voidyoutube()
+    {
+        Application.OpenURL("https://www.youtube.com/@Voidixel");
+    }
+    public void voidinsta()
+    {
+        Application.OpenURL("https://www.instagram.com/voidixel/");
+    }
+    public void voidspotify()
+    {
+        Application.OpenURL("https://open.spotify.com/artist/5rdbyPoi0wr1wyovsnNpTl?si=dFxgrMOzQzWi6BVtNi-Zfw");
+    }
+    public void moonyoutube()
+    {
+        Application.OpenURL("https://www.youtube.com/@moontoggled");
+    }
+    public void moontwitter()
+    {
+        Application.OpenURL("https://x.com/MoonToggled");
+    }
+
 
 
 }

@@ -703,6 +703,11 @@ MonoBehaviour:
   - {fileID: 4978829806526119525, guid: 55227611eb5e42b4fbed591fc032755a, type: 3}
   - {fileID: 4978829806526119525, guid: 8fcea105989160a4cafb9239d2324a45, type: 3}
   - {fileID: 4978829806526119525, guid: d9257dbd06f23b941a7dca9d6bd34ea0, type: 3}
+  - {fileID: 4978829806526119525, guid: 12288291704e84d418a29d38bb00210b, type: 3}
+  - {fileID: 4978829806526119525, guid: e37e005419a148844a22ae3f28ccf038, type: 3}
+  - {fileID: 4978829806526119525, guid: 3ebf96cac8fdc0148ad7d8b131c496e7, type: 3}
+  - {fileID: 4978829806526119525, guid: f93c4ea9a5fca834b9c632e87dc9d034, type: 3}
+  - {fileID: 4978829806526119525, guid: 3b98a0fa5e1ad3a4e86a97c872e8d2e3, type: 3}
   nonhousesprefabs:
   - {fileID: 4978829806526119525, guid: 67fcd9bdd54a3344fba8127dddcb25ca, type: 3}
   - {fileID: 4978829806526119525, guid: ddaaf81487f51b74fad03fcbc76c773f, type: 3}
@@ -825,6 +830,11 @@ MonoBehaviour:
   - {fileID: 4978829806526119525, guid: 55227611eb5e42b4fbed591fc032755a, type: 3}
   - {fileID: 4978829806526119525, guid: 8fcea105989160a4cafb9239d2324a45, type: 3}
   - {fileID: 4978829806526119525, guid: d9257dbd06f23b941a7dca9d6bd34ea0, type: 3}
+  - {fileID: 4978829806526119525, guid: 12288291704e84d418a29d38bb00210b, type: 3}
+  - {fileID: 4978829806526119525, guid: e37e005419a148844a22ae3f28ccf038, type: 3}
+  - {fileID: 4978829806526119525, guid: 3ebf96cac8fdc0148ad7d8b131c496e7, type: 3}
+  - {fileID: 4978829806526119525, guid: f93c4ea9a5fca834b9c632e87dc9d034, type: 3}
+  - {fileID: 4978829806526119525, guid: 3b98a0fa5e1ad3a4e86a97c872e8d2e3, type: 3}
   nonhousesprefabs:
   - {fileID: 4978829806526119525, guid: 67fcd9bdd54a3344fba8127dddcb25ca, type: 3}
   - {fileID: 4978829806526119525, guid: ddaaf81487f51b74fad03fcbc76c773f, type: 3}
@@ -1305,6 +1315,11 @@ MonoBehaviour:
   - {fileID: 4978829806526119525, guid: 55227611eb5e42b4fbed591fc032755a, type: 3}
   - {fileID: 4978829806526119525, guid: 8fcea105989160a4cafb9239d2324a45, type: 3}
   - {fileID: 4978829806526119525, guid: d9257dbd06f23b941a7dca9d6bd34ea0, type: 3}
+  - {fileID: 4978829806526119525, guid: 12288291704e84d418a29d38bb00210b, type: 3}
+  - {fileID: 4978829806526119525, guid: e37e005419a148844a22ae3f28ccf038, type: 3}
+  - {fileID: 4978829806526119525, guid: 3ebf96cac8fdc0148ad7d8b131c496e7, type: 3}
+  - {fileID: 4978829806526119525, guid: f93c4ea9a5fca834b9c632e87dc9d034, type: 3}
+  - {fileID: 4978829806526119525, guid: 3b98a0fa5e1ad3a4e86a97c872e8d2e3, type: 3}
   nonhousesprefabs:
   - {fileID: 4978829806526119525, guid: 67fcd9bdd54a3344fba8127dddcb25ca, type: 3}
   - {fileID: 4978829806526119525, guid: ddaaf81487f51b74fad03fcbc76c773f, type: 3}
@@ -3064,6 +3079,11 @@ MonoBehaviour:
   - {fileID: 4978829806526119525, guid: 55227611eb5e42b4fbed591fc032755a, type: 3}
   - {fileID: 4978829806526119525, guid: 8fcea105989160a4cafb9239d2324a45, type: 3}
   - {fileID: 4978829806526119525, guid: d9257dbd06f23b941a7dca9d6bd34ea0, type: 3}
+  - {fileID: 4978829806526119525, guid: 12288291704e84d418a29d38bb00210b, type: 3}
+  - {fileID: 4978829806526119525, guid: e37e005419a148844a22ae3f28ccf038, type: 3}
+  - {fileID: 4978829806526119525, guid: 3ebf96cac8fdc0148ad7d8b131c496e7, type: 3}
+  - {fileID: 4978829806526119525, guid: f93c4ea9a5fca834b9c632e87dc9d034, type: 3}
+  - {fileID: 4978829806526119525, guid: 3b98a0fa5e1ad3a4e86a97c872e8d2e3, type: 3}
   nonhousesprefabs:
   - {fileID: 4978829806526119525, guid: 67fcd9bdd54a3344fba8127dddcb25ca, type: 3}
   - {fileID: 4978829806526119525, guid: ddaaf81487f51b74fad03fcbc76c773f, type: 3}
@@ -3460,6 +3480,11 @@ MonoBehaviour:
   - {fileID: 4978829806526119525, guid: 55227611eb5e42b4fbed591fc032755a, type: 3}
   - {fileID: 4978829806526119525, guid: 8fcea105989160a4cafb9239d2324a45, type: 3}
   - {fileID: 4978829806526119525, guid: d9257dbd06f23b941a7dca9d6bd34ea0, type: 3}
+  - {fileID: 4978829806526119525, guid: 12288291704e84d418a29d38bb00210b, type: 3}
+  - {fileID: 4978829806526119525, guid: e37e005419a148844a22ae3f28ccf038, type: 3}
+  - {fileID: 4978829806526119525, guid: 3ebf96cac8fdc0148ad7d8b131c496e7, type: 3}
+  - {fileID: 4978829806526119525, guid: f93c4ea9a5fca834b9c632e87dc9d034, type: 3}
+  - {fileID: 4978829806526119525, guid: 3b98a0fa5e1ad3a4e86a97c872e8d2e3, type: 3}
   nonhousesprefabs:
   - {fileID: 4978829806526119525, guid: 67fcd9bdd54a3344fba8127dddcb25ca, type: 3}
   - {fileID: 4978829806526119525, guid: ddaaf81487f51b74fad03fcbc76c773f, type: 3}

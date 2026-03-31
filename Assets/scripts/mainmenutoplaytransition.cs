@@ -25,19 +25,21 @@ public class mainmenutoplaytransition : MonoBehaviour
 
     public IEnumerator StartGame()
     {
-        theblackthing.DOMoveY(onscreen.position.y, 0.1f).SetEase(Ease.OutCubic);
-        yield return new WaitForSeconds(0.1f);
+        theblackthing.DOMoveY(onscreen.position.y, 0.5f).SetEase(Ease.OutCubic);
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene(1);
     }
     public void EndTrans()
     {
-        theblackthing.DOMoveY(offscreen.position.y, 0.1f).SetEase(Ease.OutCubic);
+        theblackthing.DOMoveY(offscreen.position.y, 0.5f).SetEase(Ease.OutCubic);
+    }
+    public void StartTrans()
+    {
+        theblackthing.DOMoveY(onscreen.position.y, 1f).SetEase(Ease.OutCubic);
     }
 
-    public IEnumerator EndGame()
+    public void GoBackToMainMenu()
     {
-        theblackthing.DOMoveY(onscreen.position.y, 0.1f).SetEase(Ease.OutCubic);
-        yield return new WaitForSeconds(0.1f);
         SceneManager.LoadScene(0);
     }
 
