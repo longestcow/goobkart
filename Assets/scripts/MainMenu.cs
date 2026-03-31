@@ -158,7 +158,7 @@ public class MainMenu : MonoBehaviour
 
         FullScreenMode fsmode = fullscreen.value == 0 ? FullScreenMode.Windowed : fullscreen.value == 1 ? FullScreenMode.ExclusiveFullScreen : FullScreenMode.FullScreenWindow;
 
-        Screen.SetResolution(resolutions[resolution.value].width, resolutions[resolution.value].height, fsmode);
+        //Screen.SetResolution(resolutions[resolution.value].width, resolutions[resolution.value].height, fsmode);
 
         americamode = !americamodetoggle.isOn;
 
@@ -203,7 +203,7 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame()
     {
-        Application.Quit();
+        //Application.Quit();
     }
 
     public void movemask1()
