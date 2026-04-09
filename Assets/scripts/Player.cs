@@ -155,13 +155,19 @@ public class Player : MonoBehaviour
     bool paused;
     bool gameover;
     bool tutorial;
+    public static System.Random randomgen;
+    public static System.Random randomgen1;
+    public static System.Random randomgen2;
     void Start()
     {
+        randomgen = new System.Random(10);
+        randomgen1 = new System.Random(10);
+        randomgen2 = new System.Random(10);
         tutorial = false;
         stars = 5;
         multiplier = 1;
         pausenewdeliveries = false;
-        difficulty = 1;
+        difficulty = 3;
         score = 0;
         liner.positionCount = 2;
         liner.enabled = false;
@@ -610,12 +616,12 @@ public class Player : MonoBehaviour
             }
             if (difficulty > 2)
             {
-                if (UnityEngine.Random.Range(0,100) < 2 && !pausenewdeliveries)
+                if (randomgen.Next(0,100) < 2 && !pausenewdeliveries)
                 {
                     StartCoroutine("breakfromdeliveries");
                 }
             }
-            if (UnityEngine.Random.Range(0,100) < (queueddeliveries == 0?20 * difficulty:2 * difficulty) && queueddeliveries < deliveriesqueue.Length && Time.timeSinceLevelLoad > 1f && (!pausenewdeliveries || UnityEngine.Random.Range(0,10) < 1 ) && !tutorial)
+            if (randomgen.Next(0,100) < (queueddeliveries == 0?20 * difficulty:2 * difficulty) && queueddeliveries < deliveriesqueue.Length && Time.timeSinceLevelLoad > 1f && (!pausenewdeliveries || randomgen.Next(0,10) < 1 ) && !tutorial)
             {
                 UpdateDeliveryQueue(deliverysys.DecideDelivery(),true);
             }

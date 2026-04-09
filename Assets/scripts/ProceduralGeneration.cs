@@ -32,8 +32,10 @@ public class ProceduralGeneration : MonoBehaviour
 
     public GameObject oneofeverything;
 
+
     void Start()
     {
+        Player.randomgen1 = new System.Random(10);
         renderdistanceslider.value = RenderDistance;
         Destroy(oneofeverything); 
         angle = (Mathf.Atan2(height,length) * Mathf.Rad2Deg);
@@ -75,7 +77,7 @@ public class ProceduralGeneration : MonoBehaviour
         }
         laststate = 0;
         if (transform.rotation.eulerAngles.y > 170 && transform.rotation.eulerAngles.y < 190) {
-            if (Random.Range(0, 4) < 1)
+            if (Player.randomgen1.Next(0, 4) < 1)
             {
                 //Turn
                 //transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y + 90, 0);
@@ -85,7 +87,7 @@ public class ProceduralGeneration : MonoBehaviour
                 objj.layer = 13;
                 lastobjects.Enqueue(objj);
                 objj.GetComponent<GeneratedRoad>().index = ++latestindex;
-                if (Random.Range(0, 2) < 1)
+                if (Player.randomgen1.Next(0, 2) < 1)
                 {
                     transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y + 90, 0);
                     Destroy(objj.transform.GetChild(3).GetChild(1).gameObject);
@@ -113,13 +115,13 @@ public class ProceduralGeneration : MonoBehaviour
                 transform.position += transform.forward * ((width - length) / 2);
                 return laststate;
             }
-            else if (Random.Range(0, 10) < 2)
+            else if (Player.randomgen1.Next(0, 10) < 2)
             {
                 //Slope Uphill
                 laststate = 1;
                 transform.position += new Vector3(0, height, 0);
             }
-            else if (Random.Range(0, 10) < 2)
+            else if (Player.randomgen1.Next(0, 10) < 2)
             {
                 //Slope Downhill
                 laststate = 2;
@@ -128,7 +130,7 @@ public class ProceduralGeneration : MonoBehaviour
         }
         else
         {
-            if (Random.Range(1,4) < 3)
+            if (Player.randomgen1.Next(1,4) < 3)
             {
                 transform.position += transform.forward * (length / 2 + width / 2);
                 GameObject objj = Instantiate(flatground, transform.position, transform.rotation, null);
@@ -199,16 +201,16 @@ public class ProceduralGeneration : MonoBehaviour
             {
                 //Destroy(obj.transform.GetChild(1).gameObject);
             }
-            if (Random.Range(0, 100) < player.GetComponent<Player>().difficulty* 25)
+            if (Player.randomgen1.Next(0, 100) < player.GetComponent<Player>().difficulty* 25)
             {
                 //Spawn car
-                if (Random.Range(0, 2) < 1)
+                if (Player.randomgen1.Next(0, 2) < 1)
                 {
-                    Instantiate(cars[Random.Range(0, 4)], transform.position + (MainMenu.americamode ? -1 : 1) * (transform.right * width / 4f), transform.rotation, null);
+                    Instantiate(cars[Player.randomgen1.Next(0, 4)], transform.position + (MainMenu.americamode ? -1 : 1) * (transform.right * width / 4f), transform.rotation, null);
                 }
                 else
                 {
-                    Instantiate(cars[Random.Range(0, 4)], transform.position - (MainMenu.americamode ? -1 : 1) * (transform.right * width / 4f), transform.rotation, null).GetComponent<Vehicle>().backwards = true;
+                    Instantiate(cars[Player.randomgen1.Next(0, 4)], transform.position - (MainMenu.americamode ? -1 : 1) * (transform.right * width / 4f), transform.rotation, null).GetComponent<Vehicle>().backwards = true;
                 }
             }
         }

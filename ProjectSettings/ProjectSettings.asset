@@ -982,11 +982,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 435552b7-c7f0-4201-9fd1-92dbde6baff9
+  cloudProjectId: c9ffc01a-a410-4ab8-9913-44c35598a633
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: goober kart
-  organizationId: long_cow
+  projectName: Kart
+  organizationId: rpc29
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

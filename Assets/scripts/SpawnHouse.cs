@@ -19,13 +19,13 @@ public class SpawnHouse : MonoBehaviour
         if (!Physics.Raycast(transform.position + Vector3.up * 50, -Vector3.up, out hit, 50f, LayerMask.GetMask("HouseCheck")))
         {
             GameObject objtobespawned;
-            if (Random.Range(0, 100) < chanceofnonhouse)
+            if (Player.randomgen1.Next(0, 100) < chanceofnonhouse)
             {
-                objtobespawned = nonhousesprefabs[Random.Range(0, nonhousesprefabs.Length)];
+                objtobespawned = nonhousesprefabs[Player.randomgen1.Next(0, nonhousesprefabs.Length)];
             }
             else
             {
-                objtobespawned = housesprefabs[Random.Range(0, housesprefabs.Length)];
+                objtobespawned = housesprefabs[Player.randomgen1.Next(0, housesprefabs.Length)];
             }
             obj = Instantiate(objtobespawned, transform.position, transform.rotation, null);
             obj.transform.parent = this.transform.parent;
