@@ -746,8 +746,8 @@ public class Player : MonoBehaviour
         mainscore.transform.DOMoveX(scorenewposition.position.x, 0.5f).SetEase(Ease.OutCubic);
         successjingle.Play();
         successjingle.pitch += 0.1f;
-
     }
+
     void UpdateDeliveryQueue(DeliveryRequest req, bool enqueue)
     {
         if (req.road == null) return;

@@ -44,7 +44,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _1st_ShadeMap:
-        m_Texture: {fileID: 2800000, guid: 3a6f656dbfcc25d469b2c2aeeb5b055f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6e948cc563c04ad47812db700ef8c132, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _2nd_ShadeMap:
@@ -144,7 +144,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 3a6f656dbfcc25d469b2c2aeeb5b055f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6e948cc563c04ad47812db700ef8c132, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
@@ -311,7 +311,7 @@ Material:
     - _ColorShift_Speed: 0
     - _ComposerMaskMode: 0
     - _Cull: 2
-    - _CullMode: 2
+    - _CullMode: 0
     - _CullModeForward: 2
     - _Cutoff: 0.5
     - _DepthOffsetEnable: 0
@@ -432,7 +432,7 @@ Material:
     - _OutlineOverridden: 0
     - _OutlineSize: 7.51
     - _OutlineVisible: 1
-    - _Outline_Width: 30
+    - _Outline_Width: 32
     - _PPDLodThreshold: 5
     - _PPDMaxSamples: 15
     - _PPDMinSamples: 5
