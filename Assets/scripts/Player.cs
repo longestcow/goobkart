@@ -69,6 +69,8 @@ public class Player : MonoBehaviour
     public GameObject newscoreaddedtemplate;
     public List<ScoreThing> newscoreaddings = new List<ScoreThing>();
     public Transform canvastrans;
+	public Transform everythinginsidecnavas;
+    Vector3 canvastransogpositoin;
     public Transform scorenewposition;
     public Transform scoresecondposition;
     public Transform scorehiddenposition;
@@ -181,6 +183,7 @@ public class Player : MonoBehaviour
         paused = false;
         gameover = false;
 
+        canvastransogpositoin = everythinginsidecnavas.position;
         aspectratio = Screen.width / Screen.height;
         tanfov = Mathf.Tan(Mathf.Deg2Rad *  maincamera.GetComponent<Camera>().fieldOfView/2f);
 
@@ -205,8 +208,8 @@ public class Player : MonoBehaviour
             return;
         }
         rb.AddForce(mesh.transform.forward * input, ForceMode.Force);
-        wheel2.localRotation = Quaternion.Euler(0,0,wheel2.localRotation.eulerAngles.z + rb.velocity.magnitude);
-        wheel1.localRotation = Quaternion.Euler(0,0,wheel1.localRotation.eulerAngles.z + rb.velocity.magnitude);
+        wheel2.localRotation = Quaternion.Euler(0,0,wheel2.localRotation.eulerAngles.z - rb.velocity.magnitude);
+        wheel1.localRotation = Quaternion.Euler(0,0,wheel1.localRotation.eulerAngles.z - rb.velocity.magnitude);
         frontthing.transform.localRotation = Quaternion.Lerp(frontthing.transform.localRotation,Quaternion.Euler(0,rotinput*100,0),0.1f * 25 * Time.deltaTime);
         if (Vector3.Dot(rb.velocity,mesh.transform.forward) > 0.1f)
         {
@@ -281,9 +284,10 @@ public class Player : MonoBehaviour
             maincamera.transform.position = Vector3.Lerp(maincamera.transform.position, campos1.transform.position, 0.05f * 250 * Time.deltaTime);
             maincamera.transform.rotation = Quaternion.Lerp(maincamera.transform.rotation, campos1.transform.rotation, 0.05f * 250 * Time.deltaTime);
             maincamera.GetComponent<Camera>().fieldOfView = Mathf.Lerp(maincamera.GetComponent<Camera>().fieldOfView, 80 + rb.velocity.magnitude * 2.5f, 0.05f * 250 * Time.deltaTime);
+            everythinginsidecnavas.rotation = Quaternion.Lerp(everythinginsidecnavas.rotation,Quaternion.Euler(new Vector3(0, 0, -5 * rotinput)), 0.1f * 25 * Time.deltaTime);
+            everythinginsidecnavas.localScale = (1 - 0.002f * rb.velocity.magnitude) * new Vector3(1,1,1);
             var speedlinesmain = speedlines.main;
             var speedlinesemission = speedlines.emission;
-            print(rb.velocity);
             if (rb.velocity.magnitude >= 10)
             {
                 speedlinesmain.startSpeed = rb.velocity.magnitude / 2;
@@ -737,7 +741,7 @@ public class Player : MonoBehaviour
 
     void SpawnScore(String s,int n)
     {
-        GameObject mainscore = Instantiate(newscoreaddedtemplate, scorenewposition.position + (newscoreaddings.Count * (scoresecondposition.position-scorenewposition.position)) + (scorehiddenposition.position - scorenewposition.position),Quaternion.Euler(Vector3.zero),canvastrans);
+        GameObject mainscore = Instantiate(newscoreaddedtemplate, scorenewposition.position + (newscoreaddings.Count * (scoresecondposition.position-scorenewposition.position)) + (scorehiddenposition.position - scorenewposition.position),Quaternion.Euler(Vector3.zero),everythinginsidecnavas);
         ScoreThing mainscorething = mainscore.GetComponent<ScoreThing>();
         newscoreaddings.Add(mainscorething);
         mainscorething.number = n;
