@@ -42,9 +42,12 @@ public class Player : MonoBehaviour
     public Transform wheel2;
     public Transform frontthing;
     public Transform cyclemain;
-    public Transform LHandHandlePos;
-    public Transform LHandDriftPos;
-    public Transform LeftHandPos;
+    public Transform LLegHandlePos;
+    public Transform LLegHintHandlePos;
+    public Transform LLegDriftPos;
+    public Transform LLegHintDriftPos;
+    public Transform LeftLegPos;
+    public Transform LeftHintPos;
     public GameObject crosshair;
     public GameObject delivery;
     public ProceduralGeneration proceduralgen;
@@ -218,13 +221,19 @@ public class Player : MonoBehaviour
         {
             cyclemain.localRotation = Quaternion.Euler(0.3f * ((Vector3.SignedAngle(mesh.transform.forward, rb.velocity, mesh.transform.up))), 270, 0);
         }
-        if ((Vector3.SignedAngle(mesh.transform.forward, rb.velocity, mesh.transform.up)) > 133 && isgrounded)
+        if ((Vector3.SignedAngle(mesh.transform.forward, rb.velocity, mesh.transform.up)) > 60 && isgrounded)
         {
-            LeftHandPos.position = Vector3.Lerp(LeftHandPos.position, LHandDriftPos.position, 0.1f);
+            LeftLegPos.position = Vector3.Lerp(LeftLegPos.position, LLegDriftPos.position, 0.1f);
+            LeftLegPos.rotation = Quaternion.Lerp(LeftLegPos.rotation, LLegDriftPos.rotation, 0.1f);
+            LeftHintPos.rotation = Quaternion.Lerp(LeftHintPos.rotation, LLegHintDriftPos.rotation, 0.1f);
+            LeftHintPos.position = Vector3.Lerp(LeftHintPos.position, LLegHintDriftPos.position, 0.1f);
         }
         else
         {
-            LeftHandPos.position = Vector3.Lerp(LeftHandPos.position, LHandHandlePos.position, 0.1f);
+            LeftLegPos.position = Vector3.Lerp(LeftLegPos.position, LLegHandlePos.position, 0.1f);
+            LeftLegPos.rotation = Quaternion.Lerp(LeftLegPos.rotation, LLegHandlePos.rotation, 0.1f);
+            LeftHintPos.rotation = Quaternion.Lerp(LeftHintPos.rotation, LLegHintHandlePos.rotation, 0.1f);
+            LeftHintPos.position = Vector3.Lerp(LeftHintPos.position, LLegHintHandlePos.position, 0.1f);
         }
 
         difficulty = Mathf.Clamp(difficulty + 0.0001f,1,3);
