@@ -48,6 +48,12 @@ public class Player : MonoBehaviour
     public Transform LLegHintDriftPos;
     public Transform LeftLegPos;
     public Transform LeftHintPos;
+    public Transform RLegHandlePos;
+    public Transform RLegHintHandlePos;
+    public Transform RLegDriftPos;
+    public Transform RLegHintDriftPos;
+    public Transform RightLegPos;
+    public Transform RightHintPos;
     public GameObject crosshair;
     public GameObject delivery;
     public ProceduralGeneration proceduralgen;
@@ -227,6 +233,25 @@ public class Player : MonoBehaviour
             LeftLegPos.rotation = Quaternion.Lerp(LeftLegPos.rotation, LLegDriftPos.rotation, 0.1f);
             LeftHintPos.rotation = Quaternion.Lerp(LeftHintPos.rotation, LLegHintDriftPos.rotation, 0.1f);
             LeftHintPos.position = Vector3.Lerp(LeftHintPos.position, LLegHintDriftPos.position, 0.1f);
+
+
+            RightLegPos.position = Vector3.Lerp(RightLegPos.position, RLegHandlePos.position, 0.1f);
+            RightLegPos.rotation = Quaternion.Lerp(RightLegPos.rotation, RLegHandlePos.rotation, 0.1f);
+            RightHintPos.rotation = Quaternion.Lerp(RightHintPos.rotation, RLegHintHandlePos.rotation, 0.1f);
+            RightHintPos.position = Vector3.Lerp(RightHintPos.position, RLegHintHandlePos.position, 0.1f);
+        }
+        else if (Vector3.SignedAngle(mesh.transform.forward, rb.velocity, mesh.transform.up) < -60 && isgrounded)
+        {
+            LeftLegPos.position = Vector3.Lerp(LeftLegPos.position, LLegHandlePos.position, 0.1f);
+            LeftLegPos.rotation = Quaternion.Lerp(LeftLegPos.rotation, LLegHandlePos.rotation, 0.1f);
+            LeftHintPos.rotation = Quaternion.Lerp(LeftHintPos.rotation, LLegHintHandlePos.rotation, 0.1f);
+            LeftHintPos.position = Vector3.Lerp(LeftHintPos.position, LLegHintHandlePos.position, 0.1f);
+
+
+            RightLegPos.position = Vector3.Lerp(RightLegPos.position, RLegDriftPos.position, 0.1f);
+            RightLegPos.rotation = Quaternion.Lerp(RightLegPos.rotation, RLegDriftPos.rotation, 0.1f);
+            RightHintPos.rotation = Quaternion.Lerp(RightHintPos.rotation, RLegHintDriftPos.rotation, 0.1f);
+            RightHintPos.position = Vector3.Lerp(RightHintPos.position, RLegHintDriftPos.position, 0.1f);
         }
         else
         {
@@ -234,6 +259,12 @@ public class Player : MonoBehaviour
             LeftLegPos.rotation = Quaternion.Lerp(LeftLegPos.rotation, LLegHandlePos.rotation, 0.1f);
             LeftHintPos.rotation = Quaternion.Lerp(LeftHintPos.rotation, LLegHintHandlePos.rotation, 0.1f);
             LeftHintPos.position = Vector3.Lerp(LeftHintPos.position, LLegHintHandlePos.position, 0.1f);
+
+
+            RightLegPos.position = Vector3.Lerp(RightLegPos.position, RLegHandlePos.position, 0.1f);
+            RightLegPos.rotation = Quaternion.Lerp(RightLegPos.rotation, RLegHandlePos.rotation, 0.1f);
+            RightHintPos.rotation = Quaternion.Lerp(RightHintPos.rotation, RLegHintHandlePos.rotation, 0.1f);
+            RightHintPos.position = Vector3.Lerp(RightHintPos.position, RLegHintHandlePos.position, 0.1f);
         }
 
         difficulty = Mathf.Clamp(difficulty + 0.0001f,1,3);
