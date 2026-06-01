@@ -42,6 +42,9 @@ public class Player : MonoBehaviour
     public Transform wheel2;
     public Transform frontthing;
     public Transform cyclemain;
+    public Transform LHandHandlePos;
+    public Transform LHandDriftPos;
+    public Transform LeftHandPos;
     public GameObject crosshair;
     public GameObject delivery;
     public ProceduralGeneration proceduralgen;
@@ -210,15 +213,23 @@ public class Player : MonoBehaviour
         rb.AddForce(mesh.transform.forward * input, ForceMode.Force);
         wheel2.localRotation = Quaternion.Euler(0,0,wheel2.localRotation.eulerAngles.z - rb.velocity.magnitude);
         wheel1.localRotation = Quaternion.Euler(0,0,wheel1.localRotation.eulerAngles.z - rb.velocity.magnitude);
-        frontthing.transform.localRotation = Quaternion.Lerp(frontthing.transform.localRotation,Quaternion.Euler(0,rotinput*100,0),0.1f * 25 * Time.deltaTime);
+        frontthing.transform.localRotation = Quaternion.Lerp(frontthing.transform.localRotation,Quaternion.Euler(0,rotinput*100,0),0.1f * 25 / 50);
         if (Vector3.Dot(rb.velocity,mesh.transform.forward) > 0.1f)
         {
             cyclemain.localRotation = Quaternion.Euler(0.3f * ((Vector3.SignedAngle(mesh.transform.forward, rb.velocity, mesh.transform.up))), 270, 0);
         }
+        if ((Vector3.SignedAngle(mesh.transform.forward, rb.velocity, mesh.transform.up)) > 133 && isgrounded)
+        {
+            LeftHandPos.position = Vector3.Lerp(LeftHandPos.position, LHandDriftPos.position, 0.1f);
+        }
+        else
+        {
+            LeftHandPos.position = Vector3.Lerp(LeftHandPos.position, LHandHandlePos.position, 0.1f);
+        }
 
         difficulty = Mathf.Clamp(difficulty + 0.0001f,1,3);
         spe = difficulty * 10;
-
+ 
         if (drifting)
         {
             if (!Physics.Raycast(mesh.transform.position, -mesh.transform.up, 1, groundLayer))
