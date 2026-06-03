@@ -798,11 +798,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   housesprefabs:
-  - {fileID: 4978829806526119525, guid: cf95db2c38edee44d93eb75635203afa, type: 3}
-  - {fileID: 4978829806526119525, guid: 48ead7fa92b87f645ac963052210491a, type: 3}
-  - {fileID: 4978829806526119525, guid: 3666cd91fb398df44b85bee3ff2341a8, type: 3}
-  - {fileID: 4978829806526119525, guid: 0a447ba47c62f45408ca7608c7534876, type: 3}
-  - {fileID: 4978829806526119525, guid: a2d626e09bb1cbe418036901d756dad9, type: 3}
+  - {fileID: 4978829806526119525, guid: 6838e0d9cfb34b841b23ee141f27ff45, type: 3}
+  - {fileID: 4978829806526119525, guid: ab04560b29710b840866eb0ed11f5de2, type: 3}
+  - {fileID: 4978829806526119525, guid: 97e05ed4620b4f946b7a329608b41126, type: 3}
+  - {fileID: 4978829806526119525, guid: 6c469c42c6d6d204ebf3fe8a99687616, type: 3}
+  - {fileID: 4978829806526119525, guid: 765806211498100458db9596ab9595e5, type: 3}
+  - {fileID: 4978829806526119525, guid: 1c2d0ac5eda6c4f419e2d4de033f3a2f, type: 3}
+  - {fileID: 4978829806526119525, guid: bd450fdddc8b06749a5341d73421c317, type: 3}
+  - {fileID: 4978829806526119525, guid: 468dc823878e0ed4e86418059b33c915, type: 3}
+  - {fileID: 4978829806526119525, guid: 64a0e16298a9dcb459122ac53415cdb9, type: 3}
   nonhousesprefabs:
   - {fileID: 4978829806526119525, guid: 67fcd9bdd54a3344fba8127dddcb25ca, type: 3}
   - {fileID: 4978829806526119525, guid: ddaaf81487f51b74fad03fcbc76c773f, type: 3}
@@ -814,6 +818,11 @@ MonoBehaviour:
   - {fileID: 3899092889959454818, guid: 33a35ddfbfe01b6488d2ab1f775f6707, type: 3}
   - {fileID: 3899092889959454818, guid: 478160ae37303e84b920ff9948feaec2, type: 3}
   - {fileID: 3899092889959454818, guid: a42fb53d0cacd194e9b1346918353bbf, type: 3}
+  - {fileID: 4978829806526119525, guid: cf95db2c38edee44d93eb75635203afa, type: 3}
+  - {fileID: 4978829806526119525, guid: 48ead7fa92b87f645ac963052210491a, type: 3}
+  - {fileID: 4978829806526119525, guid: 3666cd91fb398df44b85bee3ff2341a8, type: 3}
+  - {fileID: 4978829806526119525, guid: 0a447ba47c62f45408ca7608c7534876, type: 3}
+  - {fileID: 4978829806526119525, guid: a2d626e09bb1cbe418036901d756dad9, type: 3}
   obj: {fileID: 0}
   unimportanthouse: 1
   chanceofnonhouse: 5
@@ -915,11 +924,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   housesprefabs:
-  - {fileID: 4978829806526119525, guid: cf95db2c38edee44d93eb75635203afa, type: 3}
-  - {fileID: 4978829806526119525, guid: 48ead7fa92b87f645ac963052210491a, type: 3}
-  - {fileID: 4978829806526119525, guid: 3666cd91fb398df44b85bee3ff2341a8, type: 3}
-  - {fileID: 4978829806526119525, guid: 0a447ba47c62f45408ca7608c7534876, type: 3}
-  - {fileID: 4978829806526119525, guid: a2d626e09bb1cbe418036901d756dad9, type: 3}
+  - {fileID: 4978829806526119525, guid: 6838e0d9cfb34b841b23ee141f27ff45, type: 3}
+  - {fileID: 4978829806526119525, guid: ab04560b29710b840866eb0ed11f5de2, type: 3}
+  - {fileID: 4978829806526119525, guid: 97e05ed4620b4f946b7a329608b41126, type: 3}
+  - {fileID: 4978829806526119525, guid: 6c469c42c6d6d204ebf3fe8a99687616, type: 3}
+  - {fileID: 4978829806526119525, guid: 765806211498100458db9596ab9595e5, type: 3}
+  - {fileID: 4978829806526119525, guid: 1c2d0ac5eda6c4f419e2d4de033f3a2f, type: 3}
+  - {fileID: 4978829806526119525, guid: bd450fdddc8b06749a5341d73421c317, type: 3}
+  - {fileID: 4978829806526119525, guid: 468dc823878e0ed4e86418059b33c915, type: 3}
+  - {fileID: 4978829806526119525, guid: 64a0e16298a9dcb459122ac53415cdb9, type: 3}
   nonhousesprefabs:
   - {fileID: 4978829806526119525, guid: 67fcd9bdd54a3344fba8127dddcb25ca, type: 3}
   - {fileID: 4978829806526119525, guid: ddaaf81487f51b74fad03fcbc76c773f, type: 3}
@@ -931,6 +944,11 @@ MonoBehaviour:
   - {fileID: 3899092889959454818, guid: 33a35ddfbfe01b6488d2ab1f775f6707, type: 3}
   - {fileID: 3899092889959454818, guid: 478160ae37303e84b920ff9948feaec2, type: 3}
   - {fileID: 3899092889959454818, guid: a42fb53d0cacd194e9b1346918353bbf, type: 3}
+  - {fileID: 4978829806526119525, guid: cf95db2c38edee44d93eb75635203afa, type: 3}
+  - {fileID: 4978829806526119525, guid: 48ead7fa92b87f645ac963052210491a, type: 3}
+  - {fileID: 4978829806526119525, guid: 3666cd91fb398df44b85bee3ff2341a8, type: 3}
+  - {fileID: 4978829806526119525, guid: 0a447ba47c62f45408ca7608c7534876, type: 3}
+  - {fileID: 4978829806526119525, guid: a2d626e09bb1cbe418036901d756dad9, type: 3}
   obj: {fileID: 0}
   unimportanthouse: 0
   chanceofnonhouse: 5
@@ -1390,11 +1408,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   housesprefabs:
-  - {fileID: 4978829806526119525, guid: cf95db2c38edee44d93eb75635203afa, type: 3}
-  - {fileID: 4978829806526119525, guid: 48ead7fa92b87f645ac963052210491a, type: 3}
-  - {fileID: 4978829806526119525, guid: 3666cd91fb398df44b85bee3ff2341a8, type: 3}
-  - {fileID: 4978829806526119525, guid: 0a447ba47c62f45408ca7608c7534876, type: 3}
-  - {fileID: 4978829806526119525, guid: a2d626e09bb1cbe418036901d756dad9, type: 3}
+  - {fileID: 4978829806526119525, guid: 6838e0d9cfb34b841b23ee141f27ff45, type: 3}
+  - {fileID: 4978829806526119525, guid: ab04560b29710b840866eb0ed11f5de2, type: 3}
+  - {fileID: 4978829806526119525, guid: 97e05ed4620b4f946b7a329608b41126, type: 3}
+  - {fileID: 4978829806526119525, guid: 6c469c42c6d6d204ebf3fe8a99687616, type: 3}
+  - {fileID: 4978829806526119525, guid: 765806211498100458db9596ab9595e5, type: 3}
+  - {fileID: 4978829806526119525, guid: 1c2d0ac5eda6c4f419e2d4de033f3a2f, type: 3}
+  - {fileID: 4978829806526119525, guid: bd450fdddc8b06749a5341d73421c317, type: 3}
+  - {fileID: 4978829806526119525, guid: 468dc823878e0ed4e86418059b33c915, type: 3}
+  - {fileID: 4978829806526119525, guid: 64a0e16298a9dcb459122ac53415cdb9, type: 3}
   nonhousesprefabs:
   - {fileID: 4978829806526119525, guid: 67fcd9bdd54a3344fba8127dddcb25ca, type: 3}
   - {fileID: 4978829806526119525, guid: ddaaf81487f51b74fad03fcbc76c773f, type: 3}
@@ -1406,6 +1428,11 @@ MonoBehaviour:
   - {fileID: 3899092889959454818, guid: 33a35ddfbfe01b6488d2ab1f775f6707, type: 3}
   - {fileID: 3899092889959454818, guid: 478160ae37303e84b920ff9948feaec2, type: 3}
   - {fileID: 3899092889959454818, guid: a42fb53d0cacd194e9b1346918353bbf, type: 3}
+  - {fileID: 4978829806526119525, guid: cf95db2c38edee44d93eb75635203afa, type: 3}
+  - {fileID: 4978829806526119525, guid: 48ead7fa92b87f645ac963052210491a, type: 3}
+  - {fileID: 4978829806526119525, guid: 3666cd91fb398df44b85bee3ff2341a8, type: 3}
+  - {fileID: 4978829806526119525, guid: 0a447ba47c62f45408ca7608c7534876, type: 3}
+  - {fileID: 4978829806526119525, guid: a2d626e09bb1cbe418036901d756dad9, type: 3}
   obj: {fileID: 0}
   unimportanthouse: 0
   chanceofnonhouse: 5
@@ -3178,11 +3205,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   housesprefabs:
-  - {fileID: 4978829806526119525, guid: cf95db2c38edee44d93eb75635203afa, type: 3}
-  - {fileID: 4978829806526119525, guid: 48ead7fa92b87f645ac963052210491a, type: 3}
-  - {fileID: 4978829806526119525, guid: 3666cd91fb398df44b85bee3ff2341a8, type: 3}
-  - {fileID: 4978829806526119525, guid: 0a447ba47c62f45408ca7608c7534876, type: 3}
-  - {fileID: 4978829806526119525, guid: a2d626e09bb1cbe418036901d756dad9, type: 3}
+  - {fileID: 4978829806526119525, guid: 6838e0d9cfb34b841b23ee141f27ff45, type: 3}
+  - {fileID: 4978829806526119525, guid: ab04560b29710b840866eb0ed11f5de2, type: 3}
+  - {fileID: 4978829806526119525, guid: 97e05ed4620b4f946b7a329608b41126, type: 3}
+  - {fileID: 4978829806526119525, guid: 6c469c42c6d6d204ebf3fe8a99687616, type: 3}
+  - {fileID: 4978829806526119525, guid: 765806211498100458db9596ab9595e5, type: 3}
+  - {fileID: 4978829806526119525, guid: 1c2d0ac5eda6c4f419e2d4de033f3a2f, type: 3}
+  - {fileID: 4978829806526119525, guid: bd450fdddc8b06749a5341d73421c317, type: 3}
+  - {fileID: 4978829806526119525, guid: 468dc823878e0ed4e86418059b33c915, type: 3}
+  - {fileID: 4978829806526119525, guid: 64a0e16298a9dcb459122ac53415cdb9, type: 3}
   nonhousesprefabs:
   - {fileID: 4978829806526119525, guid: 67fcd9bdd54a3344fba8127dddcb25ca, type: 3}
   - {fileID: 4978829806526119525, guid: ddaaf81487f51b74fad03fcbc76c773f, type: 3}
@@ -3194,6 +3225,11 @@ MonoBehaviour:
   - {fileID: 3899092889959454818, guid: 33a35ddfbfe01b6488d2ab1f775f6707, type: 3}
   - {fileID: 3899092889959454818, guid: 478160ae37303e84b920ff9948feaec2, type: 3}
   - {fileID: 3899092889959454818, guid: a42fb53d0cacd194e9b1346918353bbf, type: 3}
+  - {fileID: 4978829806526119525, guid: cf95db2c38edee44d93eb75635203afa, type: 3}
+  - {fileID: 4978829806526119525, guid: 48ead7fa92b87f645ac963052210491a, type: 3}
+  - {fileID: 4978829806526119525, guid: 3666cd91fb398df44b85bee3ff2341a8, type: 3}
+  - {fileID: 4978829806526119525, guid: 0a447ba47c62f45408ca7608c7534876, type: 3}
+  - {fileID: 4978829806526119525, guid: a2d626e09bb1cbe418036901d756dad9, type: 3}
   obj: {fileID: 0}
   unimportanthouse: 1
   chanceofnonhouse: 5
@@ -3674,11 +3710,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   housesprefabs:
-  - {fileID: 4978829806526119525, guid: cf95db2c38edee44d93eb75635203afa, type: 3}
-  - {fileID: 4978829806526119525, guid: 48ead7fa92b87f645ac963052210491a, type: 3}
-  - {fileID: 4978829806526119525, guid: 3666cd91fb398df44b85bee3ff2341a8, type: 3}
-  - {fileID: 4978829806526119525, guid: 0a447ba47c62f45408ca7608c7534876, type: 3}
-  - {fileID: 4978829806526119525, guid: a2d626e09bb1cbe418036901d756dad9, type: 3}
+  - {fileID: 4978829806526119525, guid: 6838e0d9cfb34b841b23ee141f27ff45, type: 3}
+  - {fileID: 4978829806526119525, guid: ab04560b29710b840866eb0ed11f5de2, type: 3}
+  - {fileID: 4978829806526119525, guid: 97e05ed4620b4f946b7a329608b41126, type: 3}
+  - {fileID: 4978829806526119525, guid: 6c469c42c6d6d204ebf3fe8a99687616, type: 3}
+  - {fileID: 4978829806526119525, guid: 765806211498100458db9596ab9595e5, type: 3}
+  - {fileID: 4978829806526119525, guid: 1c2d0ac5eda6c4f419e2d4de033f3a2f, type: 3}
+  - {fileID: 4978829806526119525, guid: bd450fdddc8b06749a5341d73421c317, type: 3}
+  - {fileID: 4978829806526119525, guid: 468dc823878e0ed4e86418059b33c915, type: 3}
+  - {fileID: 4978829806526119525, guid: 64a0e16298a9dcb459122ac53415cdb9, type: 3}
   nonhousesprefabs:
   - {fileID: 4978829806526119525, guid: 67fcd9bdd54a3344fba8127dddcb25ca, type: 3}
   - {fileID: 4978829806526119525, guid: ddaaf81487f51b74fad03fcbc76c773f, type: 3}
@@ -3690,6 +3730,11 @@ MonoBehaviour:
   - {fileID: 3899092889959454818, guid: 33a35ddfbfe01b6488d2ab1f775f6707, type: 3}
   - {fileID: 3899092889959454818, guid: 478160ae37303e84b920ff9948feaec2, type: 3}
   - {fileID: 3899092889959454818, guid: a42fb53d0cacd194e9b1346918353bbf, type: 3}
+  - {fileID: 4978829806526119525, guid: cf95db2c38edee44d93eb75635203afa, type: 3}
+  - {fileID: 4978829806526119525, guid: 48ead7fa92b87f645ac963052210491a, type: 3}
+  - {fileID: 4978829806526119525, guid: 3666cd91fb398df44b85bee3ff2341a8, type: 3}
+  - {fileID: 4978829806526119525, guid: 0a447ba47c62f45408ca7608c7534876, type: 3}
+  - {fileID: 4978829806526119525, guid: a2d626e09bb1cbe418036901d756dad9, type: 3}
   obj: {fileID: 0}
   unimportanthouse: 0
   chanceofnonhouse: 5
