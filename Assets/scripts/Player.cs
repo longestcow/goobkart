@@ -337,7 +337,6 @@ public class Player : MonoBehaviour
             campos1.transform.localRotation = Quaternion.Lerp(campos1.transform.localRotation, Quaternion.Euler(new Vector3(33.27f, 0, (drifting?2f:0) * (rb.velocity.magnitude/5) * rotinput )), 0.1f * 25 * Time.deltaTime);
             maincamera.GetComponent<Camera>().fieldOfView = Mathf.Lerp(maincamera.GetComponent<Camera>().fieldOfView, 80 + rb.velocity.magnitude * 2.5f, 0.05f * 250 * Time.deltaTime);
             everythinginsidecnavas.rotation = Quaternion.Lerp(everythinginsidecnavas.rotation,Quaternion.Euler(new Vector3(0, 0, -5 * (rb.velocity.magnitude / 25)  * rotinput)), 0.1f * 25 * Time.deltaTime );
-            print(rb.velocity.magnitude);
             everythinginsidecnavas.localScale = (1 - 0.002f * rb.velocity.magnitude) * new Vector3(1,1,1);
             var speedlinesmain = speedlines.main;
             var speedlinesemission = speedlines.emission;
