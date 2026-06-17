@@ -119,6 +119,8 @@ public class Player : MonoBehaviour
     public Image controlimage1;
     public Image controlimage2;
     public Image controlimage3;
+    public MoveEverything EverythingMover;
+    public Transform spawnedparent;
 
     public static int score;
     public float difficulty;
@@ -533,7 +535,7 @@ public class Player : MonoBehaviour
         if (aimmode && shootstrengthincreasing && Input.GetButtonUp("Shoot"))
         {
             shootstrengthincreasing = false;
-            latestdelivery = Instantiate(delivery, mesh.transform.position, Quaternion.Euler(Vector3.zero), null);
+            latestdelivery = Instantiate(delivery, mesh.transform.position, Quaternion.Euler(Vector3.zero), spawnedparent);
             latestdeliveryrb = latestdelivery.GetComponent<Rigidbody>();
             latestdeliveryrb.velocity = maincamera.transform.forward * shootspeed * shootstrength;
             aimmode = false;
@@ -968,6 +970,7 @@ public class Player : MonoBehaviour
             linelengthcanvas.transform.position = (currentdeliveryhouse.transform.GetChild(0).position + latestdelivery.transform.position) / 2f;
             yield return new WaitForSeconds(1/difficulty);
         }
+        EverythingMover.ShiftOrigin();
         deliverycam = 0;
         rb.velocity = savedvelocity;
         for (int i = 0; i < deliveriesqueue.Length; i++)

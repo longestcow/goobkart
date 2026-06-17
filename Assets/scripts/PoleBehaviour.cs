@@ -39,9 +39,10 @@ public class PoleBehaviour : MonoBehaviour
             for (int k = 0; k < 3; k++)
             {
                 LineRenderer liner = points[k].transform.GetChild(0).gameObject.GetComponent<LineRenderer>();
-                Vector3 A = points[k].transform.position;
-                Vector3 C = closestpole.points[k].transform.position;
-                Vector3 B = ((points[k].transform.position + closestpole.points[k].transform.position) / 2f) + new Vector3(0, Random.Range(-1f, 0f), 0);
+                liner.transform.rotation = Quaternion.Euler(Vector3.zero);
+                Vector3 A = Vector3.zero;
+                Vector3 C = closestpole.points[k].transform.position - points[k].transform.position;
+                Vector3 B = ((closestpole.points[k].transform.position - points[k].transform.position) / 2f) + new Vector3(0, Random.Range(-1f, 0f), 0);
                 Vector3[] Pos = new Vector3[6];
                 print("A" + A);
                 print("B" + B);
@@ -85,9 +86,10 @@ public class PoleBehaviour : MonoBehaviour
                 for (int k = 0; k < 3; k++)
                 {
                     LineRenderer liner = points[k].transform.GetChild(0).gameObject.GetComponent<LineRenderer>();
-                    Vector3 A = points[k].transform.position;
-                    Vector3 C = closestpole.points[k].transform.position;
-                    Vector3 B = ((points[k].transform.position + closestpole.points[k].transform.position) / 2f) + new Vector3(0, Random.Range(-1f, 0f), 0);
+                    liner.transform.rotation = Quaternion.Euler(Vector3.zero);
+                    Vector3 A = Vector3.zero;
+                    Vector3 C = closestpole.points[k].transform.position - points[k].transform.position;
+                    Vector3 B = ((closestpole.points[k].transform.position - points[k].transform.position) / 2f) + new Vector3(0, Random.Range(-1f, 0f), 0);
                     Vector3[] Pos = new Vector3[6];
                     print("A" + A);
                     print("B" + B);

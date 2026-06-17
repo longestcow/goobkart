@@ -32,6 +32,8 @@ public class ProceduralGeneration : MonoBehaviour
 
     public GameObject oneofeverything;
 
+    public Transform spawnparent;
+
     void Start()
     {
         renderdistanceslider.value = RenderDistance;
@@ -39,7 +41,7 @@ public class ProceduralGeneration : MonoBehaviour
         angle = (Mathf.Atan2(height,length) * Mathf.Rad2Deg);
         slopeheight = Mathf.Sqrt(height * height + length * length);
         transform.position = new Vector3(0,0,0);
-        GameObject obj = Instantiate(flatground, transform.position, Quaternion.Euler(0, 180, 0), null);
+        GameObject obj = Instantiate(flatground, transform.position, Quaternion.Euler(0, 180, 0), spawnparent);
         obj.transform.localScale = new Vector3(width, 0.01f, (laststate == 0) ? length : slopeheight);
         lastobjects.Enqueue(obj);
         Destroy(obj.transform.GetChild(3).gameObject);
@@ -80,7 +82,7 @@ public class ProceduralGeneration : MonoBehaviour
                 //Turn
                 //transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y + 90, 0);
                 transform.position += transform.forward * (length / 2 + width / 2);
-                GameObject objj = Instantiate(flatground, transform.position, transform.rotation, null);
+                GameObject objj = Instantiate(flatground, transform.position, transform.rotation, spawnparent);
                 objj.transform.localScale = new Vector3(width, 0.01f, width);
                 objj.layer = 13;
                 lastobjects.Enqueue(objj);
@@ -131,7 +133,7 @@ public class ProceduralGeneration : MonoBehaviour
             if (Random.Range(1,4) < 3)
             {
                 transform.position += transform.forward * (length / 2 + width / 2);
-                GameObject objj = Instantiate(flatground, transform.position, transform.rotation, null);
+                GameObject objj = Instantiate(flatground, transform.position, transform.rotation, spawnparent);
                 objj.transform.localScale = new Vector3(width, 0.01f, width);
                 objj.layer = 13;
                 lastobjects.Enqueue(objj);
@@ -168,7 +170,7 @@ public class ProceduralGeneration : MonoBehaviour
         }
         spawn:
         transform.position += transform.forward * length;
-        GameObject obj = Instantiate(flatground, transform.position + new Vector3(0, laststate == 2 ? height / 2 : laststate == 1 ? -(height / 2) : 0, 0), Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(laststate == 2 ? angle : laststate == 1 ? -angle : 0, 0, 0)), null);
+        GameObject obj = Instantiate(flatground, transform.position + new Vector3(0, laststate == 2 ? height / 2 : laststate == 1 ? -(height / 2) : 0, 0), Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(laststate == 2 ? angle : laststate == 1 ? -angle : 0, 0, 0)), spawnparent);
         obj.transform.localScale = new Vector3(width,0.01f,(laststate == 0)?length:slopeheight);
         if (!(transform.rotation.eulerAngles.y > 170 && transform.rotation.eulerAngles.y < 190))
         {
@@ -204,11 +206,11 @@ public class ProceduralGeneration : MonoBehaviour
                 //Spawn car
                 if (Random.Range(0, 2) < 1)
                 {
-                    Instantiate(cars[Random.Range(0, 4)], transform.position + (MainMenu.americamode ? -1 : 1) * (transform.right * width / 4f), transform.rotation, null);
+                    Instantiate(cars[Random.Range(0, 4)], transform.position + (MainMenu.americamode ? -1 : 1) * (transform.right * width / 4f), transform.rotation, spawnparent);
                 }
                 else
                 {
-                    Instantiate(cars[Random.Range(0, 4)], transform.position - (MainMenu.americamode ? -1 : 1) * (transform.right * width / 4f), transform.rotation, null).GetComponent<Vehicle>().backwards = true;
+                    Instantiate(cars[Random.Range(0, 4)], transform.position - (MainMenu.americamode ? -1 : 1) * (transform.right * width / 4f), transform.rotation, spawnparent).GetComponent<Vehicle>().backwards = true;
                 }
             }
         }
