@@ -44,9 +44,6 @@ public class PoleBehaviour : MonoBehaviour
                 Vector3 C = closestpole.points[k].transform.position - points[k].transform.position;
                 Vector3 B = ((closestpole.points[k].transform.position - points[k].transform.position) / 2f) + new Vector3(0, Random.Range(-1f, 0f), 0);
                 Vector3[] Pos = new Vector3[6];
-                print("A" + A);
-                print("B" + B);
-                print("C" + C);
                 for (int j = 0; j <= 5; j++)
                 {
                     Pos[j] = Vector3.Lerp(Vector3.Lerp(A, B, j / 5f), Vector3.Lerp(B, C, j / 5f), j / 5f);
@@ -91,9 +88,6 @@ public class PoleBehaviour : MonoBehaviour
                     Vector3 C = closestpole.points[k].transform.position - points[k].transform.position;
                     Vector3 B = ((closestpole.points[k].transform.position - points[k].transform.position) / 2f) + new Vector3(0, Random.Range(-1f, 0f), 0);
                     Vector3[] Pos = new Vector3[6];
-                    print("A" + A);
-                    print("B" + B);
-                    print("C" + C);
                     for (int j = 0; j <= 5; j++)
                     {
                         Pos[j] = Vector3.Lerp(Vector3.Lerp(A, B, j / 5f), Vector3.Lerp(B, C, j / 5f), j / 5f);

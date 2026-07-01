@@ -164,6 +164,8 @@ public class Player : MonoBehaviour
     public DeliveryRequest currentdeliveryreq;
     float deliverycamstarttime;
     int queueddeliveries;
+    bool lastwasmidair;
+    bool lastwassniped;
     float aspectratio;
     float tanfov;
     bool pausenewdeliveries;
@@ -680,6 +682,12 @@ public class Player : MonoBehaviour
         }
     }
 
+    void doChecks()
+    {
+        
+    }
+    
+
     IEnumerator AddScore()
     {
         //base score
@@ -688,7 +696,7 @@ public class Player : MonoBehaviour
         Stats.statcount[2]++;
 
         //midair check
-        if (!Physics.Raycast(mesh.transform.position, -mesh.transform.up, 1, groundLayer))
+        if (lastwasmidair)
         {
             yield return new WaitForSeconds(0.1f);
             SpawnScore("Mid-Air",30 * multiplier);
@@ -696,12 +704,6 @@ public class Player : MonoBehaviour
             Stats.statcount[2]++;
         }
 
-        //full power check
-        /*if (shootstrength > 19.5f)
-        {
-            yield return new WaitForSeconds(0.1f);
-            SpawnScore("Full Power", 20 * multiplier);
-        }*/
 
         //by a hair check
         if (float.Parse(linelengthtext.text) > 45f)
@@ -711,13 +713,6 @@ public class Player : MonoBehaviour
             Stats.statcount[6]++;
             Stats.statcount[2]++;
         }
-
-        //by a jiffy check
-        /*if (lastdeliverytimelimit - lastdeliverytime < 1)
-        {
-            yield return new WaitForSeconds(0.1f);
-            SpawnScore("By A Jiffy", 50 * multiplier);
-        }*/
 
         //microscopic precision check
         if (float.Parse(linelengthtext.text) < 5.1f)
@@ -729,7 +724,7 @@ public class Player : MonoBehaviour
         }
 
         //snipe check
-        if (Vector3.Distance(latestdelivery.transform.position,mesh.transform.position) > 30)
+        if (lastwassniped)
         {
             yield return new WaitForSeconds(0.1f);
             SpawnScore("Sniped", 50 * multiplier);
@@ -957,6 +952,8 @@ public class Player : MonoBehaviour
 
     IEnumerator resultcam()
     {
+        lastwasmidair = !Physics.Raycast(mesh.transform.position, -mesh.transform.up, 1, groundLayer);
+        lastwassniped = Vector3.Distance(latestdelivery.transform.position, mesh.transform.position) > 30;
         if (currentdelivery != 0)
         {
             deliverycam = 2;
@@ -970,7 +967,12 @@ public class Player : MonoBehaviour
             linelengthcanvas.transform.position = (currentdeliveryhouse.transform.GetChild(0).position + latestdelivery.transform.position) / 2f;
             yield return new WaitForSeconds(1/difficulty);
         }
+        trail1.emitting = false;
+        trail2.emitting = false;
+        trail1.Clear();
+        trail2.Clear();
         EverythingMover.ShiftOrigin();
+        print("Origin Shifted");
         deliverycam = 0;
         rb.velocity = savedvelocity;
         for (int i = 0; i < deliveriesqueue.Length; i++)

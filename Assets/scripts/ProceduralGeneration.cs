@@ -21,7 +21,7 @@ public class ProceduralGeneration : MonoBehaviour
     public int laststate;
 
     public Queue<GameObject> lastobjects = new Queue<GameObject>();
-    public static int RenderDistance = 20;
+    public static int RenderDistance = 50;
     public int latestindex;
 
     public bool americanmode;
