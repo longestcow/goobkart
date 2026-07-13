@@ -31198,6 +31198,7 @@ MonoBehaviour:
   shootstrengthchargeupspeed: 100
   deliverycamoffset: 1
   mesh: {fileID: 1232479765}
+  cycle: {fileID: 919132148148667376}
   parentobject: {fileID: 447281256}
   fakecam: {fileID: 1932618063}
   cam: {fileID: 606731645}
@@ -31309,6 +31310,7 @@ MonoBehaviour:
   EverythingMover: {fileID: 1420267240}
   spawnedparent: {fileID: 1856849850}
   difficulty: 1
+  hitsfx: {fileID: 784190815}
   latestroad: {fileID: 0}
   currentdelivery: 0
   currentdeliveryhouse: {fileID: 0}

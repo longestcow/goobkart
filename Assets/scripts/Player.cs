@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
 
     [Header("Everything else")]
     public GameObject mesh;
+    public GameObject cycle;
     public GameObject parentobject;
     public GameObject fakecam; //camera that moves based on velocity
     public GameObject cam; //camera that lerps to movement based on velocity
@@ -141,6 +142,8 @@ public class Player : MonoBehaviour
     float shootstrength;
     bool shootstrengthincreasing;
     public static int deliverycam;
+    public AudioSource hitsfx;
+
     [NonSerialized]
     public int latestindex;
     public GeneratedRoad latestroad;
@@ -441,6 +444,18 @@ public class Player : MonoBehaviour
 
         AlignKart();
 
+        if (Input.GetButtonDown("Jump"))
+        {
+            hitsfx.Play();
+            switch (UnityEngine.Random.Range(0, 2)) {
+                case 0:
+                    cycle.transform.DORotate(cycle.transform.rotation.eulerAngles + new Vector3(0, 360, 0), 0.5f, RotateMode.FastBeyond360);
+                    break;
+                case 1:
+                    cycle.transform.DORotate(cycle.transform.rotation.eulerAngles + new Vector3(0, -360, 0), 0.5f, RotateMode.FastBeyond360);
+                    break;
+            }
+        }
 
         if (Input.GetButton("Drift") && !drifting && isgrounded && rb.velocity.magnitude > 0.5f)
         {

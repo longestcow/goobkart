@@ -18,6 +18,7 @@ public class HouseScript : MonoBehaviour
         {
             HouseModel.transform.rotation = Quaternion.Euler(new Vector3(0, HouseModel.transform.rotation.eulerAngles.y, 0));
             GreenDelivery.SetActive(false);
+            gameObject.tag = "Terrain";
         }
     }
 
