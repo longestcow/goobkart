@@ -1164,6 +1164,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4673214973800149653, guid: 57fa965f851a05447b6158cf6f38983d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6970935404249780045, guid: 57fa965f851a05447b6158cf6f38983d,
         type: 3}
       propertyPath: m_LocalScale.x

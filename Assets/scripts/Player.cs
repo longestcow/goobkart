@@ -173,13 +173,14 @@ public class Player : MonoBehaviour
     bool paused;
     bool gameover;
     bool tutorial;
+
     void Start()
     {
         tutorial = false;
         stars = 5;
         multiplier = 1;
         pausenewdeliveries = false;
-        difficulty = 1;
+        //difficulty = 1;
         score = 0;
         liner.positionCount = 2;
         liner.enabled = false;
@@ -382,16 +383,16 @@ public class Player : MonoBehaviour
             }
             if (deliverycam == 2)
             {
-                float offset = ((currentdeliveryhouse.transform.GetChild(0).position - latestdelivery.transform.position).magnitude / 2f / aspectratio) / tanfov;
-                Vector3 midpoint = (currentdeliveryhouse.transform.GetChild(0).position + latestdelivery.transform.position) / 2f;
+                float offset = ((currentdeliveryhouse.GetComponent<HouseScript>().YellowDelivery.transform.position - latestdelivery.transform.position).magnitude / 2f / aspectratio) / tanfov;
+                Vector3 midpoint = (currentdeliveryhouse.GetComponent<HouseScript>().YellowDelivery.transform.position + latestdelivery.transform.position) / 2f;
                 camposdelivery.transform.position =  midpoint + (transform.position - latestdelivery.transform.position).normalized * 2 * (offset + deliverycamoffset);
                 camposdelivery.transform.position = new Vector3(camposdelivery.transform.position.x, latestdelivery.transform.position.y + 1, camposdelivery.transform.position.z);
                 camposdelivery.transform.LookAt(latestdelivery.transform.position);
                 linepoint0.position = Vector3.Lerp(linepoint0.position, latestdelivery.transform.position, Time.deltaTime * 10 * difficulty);
-                linepoint1.position = Vector3.Lerp(linepoint1.position, currentdeliveryhouse.transform.GetChild(0).transform.position, Time.deltaTime * 10 * difficulty);
+                linepoint1.position = Vector3.Lerp(linepoint1.position, currentdeliveryhouse.GetComponent<HouseScript>().YellowDelivery.transform.position, Time.deltaTime * 10 * difficulty);
                 liner.SetPosition(0, linepoint0.transform.position);
                 liner.SetPosition(1, linepoint1.transform.position);
-                linelengthcanvas.transform.position = ((currentdeliveryhouse.transform.GetChild(0).position + latestdelivery.transform.position) / 2f) + Vector3.up;
+                linelengthcanvas.transform.position = ((currentdeliveryhouse.GetComponent<HouseScript>().YellowDelivery.transform.position + latestdelivery.transform.position) / 2f) + Vector3.up;
                 linelengthcanvas.transform.LookAt(camposdelivery.transform.position);
                 linelengthtext.text = ((linepoint0.position - linepoint1.position).magnitude * 10).ToString("F1");
                 if (float.Parse(linelengthtext.text) > 50)
@@ -805,7 +806,6 @@ public class Player : MonoBehaviour
     {
         if (req.road == null) return;
         GeneratedRoad road = req.road;
-        GameObject house = req.house;
         int roadnumber = road.index;
         if (enqueue)
         {
@@ -827,7 +827,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            req.house.transform.GetChild(0).gameObject.SetActive(false);
+            req.house.GetComponent<HouseScript>().YellowDelivery.SetActive(false);
             req.notif.transform.DOMove(notifdiespot.position, 0.5f).SetEase(Ease.InOutCubic);
             Destroy(req.notif.gameObject,1);
             if (queueddeliveries == 2)
@@ -854,8 +854,9 @@ public class Player : MonoBehaviour
                 currentdelivery = deliveriesqueue[i].road.index;
                 currentdeliveryhouse = deliveriesqueue[i].house;
                 currentdeliveryreq = deliveriesqueue[i];
-                currentdeliveryhouse.transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
-                currentdeliveryhouse.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
+                currentdeliveryhouse.GetComponent<HouseScript>().RedDelivery.SetActive(true);
+                //currentdeliveryhouse.transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
+                //currentdeliveryhouse.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
                 goto updatedeliverytext;
             }
         }
@@ -962,9 +963,9 @@ public class Player : MonoBehaviour
             tapesfx.pitch = difficulty;
             tapesfx.Play();
             linelengthtext.gameObject.SetActive(true);
-            linepoint0.position = (currentdeliveryhouse.transform.GetChild(0).position + latestdelivery.transform.position) / 2f;
-            linepoint1.position = (currentdeliveryhouse.transform.GetChild(0).position + latestdelivery.transform.position) / 2f;
-            linelengthcanvas.transform.position = (currentdeliveryhouse.transform.GetChild(0).position + latestdelivery.transform.position) / 2f;
+            linepoint0.position = (currentdeliveryhouse.GetComponent<HouseScript>().YellowDelivery.transform.position + latestdelivery.transform.position) / 2f;
+            linepoint1.position = (currentdeliveryhouse.GetComponent<HouseScript>().YellowDelivery.transform.position + latestdelivery.transform.position) / 2f;
+            linelengthcanvas.transform.position = (currentdeliveryhouse.GetComponent<HouseScript>().YellowDelivery.transform.position + latestdelivery.transform.position) / 2f;
             yield return new WaitForSeconds(1/difficulty);
         }
         trail1.emitting = false;

@@ -378,6 +378,7 @@ GameObject:
   - component: {fileID: 8430196402351017602}
   - component: {fileID: 4748495179642103462}
   - component: {fileID: 5103502916298057730}
+  - component: {fileID: 3312539533085527872}
   m_Layer: 12
   m_Name: Epic Mart 4
   m_TagString: Untagged
@@ -480,6 +481,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.75816673, y: 0.54951, z: 0.92801255}
   m_Center: {x: 0.0833106, y: -0.225245, z: -0.003909636}
+--- !u!114 &3312539533085527872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4978829806526119525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b1fa7924e6552e42b1e4724b2f4ad3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GreenDelivery: {fileID: 978676396900639107}
+  YellowDelivery: {fileID: 184813303066463357}
+  RedDelivery: {fileID: 6813126337639491038}
+  HouseModel: {fileID: 247525900701101858}
+  terrainhouse: 0
+  slope: 0
 --- !u!1 &5326732318350343433
 GameObject:
   m_ObjectHideFlags: 0
@@ -1505,6 +1524,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151af416128c0e648b7220f2ee1b4a78, type: 3}
+--- !u!1 &247525900701101858 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 151af416128c0e648b7220f2ee1b4a78,
+    type: 3}
+  m_PrefabInstance: {fileID: 1129852303855211123}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &586791567554983320 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 151af416128c0e648b7220f2ee1b4a78,

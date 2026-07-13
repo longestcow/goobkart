@@ -15,7 +15,7 @@ public class DeliverySystem : MonoBehaviour
 
     public Player.DeliveryRequest DecideDelivery()
     {
-        int roadnumber = UnityEngine.Random.Range(Mathf.Max((player.deliveriesqueue[0].road != null ? player.deliveriesqueue[0].road.index : 0) + 1,Mathf.Min(player.latestindex + 7, progen.latestindex - 2)), Mathf.Min(progen.latestindex-2,player.latestindex + 13));
+        int roadnumber = UnityEngine.Random.Range(Mathf.Max((player.deliveriesqueue[0].road != null ? player.deliveriesqueue[0].road.index : 0) + 1,Mathf.Min(player.latestindex + 5, progen.latestindex - 2)), Mathf.Min(progen.latestindex-2,player.latestindex + 10));
         GameObject[] arr = progen.lastobjects.ToArray();
         GameObject deliveryroad = arr[roadnumber - arr[0].GetComponent<GeneratedRoad>().index];
         checkifmodified:    
@@ -29,7 +29,7 @@ public class DeliverySystem : MonoBehaviour
         if (deliveryroad.GetComponent<GeneratedRoad>().modified) housenumber = 0;
         print(deliveryroad.GetComponent<GeneratedRoad>().index);
         if (deliveryroad.GetComponent<GeneratedRoad>().houses[0] == null) goto sendnullreq;
-        deliveryroad.GetComponent<GeneratedRoad>().houses[housenumber].transform.GetChild(0).gameObject.SetActive(true);
+        deliveryroad.GetComponent<GeneratedRoad>().houses[housenumber].GetComponent<HouseScript>().YellowDelivery.SetActive(true);
         Player.DeliveryRequest req;
         req.road = deliveryroad.GetComponent<GeneratedRoad>();
         req.house = deliveryroad.GetComponent<GeneratedRoad>().houses[housenumber];

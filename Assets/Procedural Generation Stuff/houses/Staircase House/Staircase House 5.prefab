@@ -1137,6 +1137,7 @@ GameObject:
   - component: {fileID: 8430196402351017602}
   - component: {fileID: 4748495179642103462}
   - component: {fileID: 5103502916298057730}
+  - component: {fileID: 4297664620367524639}
   m_Layer: 12
   m_Name: Staircase House 5
   m_TagString: Untagged
@@ -1247,6 +1248,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.8380074, y: 0.789483, z: 0.78208953}
   m_Center: {x: 0.046369076, y: -0.105258964, z: 0.074446574}
+--- !u!114 &4297664620367524639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4978829806526119525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b1fa7924e6552e42b1e4724b2f4ad3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GreenDelivery: {fileID: 8670544753631877945}
+  YellowDelivery: {fileID: 184813303066463357}
+  RedDelivery: {fileID: 1498229434884788638}
+  HouseModel: {fileID: 4933052615296132312}
+  terrainhouse: 0
+  slope: 0
 --- !u!1 &5674547834789971982
 GameObject:
   m_ObjectHideFlags: 0
@@ -2185,6 +2204,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb21afa6e23b97c46b559c8eb09bf1e8, type: 3}
+--- !u!1 &4933052615296132312 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cb21afa6e23b97c46b559c8eb09bf1e8,
+    type: 3}
+  m_PrefabInstance: {fileID: 5239041954897238409}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5710117492055735906 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cb21afa6e23b97c46b559c8eb09bf1e8,

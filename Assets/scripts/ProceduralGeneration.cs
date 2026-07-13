@@ -82,6 +82,14 @@ public class ProceduralGeneration : MonoBehaviour
                 //Turn
                 //transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y + 90, 0);
                 transform.position += transform.forward * (length / 2 + width / 2);
+
+                RaycastHit hitt;
+                if (Physics.Raycast(transform.position + Vector3.up * 50, -Vector3.up, out hitt, 100f, LayerMask.GetMask("HouseCheck")))
+                {
+                    if (hitt.collider.transform.parent.CompareTag("Terrain"))
+                        Destroy(hitt.collider.transform.parent.gameObject);
+                }
+
                 GameObject objj = Instantiate(flatground, transform.position, transform.rotation, spawnparent);
                 objj.transform.localScale = new Vector3(width, 0.01f, width);
                 objj.layer = 13;
@@ -133,6 +141,13 @@ public class ProceduralGeneration : MonoBehaviour
             if (Random.Range(1,4) < 3)
             {
                 transform.position += transform.forward * (length / 2 + width / 2);
+
+                RaycastHit hitt;
+                if (Physics.Raycast(transform.position + Vector3.up * 50, -Vector3.up, out hitt, 100f, LayerMask.GetMask("HouseCheck")))
+                {
+                    if (hitt.collider.transform.parent.CompareTag("Terrain"))
+                        Destroy(hitt.collider.transform.parent.gameObject);
+                }
                 GameObject objj = Instantiate(flatground, transform.position, transform.rotation, spawnparent);
                 objj.transform.localScale = new Vector3(width, 0.01f, width);
                 objj.layer = 13;
@@ -170,6 +185,12 @@ public class ProceduralGeneration : MonoBehaviour
         }
         spawn:
         transform.position += transform.forward * length;
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position + Vector3.up * 50, -Vector3.up, out hit, 100f, LayerMask.GetMask("HouseCheck")))
+        {
+            if (hit.collider.transform.parent.CompareTag("Terrain"))
+                Destroy(hit.collider.transform.parent.gameObject);
+        }
         GameObject obj = Instantiate(flatground, transform.position + new Vector3(0, laststate == 2 ? height / 2 : laststate == 1 ? -(height / 2) : 0, 0), Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(laststate == 2 ? angle : laststate == 1 ? -angle : 0, 0, 0)), spawnparent);
         obj.transform.localScale = new Vector3(width,0.01f,(laststate == 0)?length:slopeheight);
         if (!(transform.rotation.eulerAngles.y > 170 && transform.rotation.eulerAngles.y < 190))

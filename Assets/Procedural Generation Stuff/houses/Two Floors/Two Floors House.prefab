@@ -822,6 +822,7 @@ GameObject:
   - component: {fileID: 8430196402351017602}
   - component: {fileID: 4748495179642103462}
   - component: {fileID: 5103502916298057730}
+  - component: {fileID: 3042685824776220050}
   m_Layer: 12
   m_Name: Two Floors House
   m_TagString: Untagged
@@ -929,6 +930,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.78418314, y: 0.6402837, z: 0.98034096}
   m_Center: {x: 0.09167575, y: -0.17985873, z: -0.004240704}
+--- !u!114 &3042685824776220050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4978829806526119525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b1fa7924e6552e42b1e4724b2f4ad3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GreenDelivery: {fileID: 8670544753631877945}
+  YellowDelivery: {fileID: 184813303066463357}
+  RedDelivery: {fileID: 1498229434884788638}
+  HouseModel: {fileID: 4485232368400686987}
+  terrainhouse: 0
+  slope: 0
 --- !u!1 &6059831195378315360
 GameObject:
   m_ObjectHideFlags: 0
@@ -1825,6 +1844,12 @@ PrefabInstance:
 --- !u!4 &3852107926158902577 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8274a5f579dbd8a47a030ff11dcbe02e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3674891952380601050}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4485232368400686987 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8274a5f579dbd8a47a030ff11dcbe02e,
     type: 3}
   m_PrefabInstance: {fileID: 3674891952380601050}
   m_PrefabAsset: {fileID: 0}

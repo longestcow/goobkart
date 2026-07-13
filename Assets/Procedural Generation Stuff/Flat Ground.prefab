@@ -106,6 +106,58 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.559224, y: 0.23199296, z: 9.976881}
   m_Center: {x: -0.7368312, y: 0.1335665, z: 0.008223534}
+--- !u!1 &199189353591419250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8127454203823308286}
+  - component: {fileID: 1492314158964351127}
+  m_Layer: 0
+  m_Name: Treespawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8127454203823308286
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199189353591419250}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2, y: 499.00003, z: 0}
+  m_LocalScale: {x: 0.8, y: 713.18, z: 0.8}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8200937619622402831}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1492314158964351127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199189353591419250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff86ae2f64220d46a6a4da43a72a5e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  housesprefabs:
+  - {fileID: 4978829806526119525, guid: 2d1a66900bfb3914e83ab7b0477a0b27, type: 3}
+  nonhousesprefabs:
+  - {fileID: 4978829806526119525, guid: 2d1a66900bfb3914e83ab7b0477a0b27, type: 3}
+  obj: {fileID: 0}
+  unimportanthouse: 1
+  terrain: 1
+  chanceofnonhouse: 0
 --- !u!1 &227230355150325339
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,6 +246,156 @@ Transform:
   - {fileID: 4417921591506695109}
   m_Father: {fileID: 952467404698494539}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &487096274031599038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6297187232762770959}
+  - component: {fileID: 1024753293899556837}
+  m_Layer: 0
+  m_Name: HouseSpawner 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6297187232762770959
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487096274031599038}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2, y: 499.00003, z: 0}
+  m_LocalScale: {x: 0.8, y: 713.18, z: 0.8}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6334424307800695491}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1024753293899556837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487096274031599038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff86ae2f64220d46a6a4da43a72a5e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  housesprefabs:
+  - {fileID: 4978829806526119525, guid: 6838e0d9cfb34b841b23ee141f27ff45, type: 3}
+  - {fileID: 4978829806526119525, guid: ab04560b29710b840866eb0ed11f5de2, type: 3}
+  - {fileID: 4978829806526119525, guid: 97e05ed4620b4f946b7a329608b41126, type: 3}
+  - {fileID: 4978829806526119525, guid: 6c469c42c6d6d204ebf3fe8a99687616, type: 3}
+  - {fileID: 4978829806526119525, guid: 765806211498100458db9596ab9595e5, type: 3}
+  - {fileID: 4978829806526119525, guid: 1c2d0ac5eda6c4f419e2d4de033f3a2f, type: 3}
+  - {fileID: 4978829806526119525, guid: bd450fdddc8b06749a5341d73421c317, type: 3}
+  - {fileID: 4978829806526119525, guid: 468dc823878e0ed4e86418059b33c915, type: 3}
+  - {fileID: 4978829806526119525, guid: 64a0e16298a9dcb459122ac53415cdb9, type: 3}
+  - {fileID: 4978829806526119525, guid: cf95db2c38edee44d93eb75635203afa, type: 3}
+  - {fileID: 4978829806526119525, guid: 48ead7fa92b87f645ac963052210491a, type: 3}
+  - {fileID: 4978829806526119525, guid: 3666cd91fb398df44b85bee3ff2341a8, type: 3}
+  - {fileID: 4978829806526119525, guid: 4fe09194bae829348b511826fa9e070a, type: 3}
+  - {fileID: 4978829806526119525, guid: 2ced81f20856a1e469b6a7dc8343e159, type: 3}
+  - {fileID: 4978829806526119525, guid: ba4e661e09e31c043b8b7b99b24e5f85, type: 3}
+  nonhousesprefabs:
+  - {fileID: 4978829806526119525, guid: 67fcd9bdd54a3344fba8127dddcb25ca, type: 3}
+  - {fileID: 4978829806526119525, guid: ddaaf81487f51b74fad03fcbc76c773f, type: 3}
+  - {fileID: 4978829806526119525, guid: a74439816f34ab84e9eca703cb8cdf80, type: 3}
+  - {fileID: 4978829806526119525, guid: 0d866a441d37a6e42bf048d422c9c1c5, type: 3}
+  - {fileID: 4978829806526119525, guid: bc73146d2c918e442aa6bf6f323a79b5, type: 3}
+  - {fileID: 3899092889959454818, guid: 0b8665c02aa92da47b52e6a1e0af07fd, type: 3}
+  - {fileID: 3899092889959454818, guid: 04e906a30ba15df4ea9a0c1401da9bb4, type: 3}
+  - {fileID: 3899092889959454818, guid: 33a35ddfbfe01b6488d2ab1f775f6707, type: 3}
+  - {fileID: 3899092889959454818, guid: 478160ae37303e84b920ff9948feaec2, type: 3}
+  - {fileID: 3899092889959454818, guid: a42fb53d0cacd194e9b1346918353bbf, type: 3}
+  obj: {fileID: 0}
+  unimportanthouse: 1
+  terrain: 1
+  chanceofnonhouse: 5
+--- !u!1 &558550004088427258
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7180184355017865421}
+  - component: {fileID: 7719003882216164025}
+  m_Layer: 0
+  m_Name: HouseSpawner 2 (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7180184355017865421
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558550004088427258}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 2, y: 498.99997, z: -1}
+  m_LocalScale: {x: 0.8, y: 713.18, z: 0.8}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4844413085762998555}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &7719003882216164025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558550004088427258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff86ae2f64220d46a6a4da43a72a5e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  housesprefabs:
+  - {fileID: 4978829806526119525, guid: 6838e0d9cfb34b841b23ee141f27ff45, type: 3}
+  - {fileID: 4978829806526119525, guid: ab04560b29710b840866eb0ed11f5de2, type: 3}
+  - {fileID: 4978829806526119525, guid: 97e05ed4620b4f946b7a329608b41126, type: 3}
+  - {fileID: 4978829806526119525, guid: 6c469c42c6d6d204ebf3fe8a99687616, type: 3}
+  - {fileID: 4978829806526119525, guid: 765806211498100458db9596ab9595e5, type: 3}
+  - {fileID: 4978829806526119525, guid: 1c2d0ac5eda6c4f419e2d4de033f3a2f, type: 3}
+  - {fileID: 4978829806526119525, guid: bd450fdddc8b06749a5341d73421c317, type: 3}
+  - {fileID: 4978829806526119525, guid: 468dc823878e0ed4e86418059b33c915, type: 3}
+  - {fileID: 4978829806526119525, guid: 64a0e16298a9dcb459122ac53415cdb9, type: 3}
+  - {fileID: 4978829806526119525, guid: cf95db2c38edee44d93eb75635203afa, type: 3}
+  - {fileID: 4978829806526119525, guid: 48ead7fa92b87f645ac963052210491a, type: 3}
+  - {fileID: 4978829806526119525, guid: 3666cd91fb398df44b85bee3ff2341a8, type: 3}
+  - {fileID: 4978829806526119525, guid: 4fe09194bae829348b511826fa9e070a, type: 3}
+  - {fileID: 4978829806526119525, guid: 2ced81f20856a1e469b6a7dc8343e159, type: 3}
+  - {fileID: 4978829806526119525, guid: ba4e661e09e31c043b8b7b99b24e5f85, type: 3}
+  nonhousesprefabs:
+  - {fileID: 4978829806526119525, guid: 67fcd9bdd54a3344fba8127dddcb25ca, type: 3}
+  - {fileID: 4978829806526119525, guid: ddaaf81487f51b74fad03fcbc76c773f, type: 3}
+  - {fileID: 4978829806526119525, guid: a74439816f34ab84e9eca703cb8cdf80, type: 3}
+  - {fileID: 4978829806526119525, guid: 0d866a441d37a6e42bf048d422c9c1c5, type: 3}
+  - {fileID: 4978829806526119525, guid: bc73146d2c918e442aa6bf6f323a79b5, type: 3}
+  - {fileID: 3899092889959454818, guid: 0b8665c02aa92da47b52e6a1e0af07fd, type: 3}
+  - {fileID: 3899092889959454818, guid: 04e906a30ba15df4ea9a0c1401da9bb4, type: 3}
+  - {fileID: 3899092889959454818, guid: 33a35ddfbfe01b6488d2ab1f775f6707, type: 3}
+  - {fileID: 3899092889959454818, guid: 478160ae37303e84b920ff9948feaec2, type: 3}
+  - {fileID: 3899092889959454818, guid: a42fb53d0cacd194e9b1346918353bbf, type: 3}
+  obj: {fileID: 0}
+  unimportanthouse: 1
+  terrain: 1
+  chanceofnonhouse: 5
 --- !u!1 &795386461631398329
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,6 +690,43 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.5592241, y: 0.23199296, z: 9.976881}
   m_Center: {x: -0.7368312, y: 0.1335665, z: 0.008229347}
+--- !u!1 &1343156294032099671
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6334424307800695491}
+  m_Layer: 6
+  m_Name: terrain houses
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6334424307800695491
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343156294032099671}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6297187232762770959}
+  - {fileID: 1658704864732996699}
+  - {fileID: 2604865461564368935}
+  - {fileID: 4036225469017596167}
+  - {fileID: 7755678483172679472}
+  - {fileID: 7857878425458527772}
+  m_Father: {fileID: 6186459112599778023}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1451946602907416835
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,7 +830,188 @@ MonoBehaviour:
   nonhousesprefabs: []
   obj: {fileID: 0}
   unimportanthouse: 1
+  terrain: 0
   chanceofnonhouse: 0
+--- !u!1 &1688416122957799363
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6466583854063319336}
+  - component: {fileID: 2278524054735485625}
+  - component: {fileID: 641188197340851273}
+  - component: {fileID: 6365320563577746898}
+  m_Layer: 14
+  m_Name: House Check
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6466583854063319336
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688416122957799363}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.1, y: 1.9001007, z: 0}
+  m_LocalScale: {x: 1, y: 1000, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8785036575398253970}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &2278524054735485625
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688416122957799363}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &641188197340851273
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688416122957799363}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 0878eb70eb06de94592abc49ad074893, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6365320563577746898
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688416122957799363}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1875858959797774006
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5150084185765339077}
+  - component: {fileID: 1020479676238422270}
+  m_Layer: 0
+  m_Name: HouseSpawner 1 (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5150084185765339077
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875858959797774006}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2, y: 499.00003, z: -1}
+  m_LocalScale: {x: 0.8, y: 713.18, z: 0.8}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4844413085762998555}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1020479676238422270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875858959797774006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff86ae2f64220d46a6a4da43a72a5e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  housesprefabs:
+  - {fileID: 4978829806526119525, guid: 6838e0d9cfb34b841b23ee141f27ff45, type: 3}
+  - {fileID: 4978829806526119525, guid: ab04560b29710b840866eb0ed11f5de2, type: 3}
+  - {fileID: 4978829806526119525, guid: 97e05ed4620b4f946b7a329608b41126, type: 3}
+  - {fileID: 4978829806526119525, guid: 6c469c42c6d6d204ebf3fe8a99687616, type: 3}
+  - {fileID: 4978829806526119525, guid: 765806211498100458db9596ab9595e5, type: 3}
+  - {fileID: 4978829806526119525, guid: 1c2d0ac5eda6c4f419e2d4de033f3a2f, type: 3}
+  - {fileID: 4978829806526119525, guid: bd450fdddc8b06749a5341d73421c317, type: 3}
+  - {fileID: 4978829806526119525, guid: 468dc823878e0ed4e86418059b33c915, type: 3}
+  - {fileID: 4978829806526119525, guid: 64a0e16298a9dcb459122ac53415cdb9, type: 3}
+  - {fileID: 4978829806526119525, guid: cf95db2c38edee44d93eb75635203afa, type: 3}
+  - {fileID: 4978829806526119525, guid: 48ead7fa92b87f645ac963052210491a, type: 3}
+  - {fileID: 4978829806526119525, guid: 3666cd91fb398df44b85bee3ff2341a8, type: 3}
+  - {fileID: 4978829806526119525, guid: 4fe09194bae829348b511826fa9e070a, type: 3}
+  - {fileID: 4978829806526119525, guid: 2ced81f20856a1e469b6a7dc8343e159, type: 3}
+  - {fileID: 4978829806526119525, guid: ba4e661e09e31c043b8b7b99b24e5f85, type: 3}
+  nonhousesprefabs:
+  - {fileID: 4978829806526119525, guid: 67fcd9bdd54a3344fba8127dddcb25ca, type: 3}
+  - {fileID: 4978829806526119525, guid: ddaaf81487f51b74fad03fcbc76c773f, type: 3}
+  - {fileID: 4978829806526119525, guid: a74439816f34ab84e9eca703cb8cdf80, type: 3}
+  - {fileID: 4978829806526119525, guid: 0d866a441d37a6e42bf048d422c9c1c5, type: 3}
+  - {fileID: 4978829806526119525, guid: bc73146d2c918e442aa6bf6f323a79b5, type: 3}
+  - {fileID: 3899092889959454818, guid: 0b8665c02aa92da47b52e6a1e0af07fd, type: 3}
+  - {fileID: 3899092889959454818, guid: 04e906a30ba15df4ea9a0c1401da9bb4, type: 3}
+  - {fileID: 3899092889959454818, guid: 33a35ddfbfe01b6488d2ab1f775f6707, type: 3}
+  - {fileID: 3899092889959454818, guid: 478160ae37303e84b920ff9948feaec2, type: 3}
+  - {fileID: 3899092889959454818, guid: a42fb53d0cacd194e9b1346918353bbf, type: 3}
+  obj: {fileID: 0}
+  unimportanthouse: 1
+  terrain: 1
+  chanceofnonhouse: 5
 --- !u!1 &1940101086867730348
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,6 +1065,156 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.3450494, y: 0.23199297, z: 9.976881}
   m_Center: {x: 0.94575274, y: 0.4024368, z: 0.008223534}
+--- !u!1 &1969370540256042085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7979175260836306394}
+  - component: {fileID: 8192113777418203636}
+  m_Layer: 0
+  m_Name: HouseSpawner 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7979175260836306394
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969370540256042085}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2, y: 499.00003, z: 0}
+  m_LocalScale: {x: 0.8, y: 713.18, z: 0.8}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4844413085762998555}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8192113777418203636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969370540256042085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff86ae2f64220d46a6a4da43a72a5e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  housesprefabs:
+  - {fileID: 4978829806526119525, guid: 6838e0d9cfb34b841b23ee141f27ff45, type: 3}
+  - {fileID: 4978829806526119525, guid: ab04560b29710b840866eb0ed11f5de2, type: 3}
+  - {fileID: 4978829806526119525, guid: 97e05ed4620b4f946b7a329608b41126, type: 3}
+  - {fileID: 4978829806526119525, guid: 6c469c42c6d6d204ebf3fe8a99687616, type: 3}
+  - {fileID: 4978829806526119525, guid: 765806211498100458db9596ab9595e5, type: 3}
+  - {fileID: 4978829806526119525, guid: 1c2d0ac5eda6c4f419e2d4de033f3a2f, type: 3}
+  - {fileID: 4978829806526119525, guid: bd450fdddc8b06749a5341d73421c317, type: 3}
+  - {fileID: 4978829806526119525, guid: 468dc823878e0ed4e86418059b33c915, type: 3}
+  - {fileID: 4978829806526119525, guid: 64a0e16298a9dcb459122ac53415cdb9, type: 3}
+  - {fileID: 4978829806526119525, guid: cf95db2c38edee44d93eb75635203afa, type: 3}
+  - {fileID: 4978829806526119525, guid: 48ead7fa92b87f645ac963052210491a, type: 3}
+  - {fileID: 4978829806526119525, guid: 3666cd91fb398df44b85bee3ff2341a8, type: 3}
+  - {fileID: 4978829806526119525, guid: 4fe09194bae829348b511826fa9e070a, type: 3}
+  - {fileID: 4978829806526119525, guid: 2ced81f20856a1e469b6a7dc8343e159, type: 3}
+  - {fileID: 4978829806526119525, guid: ba4e661e09e31c043b8b7b99b24e5f85, type: 3}
+  nonhousesprefabs:
+  - {fileID: 4978829806526119525, guid: 67fcd9bdd54a3344fba8127dddcb25ca, type: 3}
+  - {fileID: 4978829806526119525, guid: ddaaf81487f51b74fad03fcbc76c773f, type: 3}
+  - {fileID: 4978829806526119525, guid: a74439816f34ab84e9eca703cb8cdf80, type: 3}
+  - {fileID: 4978829806526119525, guid: 0d866a441d37a6e42bf048d422c9c1c5, type: 3}
+  - {fileID: 4978829806526119525, guid: bc73146d2c918e442aa6bf6f323a79b5, type: 3}
+  - {fileID: 3899092889959454818, guid: 0b8665c02aa92da47b52e6a1e0af07fd, type: 3}
+  - {fileID: 3899092889959454818, guid: 04e906a30ba15df4ea9a0c1401da9bb4, type: 3}
+  - {fileID: 3899092889959454818, guid: 33a35ddfbfe01b6488d2ab1f775f6707, type: 3}
+  - {fileID: 3899092889959454818, guid: 478160ae37303e84b920ff9948feaec2, type: 3}
+  - {fileID: 3899092889959454818, guid: a42fb53d0cacd194e9b1346918353bbf, type: 3}
+  obj: {fileID: 0}
+  unimportanthouse: 1
+  terrain: 1
+  chanceofnonhouse: 5
+--- !u!1 &2115657154611071429
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9204157596880168259}
+  - component: {fileID: 7923281419360870242}
+  m_Layer: 0
+  m_Name: HouseSpawner 1 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9204157596880168259
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115657154611071429}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2, y: 499.00003, z: 1}
+  m_LocalScale: {x: 0.8, y: 713.18, z: 0.8}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4844413085762998555}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7923281419360870242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115657154611071429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff86ae2f64220d46a6a4da43a72a5e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  housesprefabs:
+  - {fileID: 4978829806526119525, guid: 6838e0d9cfb34b841b23ee141f27ff45, type: 3}
+  - {fileID: 4978829806526119525, guid: ab04560b29710b840866eb0ed11f5de2, type: 3}
+  - {fileID: 4978829806526119525, guid: 97e05ed4620b4f946b7a329608b41126, type: 3}
+  - {fileID: 4978829806526119525, guid: 6c469c42c6d6d204ebf3fe8a99687616, type: 3}
+  - {fileID: 4978829806526119525, guid: 765806211498100458db9596ab9595e5, type: 3}
+  - {fileID: 4978829806526119525, guid: 1c2d0ac5eda6c4f419e2d4de033f3a2f, type: 3}
+  - {fileID: 4978829806526119525, guid: bd450fdddc8b06749a5341d73421c317, type: 3}
+  - {fileID: 4978829806526119525, guid: 468dc823878e0ed4e86418059b33c915, type: 3}
+  - {fileID: 4978829806526119525, guid: 64a0e16298a9dcb459122ac53415cdb9, type: 3}
+  - {fileID: 4978829806526119525, guid: cf95db2c38edee44d93eb75635203afa, type: 3}
+  - {fileID: 4978829806526119525, guid: 48ead7fa92b87f645ac963052210491a, type: 3}
+  - {fileID: 4978829806526119525, guid: 3666cd91fb398df44b85bee3ff2341a8, type: 3}
+  - {fileID: 4978829806526119525, guid: 4fe09194bae829348b511826fa9e070a, type: 3}
+  - {fileID: 4978829806526119525, guid: 2ced81f20856a1e469b6a7dc8343e159, type: 3}
+  - {fileID: 4978829806526119525, guid: ba4e661e09e31c043b8b7b99b24e5f85, type: 3}
+  nonhousesprefabs:
+  - {fileID: 4978829806526119525, guid: 67fcd9bdd54a3344fba8127dddcb25ca, type: 3}
+  - {fileID: 4978829806526119525, guid: ddaaf81487f51b74fad03fcbc76c773f, type: 3}
+  - {fileID: 4978829806526119525, guid: a74439816f34ab84e9eca703cb8cdf80, type: 3}
+  - {fileID: 4978829806526119525, guid: 0d866a441d37a6e42bf048d422c9c1c5, type: 3}
+  - {fileID: 4978829806526119525, guid: bc73146d2c918e442aa6bf6f323a79b5, type: 3}
+  - {fileID: 3899092889959454818, guid: 0b8665c02aa92da47b52e6a1e0af07fd, type: 3}
+  - {fileID: 3899092889959454818, guid: 04e906a30ba15df4ea9a0c1401da9bb4, type: 3}
+  - {fileID: 3899092889959454818, guid: 33a35ddfbfe01b6488d2ab1f775f6707, type: 3}
+  - {fileID: 3899092889959454818, guid: 478160ae37303e84b920ff9948feaec2, type: 3}
+  - {fileID: 3899092889959454818, guid: a42fb53d0cacd194e9b1346918353bbf, type: 3}
+  obj: {fileID: 0}
+  unimportanthouse: 1
+  terrain: 1
+  chanceofnonhouse: 5
 --- !u!1 &2172719431557087273
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,6 +1268,81 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.3450494, y: 0.23199297, z: 9.976881}
   m_Center: {x: 0.94575274, y: 0.4024368, z: 0.008223534}
+--- !u!1 &2229440886859600533
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7755678483172679472}
+  - component: {fileID: 3407638155127494814}
+  m_Layer: 0
+  m_Name: HouseSpawner 2 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7755678483172679472
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2229440886859600533}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 2, y: 498.99997, z: 1}
+  m_LocalScale: {x: 0.8, y: 713.18, z: 0.8}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6334424307800695491}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &3407638155127494814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2229440886859600533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff86ae2f64220d46a6a4da43a72a5e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  housesprefabs:
+  - {fileID: 4978829806526119525, guid: 6838e0d9cfb34b841b23ee141f27ff45, type: 3}
+  - {fileID: 4978829806526119525, guid: ab04560b29710b840866eb0ed11f5de2, type: 3}
+  - {fileID: 4978829806526119525, guid: 97e05ed4620b4f946b7a329608b41126, type: 3}
+  - {fileID: 4978829806526119525, guid: 6c469c42c6d6d204ebf3fe8a99687616, type: 3}
+  - {fileID: 4978829806526119525, guid: 765806211498100458db9596ab9595e5, type: 3}
+  - {fileID: 4978829806526119525, guid: 1c2d0ac5eda6c4f419e2d4de033f3a2f, type: 3}
+  - {fileID: 4978829806526119525, guid: bd450fdddc8b06749a5341d73421c317, type: 3}
+  - {fileID: 4978829806526119525, guid: 468dc823878e0ed4e86418059b33c915, type: 3}
+  - {fileID: 4978829806526119525, guid: 64a0e16298a9dcb459122ac53415cdb9, type: 3}
+  - {fileID: 4978829806526119525, guid: cf95db2c38edee44d93eb75635203afa, type: 3}
+  - {fileID: 4978829806526119525, guid: 48ead7fa92b87f645ac963052210491a, type: 3}
+  - {fileID: 4978829806526119525, guid: 3666cd91fb398df44b85bee3ff2341a8, type: 3}
+  - {fileID: 4978829806526119525, guid: 4fe09194bae829348b511826fa9e070a, type: 3}
+  - {fileID: 4978829806526119525, guid: 2ced81f20856a1e469b6a7dc8343e159, type: 3}
+  - {fileID: 4978829806526119525, guid: ba4e661e09e31c043b8b7b99b24e5f85, type: 3}
+  nonhousesprefabs:
+  - {fileID: 4978829806526119525, guid: 67fcd9bdd54a3344fba8127dddcb25ca, type: 3}
+  - {fileID: 4978829806526119525, guid: ddaaf81487f51b74fad03fcbc76c773f, type: 3}
+  - {fileID: 4978829806526119525, guid: a74439816f34ab84e9eca703cb8cdf80, type: 3}
+  - {fileID: 4978829806526119525, guid: 0d866a441d37a6e42bf048d422c9c1c5, type: 3}
+  - {fileID: 4978829806526119525, guid: bc73146d2c918e442aa6bf6f323a79b5, type: 3}
+  - {fileID: 3899092889959454818, guid: 0b8665c02aa92da47b52e6a1e0af07fd, type: 3}
+  - {fileID: 3899092889959454818, guid: 04e906a30ba15df4ea9a0c1401da9bb4, type: 3}
+  - {fileID: 3899092889959454818, guid: 33a35ddfbfe01b6488d2ab1f775f6707, type: 3}
+  - {fileID: 3899092889959454818, guid: 478160ae37303e84b920ff9948feaec2, type: 3}
+  - {fileID: 3899092889959454818, guid: a42fb53d0cacd194e9b1346918353bbf, type: 3}
+  obj: {fileID: 0}
+  unimportanthouse: 1
+  terrain: 1
+  chanceofnonhouse: 5
 --- !u!1 &2334932670349988493
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,6 +1393,7 @@ MonoBehaviour:
   nonhousesprefabs: []
   obj: {fileID: 0}
   unimportanthouse: 1
+  terrain: 0
   chanceofnonhouse: 0
 --- !u!1 &2350232542182244708
 GameObject:
@@ -826,6 +1472,134 @@ MonoBehaviour:
   - {fileID: 3899092889959454818, guid: a42fb53d0cacd194e9b1346918353bbf, type: 3}
   obj: {fileID: 0}
   unimportanthouse: 1
+  terrain: 0
+  chanceofnonhouse: 5
+--- !u!1 &2478987622071261216
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1753002734519699207}
+  - component: {fileID: 1925652556195521891}
+  m_Layer: 0
+  m_Name: Treespawner (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1753002734519699207
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2478987622071261216}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4, y: 499.00003, z: 0}
+  m_LocalScale: {x: 0.8, y: 713.18, z: 0.8}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1874812426207711852}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1925652556195521891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2478987622071261216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff86ae2f64220d46a6a4da43a72a5e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  housesprefabs:
+  - {fileID: 4978829806526119525, guid: 2d1a66900bfb3914e83ab7b0477a0b27, type: 3}
+  nonhousesprefabs:
+  - {fileID: 4978829806526119525, guid: 2d1a66900bfb3914e83ab7b0477a0b27, type: 3}
+  obj: {fileID: 0}
+  unimportanthouse: 1
+  terrain: 1
+  chanceofnonhouse: 0
+--- !u!1 &2602688466395166702
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1658704864732996699}
+  - component: {fileID: 1804749781168161941}
+  m_Layer: 0
+  m_Name: HouseSpawner 1 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1658704864732996699
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2602688466395166702}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2, y: 499.00003, z: 1}
+  m_LocalScale: {x: 0.8, y: 713.18, z: 0.8}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6334424307800695491}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1804749781168161941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2602688466395166702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff86ae2f64220d46a6a4da43a72a5e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  housesprefabs:
+  - {fileID: 4978829806526119525, guid: 6838e0d9cfb34b841b23ee141f27ff45, type: 3}
+  - {fileID: 4978829806526119525, guid: ab04560b29710b840866eb0ed11f5de2, type: 3}
+  - {fileID: 4978829806526119525, guid: 97e05ed4620b4f946b7a329608b41126, type: 3}
+  - {fileID: 4978829806526119525, guid: 6c469c42c6d6d204ebf3fe8a99687616, type: 3}
+  - {fileID: 4978829806526119525, guid: 765806211498100458db9596ab9595e5, type: 3}
+  - {fileID: 4978829806526119525, guid: 1c2d0ac5eda6c4f419e2d4de033f3a2f, type: 3}
+  - {fileID: 4978829806526119525, guid: bd450fdddc8b06749a5341d73421c317, type: 3}
+  - {fileID: 4978829806526119525, guid: 468dc823878e0ed4e86418059b33c915, type: 3}
+  - {fileID: 4978829806526119525, guid: 64a0e16298a9dcb459122ac53415cdb9, type: 3}
+  - {fileID: 4978829806526119525, guid: cf95db2c38edee44d93eb75635203afa, type: 3}
+  - {fileID: 4978829806526119525, guid: 48ead7fa92b87f645ac963052210491a, type: 3}
+  - {fileID: 4978829806526119525, guid: 3666cd91fb398df44b85bee3ff2341a8, type: 3}
+  - {fileID: 4978829806526119525, guid: 4fe09194bae829348b511826fa9e070a, type: 3}
+  - {fileID: 4978829806526119525, guid: 2ced81f20856a1e469b6a7dc8343e159, type: 3}
+  - {fileID: 4978829806526119525, guid: ba4e661e09e31c043b8b7b99b24e5f85, type: 3}
+  nonhousesprefabs:
+  - {fileID: 4978829806526119525, guid: 67fcd9bdd54a3344fba8127dddcb25ca, type: 3}
+  - {fileID: 4978829806526119525, guid: ddaaf81487f51b74fad03fcbc76c773f, type: 3}
+  - {fileID: 4978829806526119525, guid: a74439816f34ab84e9eca703cb8cdf80, type: 3}
+  - {fileID: 4978829806526119525, guid: 0d866a441d37a6e42bf048d422c9c1c5, type: 3}
+  - {fileID: 4978829806526119525, guid: bc73146d2c918e442aa6bf6f323a79b5, type: 3}
+  - {fileID: 3899092889959454818, guid: 0b8665c02aa92da47b52e6a1e0af07fd, type: 3}
+  - {fileID: 3899092889959454818, guid: 04e906a30ba15df4ea9a0c1401da9bb4, type: 3}
+  - {fileID: 3899092889959454818, guid: 33a35ddfbfe01b6488d2ab1f775f6707, type: 3}
+  - {fileID: 3899092889959454818, guid: 478160ae37303e84b920ff9948feaec2, type: 3}
+  - {fileID: 3899092889959454818, guid: a42fb53d0cacd194e9b1346918353bbf, type: 3}
+  obj: {fileID: 0}
+  unimportanthouse: 1
+  terrain: 1
   chanceofnonhouse: 5
 --- !u!1 &2694753604188786826
 GameObject:
@@ -953,6 +1727,7 @@ MonoBehaviour:
   - {fileID: 3899092889959454818, guid: a42fb53d0cacd194e9b1346918353bbf, type: 3}
   obj: {fileID: 0}
   unimportanthouse: 0
+  terrain: 0
   chanceofnonhouse: 5
 --- !u!1 &2725446131954010052
 GameObject:
@@ -1438,6 +2213,82 @@ MonoBehaviour:
   - {fileID: 3899092889959454818, guid: a42fb53d0cacd194e9b1346918353bbf, type: 3}
   obj: {fileID: 0}
   unimportanthouse: 0
+  terrain: 0
+  chanceofnonhouse: 5
+--- !u!1 &3476327234577613681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 223426846652257936}
+  - component: {fileID: 4623697228584253214}
+  m_Layer: 0
+  m_Name: HouseSpawner 2 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &223426846652257936
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3476327234577613681}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 2, y: 498.99997, z: 1}
+  m_LocalScale: {x: 0.8, y: 713.18, z: 0.8}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4844413085762998555}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &4623697228584253214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3476327234577613681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff86ae2f64220d46a6a4da43a72a5e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  housesprefabs:
+  - {fileID: 4978829806526119525, guid: 6838e0d9cfb34b841b23ee141f27ff45, type: 3}
+  - {fileID: 4978829806526119525, guid: ab04560b29710b840866eb0ed11f5de2, type: 3}
+  - {fileID: 4978829806526119525, guid: 97e05ed4620b4f946b7a329608b41126, type: 3}
+  - {fileID: 4978829806526119525, guid: 6c469c42c6d6d204ebf3fe8a99687616, type: 3}
+  - {fileID: 4978829806526119525, guid: 765806211498100458db9596ab9595e5, type: 3}
+  - {fileID: 4978829806526119525, guid: 1c2d0ac5eda6c4f419e2d4de033f3a2f, type: 3}
+  - {fileID: 4978829806526119525, guid: bd450fdddc8b06749a5341d73421c317, type: 3}
+  - {fileID: 4978829806526119525, guid: 468dc823878e0ed4e86418059b33c915, type: 3}
+  - {fileID: 4978829806526119525, guid: 64a0e16298a9dcb459122ac53415cdb9, type: 3}
+  - {fileID: 4978829806526119525, guid: cf95db2c38edee44d93eb75635203afa, type: 3}
+  - {fileID: 4978829806526119525, guid: 48ead7fa92b87f645ac963052210491a, type: 3}
+  - {fileID: 4978829806526119525, guid: 3666cd91fb398df44b85bee3ff2341a8, type: 3}
+  - {fileID: 4978829806526119525, guid: 4fe09194bae829348b511826fa9e070a, type: 3}
+  - {fileID: 4978829806526119525, guid: 2ced81f20856a1e469b6a7dc8343e159, type: 3}
+  - {fileID: 4978829806526119525, guid: ba4e661e09e31c043b8b7b99b24e5f85, type: 3}
+  nonhousesprefabs:
+  - {fileID: 4978829806526119525, guid: 67fcd9bdd54a3344fba8127dddcb25ca, type: 3}
+  - {fileID: 4978829806526119525, guid: ddaaf81487f51b74fad03fcbc76c773f, type: 3}
+  - {fileID: 4978829806526119525, guid: a74439816f34ab84e9eca703cb8cdf80, type: 3}
+  - {fileID: 4978829806526119525, guid: 0d866a441d37a6e42bf048d422c9c1c5, type: 3}
+  - {fileID: 4978829806526119525, guid: bc73146d2c918e442aa6bf6f323a79b5, type: 3}
+  - {fileID: 3899092889959454818, guid: 0b8665c02aa92da47b52e6a1e0af07fd, type: 3}
+  - {fileID: 3899092889959454818, guid: 04e906a30ba15df4ea9a0c1401da9bb4, type: 3}
+  - {fileID: 3899092889959454818, guid: 33a35ddfbfe01b6488d2ab1f775f6707, type: 3}
+  - {fileID: 3899092889959454818, guid: 478160ae37303e84b920ff9948feaec2, type: 3}
+  - {fileID: 3899092889959454818, guid: a42fb53d0cacd194e9b1346918353bbf, type: 3}
+  obj: {fileID: 0}
+  unimportanthouse: 1
+  terrain: 1
   chanceofnonhouse: 5
 --- !u!1 &3515262498278717827
 GameObject:
@@ -1675,6 +2526,58 @@ Transform:
   - {fileID: 8452300703296737157}
   m_Father: {fileID: 8785036575398253970}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4506359948429241853
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1468995034135540280}
+  - component: {fileID: 2485129648355829320}
+  m_Layer: 0
+  m_Name: Treespawner (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1468995034135540280
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4506359948429241853}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3, y: 499.00003, z: 0}
+  m_LocalScale: {x: 0.8, y: 713.18, z: 0.8}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1874812426207711852}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2485129648355829320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4506359948429241853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff86ae2f64220d46a6a4da43a72a5e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  housesprefabs:
+  - {fileID: 4978829806526119525, guid: 2d1a66900bfb3914e83ab7b0477a0b27, type: 3}
+  nonhousesprefabs:
+  - {fileID: 4978829806526119525, guid: 2d1a66900bfb3914e83ab7b0477a0b27, type: 3}
+  obj: {fileID: 0}
+  unimportanthouse: 1
+  terrain: 1
+  chanceofnonhouse: 0
 --- !u!1 &4571386653481910497
 GameObject:
   m_ObjectHideFlags: 0
@@ -2040,6 +2943,39 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &5138937178971290019
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4074822012552518276}
+  m_Layer: 6
+  m_Name: tree spawners
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &4074822012552518276
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5138937178971290019}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8200937619622402831}
+  - {fileID: 1874812426207711852}
+  m_Father: {fileID: 8785036575398253970}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5359443785066593398
 GameObject:
   m_ObjectHideFlags: 0
@@ -2290,6 +3226,7 @@ Transform:
   m_Children:
   - {fileID: 2285082515829910912}
   - {fileID: 6485211611010001143}
+  - {fileID: 4844413085762998555}
   m_Father: {fileID: 8785036575398253970}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5990501582966079855
@@ -2342,6 +3279,8 @@ Transform:
   - {fileID: 1010785383811815887}
   - {fileID: 2255154227257230948}
   - {fileID: 1449087960894349387}
+  - {fileID: 6466583854063319336}
+  - {fileID: 4074822012552518276}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1784311783789599955
@@ -2433,6 +3372,43 @@ MonoBehaviour:
   index: 0
   slope: 0
   modified: 0
+--- !u!1 &6135472901093708606
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4844413085762998555}
+  m_Layer: 6
+  m_Name: terrain houses
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4844413085762998555
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6135472901093708606}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7979175260836306394}
+  - {fileID: 9204157596880168259}
+  - {fileID: 5150084185765339077}
+  - {fileID: 8912328337164261756}
+  - {fileID: 223426846652257936}
+  - {fileID: 7180184355017865421}
+  m_Father: {fileID: 7613424838957194134}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6146739145198500683
 GameObject:
   m_ObjectHideFlags: 0
@@ -2486,6 +3462,81 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.3450494, y: 0.231993, z: 1.2999103}
   m_Center: {x: 0.9460187, y: 0.40256092, z: -4.330265}
+--- !u!1 &6151201192300081572
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2604865461564368935}
+  - component: {fileID: 3674593221282897082}
+  m_Layer: 0
+  m_Name: HouseSpawner 1 (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2604865461564368935
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6151201192300081572}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2, y: 499.00003, z: -1}
+  m_LocalScale: {x: 0.8, y: 713.18, z: 0.8}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6334424307800695491}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3674593221282897082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6151201192300081572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff86ae2f64220d46a6a4da43a72a5e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  housesprefabs:
+  - {fileID: 4978829806526119525, guid: 6838e0d9cfb34b841b23ee141f27ff45, type: 3}
+  - {fileID: 4978829806526119525, guid: ab04560b29710b840866eb0ed11f5de2, type: 3}
+  - {fileID: 4978829806526119525, guid: 97e05ed4620b4f946b7a329608b41126, type: 3}
+  - {fileID: 4978829806526119525, guid: 6c469c42c6d6d204ebf3fe8a99687616, type: 3}
+  - {fileID: 4978829806526119525, guid: 765806211498100458db9596ab9595e5, type: 3}
+  - {fileID: 4978829806526119525, guid: 1c2d0ac5eda6c4f419e2d4de033f3a2f, type: 3}
+  - {fileID: 4978829806526119525, guid: bd450fdddc8b06749a5341d73421c317, type: 3}
+  - {fileID: 4978829806526119525, guid: 468dc823878e0ed4e86418059b33c915, type: 3}
+  - {fileID: 4978829806526119525, guid: 64a0e16298a9dcb459122ac53415cdb9, type: 3}
+  - {fileID: 4978829806526119525, guid: cf95db2c38edee44d93eb75635203afa, type: 3}
+  - {fileID: 4978829806526119525, guid: 48ead7fa92b87f645ac963052210491a, type: 3}
+  - {fileID: 4978829806526119525, guid: 3666cd91fb398df44b85bee3ff2341a8, type: 3}
+  - {fileID: 4978829806526119525, guid: 4fe09194bae829348b511826fa9e070a, type: 3}
+  - {fileID: 4978829806526119525, guid: 2ced81f20856a1e469b6a7dc8343e159, type: 3}
+  - {fileID: 4978829806526119525, guid: ba4e661e09e31c043b8b7b99b24e5f85, type: 3}
+  nonhousesprefabs:
+  - {fileID: 4978829806526119525, guid: 67fcd9bdd54a3344fba8127dddcb25ca, type: 3}
+  - {fileID: 4978829806526119525, guid: ddaaf81487f51b74fad03fcbc76c773f, type: 3}
+  - {fileID: 4978829806526119525, guid: a74439816f34ab84e9eca703cb8cdf80, type: 3}
+  - {fileID: 4978829806526119525, guid: 0d866a441d37a6e42bf048d422c9c1c5, type: 3}
+  - {fileID: 4978829806526119525, guid: bc73146d2c918e442aa6bf6f323a79b5, type: 3}
+  - {fileID: 3899092889959454818, guid: 0b8665c02aa92da47b52e6a1e0af07fd, type: 3}
+  - {fileID: 3899092889959454818, guid: 04e906a30ba15df4ea9a0c1401da9bb4, type: 3}
+  - {fileID: 3899092889959454818, guid: 33a35ddfbfe01b6488d2ab1f775f6707, type: 3}
+  - {fileID: 3899092889959454818, guid: 478160ae37303e84b920ff9948feaec2, type: 3}
+  - {fileID: 3899092889959454818, guid: a42fb53d0cacd194e9b1346918353bbf, type: 3}
+  obj: {fileID: 0}
+  unimportanthouse: 1
+  terrain: 1
+  chanceofnonhouse: 5
 --- !u!1 &6270838708866039696
 GameObject:
   m_ObjectHideFlags: 0
@@ -2521,6 +3572,115 @@ Transform:
   - {fileID: 4863052021157094395}
   m_Father: {fileID: 405779978293852753}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!1 &6420652408537231808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1874812426207711852}
+  m_Layer: 6
+  m_Name: right
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1874812426207711852
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6420652408537231808}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3603877952369008518}
+  - {fileID: 1468995034135540280}
+  - {fileID: 1753002734519699207}
+  m_Father: {fileID: 4074822012552518276}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6627555999614286812
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8912328337164261756}
+  - component: {fileID: 2866006113982585887}
+  m_Layer: 0
+  m_Name: HouseSpawner 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8912328337164261756
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6627555999614286812}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 2, y: 498.99997, z: 0}
+  m_LocalScale: {x: 0.8, y: 713.18, z: 0.8}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4844413085762998555}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &2866006113982585887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6627555999614286812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff86ae2f64220d46a6a4da43a72a5e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  housesprefabs:
+  - {fileID: 4978829806526119525, guid: 6838e0d9cfb34b841b23ee141f27ff45, type: 3}
+  - {fileID: 4978829806526119525, guid: ab04560b29710b840866eb0ed11f5de2, type: 3}
+  - {fileID: 4978829806526119525, guid: 97e05ed4620b4f946b7a329608b41126, type: 3}
+  - {fileID: 4978829806526119525, guid: 6c469c42c6d6d204ebf3fe8a99687616, type: 3}
+  - {fileID: 4978829806526119525, guid: 765806211498100458db9596ab9595e5, type: 3}
+  - {fileID: 4978829806526119525, guid: 1c2d0ac5eda6c4f419e2d4de033f3a2f, type: 3}
+  - {fileID: 4978829806526119525, guid: bd450fdddc8b06749a5341d73421c317, type: 3}
+  - {fileID: 4978829806526119525, guid: 468dc823878e0ed4e86418059b33c915, type: 3}
+  - {fileID: 4978829806526119525, guid: 64a0e16298a9dcb459122ac53415cdb9, type: 3}
+  - {fileID: 4978829806526119525, guid: cf95db2c38edee44d93eb75635203afa, type: 3}
+  - {fileID: 4978829806526119525, guid: 48ead7fa92b87f645ac963052210491a, type: 3}
+  - {fileID: 4978829806526119525, guid: 3666cd91fb398df44b85bee3ff2341a8, type: 3}
+  - {fileID: 4978829806526119525, guid: 4fe09194bae829348b511826fa9e070a, type: 3}
+  - {fileID: 4978829806526119525, guid: 2ced81f20856a1e469b6a7dc8343e159, type: 3}
+  - {fileID: 4978829806526119525, guid: ba4e661e09e31c043b8b7b99b24e5f85, type: 3}
+  nonhousesprefabs:
+  - {fileID: 4978829806526119525, guid: 67fcd9bdd54a3344fba8127dddcb25ca, type: 3}
+  - {fileID: 4978829806526119525, guid: ddaaf81487f51b74fad03fcbc76c773f, type: 3}
+  - {fileID: 4978829806526119525, guid: a74439816f34ab84e9eca703cb8cdf80, type: 3}
+  - {fileID: 4978829806526119525, guid: 0d866a441d37a6e42bf048d422c9c1c5, type: 3}
+  - {fileID: 4978829806526119525, guid: bc73146d2c918e442aa6bf6f323a79b5, type: 3}
+  - {fileID: 3899092889959454818, guid: 0b8665c02aa92da47b52e6a1e0af07fd, type: 3}
+  - {fileID: 3899092889959454818, guid: 04e906a30ba15df4ea9a0c1401da9bb4, type: 3}
+  - {fileID: 3899092889959454818, guid: 33a35ddfbfe01b6488d2ab1f775f6707, type: 3}
+  - {fileID: 3899092889959454818, guid: 478160ae37303e84b920ff9948feaec2, type: 3}
+  - {fileID: 3899092889959454818, guid: a42fb53d0cacd194e9b1346918353bbf, type: 3}
+  obj: {fileID: 0}
+  unimportanthouse: 1
+  terrain: 1
+  chanceofnonhouse: 5
 --- !u!1 &6731368013656293641
 GameObject:
   m_ObjectHideFlags: 0
@@ -2815,6 +3975,58 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6853233314996522409
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1963379630437453786}
+  - component: {fileID: 1474162366678483262}
+  m_Layer: 0
+  m_Name: Treespawner (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1963379630437453786
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6853233314996522409}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3, y: 499.00003, z: 0}
+  m_LocalScale: {x: 0.8, y: 713.18, z: 0.8}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8200937619622402831}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1474162366678483262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6853233314996522409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff86ae2f64220d46a6a4da43a72a5e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  housesprefabs:
+  - {fileID: 4978829806526119525, guid: 2d1a66900bfb3914e83ab7b0477a0b27, type: 3}
+  nonhousesprefabs:
+  - {fileID: 4978829806526119525, guid: 2d1a66900bfb3914e83ab7b0477a0b27, type: 3}
+  obj: {fileID: 0}
+  unimportanthouse: 1
+  terrain: 1
+  chanceofnonhouse: 0
 --- !u!1 &6918808589136452714
 GameObject:
   m_ObjectHideFlags: 0
@@ -3057,6 +4269,58 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 8.056751, y: 0.23199296, z: 9.976881}
   m_Center: {x: 26.070877, y: 0.1335665, z: 0.008223534}
+--- !u!1 &7378429237410691148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3603877952369008518}
+  - component: {fileID: 138471681618477355}
+  m_Layer: 0
+  m_Name: Treespawner (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3603877952369008518
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7378429237410691148}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2, y: 499.00003, z: 0}
+  m_LocalScale: {x: 0.8, y: 713.18, z: 0.8}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1874812426207711852}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &138471681618477355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7378429237410691148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff86ae2f64220d46a6a4da43a72a5e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  housesprefabs:
+  - {fileID: 4978829806526119525, guid: 2d1a66900bfb3914e83ab7b0477a0b27, type: 3}
+  nonhousesprefabs:
+  - {fileID: 4978829806526119525, guid: 2d1a66900bfb3914e83ab7b0477a0b27, type: 3}
+  obj: {fileID: 0}
+  unimportanthouse: 1
+  terrain: 1
+  chanceofnonhouse: 0
 --- !u!1 &7649188751120028498
 GameObject:
   m_ObjectHideFlags: 0
@@ -3160,6 +4424,7 @@ MonoBehaviour:
   nonhousesprefabs: []
   obj: {fileID: 0}
   unimportanthouse: 1
+  terrain: 0
   chanceofnonhouse: 0
 --- !u!1 &8059903791168668709
 GameObject:
@@ -3238,6 +4503,7 @@ MonoBehaviour:
   - {fileID: 3899092889959454818, guid: a42fb53d0cacd194e9b1346918353bbf, type: 3}
   obj: {fileID: 0}
   unimportanthouse: 1
+  terrain: 0
   chanceofnonhouse: 5
 --- !u!1 &8317733630471779614
 GameObject:
@@ -3481,6 +4747,81 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &8506080178580863322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4036225469017596167}
+  - component: {fileID: 5322017683741507050}
+  m_Layer: 0
+  m_Name: HouseSpawner 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4036225469017596167
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8506080178580863322}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 2, y: 498.99997, z: 0}
+  m_LocalScale: {x: 0.8, y: 713.18, z: 0.8}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6334424307800695491}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &5322017683741507050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8506080178580863322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff86ae2f64220d46a6a4da43a72a5e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  housesprefabs:
+  - {fileID: 4978829806526119525, guid: 6838e0d9cfb34b841b23ee141f27ff45, type: 3}
+  - {fileID: 4978829806526119525, guid: ab04560b29710b840866eb0ed11f5de2, type: 3}
+  - {fileID: 4978829806526119525, guid: 97e05ed4620b4f946b7a329608b41126, type: 3}
+  - {fileID: 4978829806526119525, guid: 6c469c42c6d6d204ebf3fe8a99687616, type: 3}
+  - {fileID: 4978829806526119525, guid: 765806211498100458db9596ab9595e5, type: 3}
+  - {fileID: 4978829806526119525, guid: 1c2d0ac5eda6c4f419e2d4de033f3a2f, type: 3}
+  - {fileID: 4978829806526119525, guid: bd450fdddc8b06749a5341d73421c317, type: 3}
+  - {fileID: 4978829806526119525, guid: 468dc823878e0ed4e86418059b33c915, type: 3}
+  - {fileID: 4978829806526119525, guid: 64a0e16298a9dcb459122ac53415cdb9, type: 3}
+  - {fileID: 4978829806526119525, guid: cf95db2c38edee44d93eb75635203afa, type: 3}
+  - {fileID: 4978829806526119525, guid: 48ead7fa92b87f645ac963052210491a, type: 3}
+  - {fileID: 4978829806526119525, guid: 3666cd91fb398df44b85bee3ff2341a8, type: 3}
+  - {fileID: 4978829806526119525, guid: 4fe09194bae829348b511826fa9e070a, type: 3}
+  - {fileID: 4978829806526119525, guid: 2ced81f20856a1e469b6a7dc8343e159, type: 3}
+  - {fileID: 4978829806526119525, guid: ba4e661e09e31c043b8b7b99b24e5f85, type: 3}
+  nonhousesprefabs:
+  - {fileID: 4978829806526119525, guid: 67fcd9bdd54a3344fba8127dddcb25ca, type: 3}
+  - {fileID: 4978829806526119525, guid: ddaaf81487f51b74fad03fcbc76c773f, type: 3}
+  - {fileID: 4978829806526119525, guid: a74439816f34ab84e9eca703cb8cdf80, type: 3}
+  - {fileID: 4978829806526119525, guid: 0d866a441d37a6e42bf048d422c9c1c5, type: 3}
+  - {fileID: 4978829806526119525, guid: bc73146d2c918e442aa6bf6f323a79b5, type: 3}
+  - {fileID: 3899092889959454818, guid: 0b8665c02aa92da47b52e6a1e0af07fd, type: 3}
+  - {fileID: 3899092889959454818, guid: 04e906a30ba15df4ea9a0c1401da9bb4, type: 3}
+  - {fileID: 3899092889959454818, guid: 33a35ddfbfe01b6488d2ab1f775f6707, type: 3}
+  - {fileID: 3899092889959454818, guid: 478160ae37303e84b920ff9948feaec2, type: 3}
+  - {fileID: 3899092889959454818, guid: a42fb53d0cacd194e9b1346918353bbf, type: 3}
+  obj: {fileID: 0}
+  unimportanthouse: 1
+  terrain: 1
+  chanceofnonhouse: 5
 --- !u!1 &8536446337840103321
 GameObject:
   m_ObjectHideFlags: 0
@@ -3534,6 +4875,115 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.3450494, y: 0.23199297, z: 9.976881}
   m_Center: {x: 0.94575274, y: 0.4024368, z: 0.008223534}
+--- !u!1 &8550782218426801853
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7857878425458527772}
+  - component: {fileID: 2953989950202115617}
+  m_Layer: 0
+  m_Name: HouseSpawner 2 (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7857878425458527772
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8550782218426801853}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 2, y: 498.99997, z: -1}
+  m_LocalScale: {x: 0.8, y: 713.18, z: 0.8}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6334424307800695491}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &2953989950202115617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8550782218426801853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff86ae2f64220d46a6a4da43a72a5e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  housesprefabs:
+  - {fileID: 4978829806526119525, guid: 6838e0d9cfb34b841b23ee141f27ff45, type: 3}
+  - {fileID: 4978829806526119525, guid: ab04560b29710b840866eb0ed11f5de2, type: 3}
+  - {fileID: 4978829806526119525, guid: 97e05ed4620b4f946b7a329608b41126, type: 3}
+  - {fileID: 4978829806526119525, guid: 6c469c42c6d6d204ebf3fe8a99687616, type: 3}
+  - {fileID: 4978829806526119525, guid: 765806211498100458db9596ab9595e5, type: 3}
+  - {fileID: 4978829806526119525, guid: 1c2d0ac5eda6c4f419e2d4de033f3a2f, type: 3}
+  - {fileID: 4978829806526119525, guid: bd450fdddc8b06749a5341d73421c317, type: 3}
+  - {fileID: 4978829806526119525, guid: 468dc823878e0ed4e86418059b33c915, type: 3}
+  - {fileID: 4978829806526119525, guid: 64a0e16298a9dcb459122ac53415cdb9, type: 3}
+  - {fileID: 4978829806526119525, guid: cf95db2c38edee44d93eb75635203afa, type: 3}
+  - {fileID: 4978829806526119525, guid: 48ead7fa92b87f645ac963052210491a, type: 3}
+  - {fileID: 4978829806526119525, guid: 3666cd91fb398df44b85bee3ff2341a8, type: 3}
+  - {fileID: 4978829806526119525, guid: 4fe09194bae829348b511826fa9e070a, type: 3}
+  - {fileID: 4978829806526119525, guid: 2ced81f20856a1e469b6a7dc8343e159, type: 3}
+  - {fileID: 4978829806526119525, guid: ba4e661e09e31c043b8b7b99b24e5f85, type: 3}
+  nonhousesprefabs:
+  - {fileID: 4978829806526119525, guid: 67fcd9bdd54a3344fba8127dddcb25ca, type: 3}
+  - {fileID: 4978829806526119525, guid: ddaaf81487f51b74fad03fcbc76c773f, type: 3}
+  - {fileID: 4978829806526119525, guid: a74439816f34ab84e9eca703cb8cdf80, type: 3}
+  - {fileID: 4978829806526119525, guid: 0d866a441d37a6e42bf048d422c9c1c5, type: 3}
+  - {fileID: 4978829806526119525, guid: bc73146d2c918e442aa6bf6f323a79b5, type: 3}
+  - {fileID: 3899092889959454818, guid: 0b8665c02aa92da47b52e6a1e0af07fd, type: 3}
+  - {fileID: 3899092889959454818, guid: 04e906a30ba15df4ea9a0c1401da9bb4, type: 3}
+  - {fileID: 3899092889959454818, guid: 33a35ddfbfe01b6488d2ab1f775f6707, type: 3}
+  - {fileID: 3899092889959454818, guid: 478160ae37303e84b920ff9948feaec2, type: 3}
+  - {fileID: 3899092889959454818, guid: a42fb53d0cacd194e9b1346918353bbf, type: 3}
+  obj: {fileID: 0}
+  unimportanthouse: 1
+  terrain: 1
+  chanceofnonhouse: 5
+--- !u!1 &8903767295864330859
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8200937619622402831}
+  m_Layer: 6
+  m_Name: left
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8200937619622402831
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8903767295864330859}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8127454203823308286}
+  - {fileID: 1963379630437453786}
+  - {fileID: 9164786382904385772}
+  m_Father: {fileID: 4074822012552518276}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8913330617821251435
 GameObject:
   m_ObjectHideFlags: 0
@@ -3584,6 +5034,7 @@ MonoBehaviour:
   nonhousesprefabs: []
   obj: {fileID: 0}
   unimportanthouse: 1
+  terrain: 0
   chanceofnonhouse: 0
 --- !u!1 &8937568943816710494
 GameObject:
@@ -3669,6 +5120,7 @@ Transform:
   m_Children:
   - {fileID: 6358457355074432364}
   - {fileID: 6001705240547735950}
+  - {fileID: 6334424307800695491}
   m_Father: {fileID: 8785036575398253970}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8993264083498811877
@@ -3744,6 +5196,7 @@ MonoBehaviour:
   - {fileID: 3899092889959454818, guid: a42fb53d0cacd194e9b1346918353bbf, type: 3}
   obj: {fileID: 0}
   unimportanthouse: 0
+  terrain: 0
   chanceofnonhouse: 5
 --- !u!1 &9002282400773588922
 GameObject:
@@ -3798,6 +5251,58 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.1044316, y: 0.23199296, z: 9.976881}
   m_Center: {x: -0.50943506, y: 0.1335665, z: 0.008223534}
+--- !u!1 &9079479084567221407
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9164786382904385772}
+  - component: {fileID: 284304752162021991}
+  m_Layer: 0
+  m_Name: Treespawner (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9164786382904385772
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9079479084567221407}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4, y: 499.00003, z: 0}
+  m_LocalScale: {x: 0.8, y: 713.18, z: 0.8}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8200937619622402831}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &284304752162021991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9079479084567221407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff86ae2f64220d46a6a4da43a72a5e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  housesprefabs:
+  - {fileID: 4978829806526119525, guid: 2d1a66900bfb3914e83ab7b0477a0b27, type: 3}
+  nonhousesprefabs:
+  - {fileID: 4978829806526119525, guid: 2d1a66900bfb3914e83ab7b0477a0b27, type: 3}
+  obj: {fileID: 0}
+  unimportanthouse: 1
+  terrain: 1
+  chanceofnonhouse: 0
 --- !u!1 &9149098317703327174
 GameObject:
   m_ObjectHideFlags: 0

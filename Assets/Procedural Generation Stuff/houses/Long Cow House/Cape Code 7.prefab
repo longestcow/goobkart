@@ -1033,6 +1033,7 @@ GameObject:
   - component: {fileID: 8430196402351017602}
   - component: {fileID: 4748495179642103462}
   - component: {fileID: 5103502916298057730}
+  - component: {fileID: 7752295007740298221}
   m_Layer: 12
   m_Name: Cape Code 7
   m_TagString: Untagged
@@ -1143,6 +1144,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.62716967, y: 0.42107853, z: 0.93112814}
   m_Center: {x: 0.043760564, y: -0.28946075, z: 0.0014253616}
+--- !u!114 &7752295007740298221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4978829806526119525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b1fa7924e6552e42b1e4724b2f4ad3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GreenDelivery: {fileID: 8028351352092506225}
+  YellowDelivery: {fileID: 184813303066463357}
+  RedDelivery: {fileID: 1498229434884788638}
+  HouseModel: {fileID: 6531151412219849432}
+  terrainhouse: 0
+  slope: 0
 --- !u!1 &5500155566588756143
 GameObject:
   m_ObjectHideFlags: 0
@@ -2400,6 +2419,12 @@ PrefabInstance:
 --- !u!4 &5902142372406882402 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c285adee72a4cf041bf08ed0c786c00e,
+    type: 3}
+  m_PrefabInstance: {fileID: 6224579738538252169}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6531151412219849432 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c285adee72a4cf041bf08ed0c786c00e,
     type: 3}
   m_PrefabInstance: {fileID: 6224579738538252169}
   m_PrefabAsset: {fileID: 0}

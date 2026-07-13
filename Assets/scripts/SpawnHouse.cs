@@ -9,6 +9,7 @@ public class SpawnHouse : MonoBehaviour
     public GameObject[] nonhousesprefabs;
     public GameObject obj;
     public bool unimportanthouse;
+    public bool terrain;
 
     public float chanceofnonhouse;
 
@@ -18,31 +19,19 @@ public class SpawnHouse : MonoBehaviour
         RaycastHit hit;
         if (!Physics.Raycast(transform.position + Vector3.up * 50, -Vector3.up, out hit, 50f, LayerMask.GetMask("HouseCheck")))
         {
-            GameObject objtobespawned;
-            if (Random.Range(0, 100) < chanceofnonhouse)
-            {
-                objtobespawned = nonhousesprefabs[Random.Range(0, nonhousesprefabs.Length)];
-            }
-            else
-            {
-                objtobespawned = housesprefabs[Random.Range(0, housesprefabs.Length)];
-            }
-            obj = Instantiate(objtobespawned, transform.position, transform.rotation, null);
-            obj.transform.parent = this.transform.parent;
-            if (!unimportanthouse)
-            {
-                if (obj.transform.parent.GetComponent<GeneratedRoad>().houses[0] == null)
-                {
-                    obj.transform.parent.GetComponent<GeneratedRoad>().houses[0] = obj;
-                }
-                else
-                {
-                    obj.transform.parent.GetComponent<GeneratedRoad>().houses[1] = obj;
-                }
-            }
+            spawn();   
         }
         else
         {
+            if (terrain)
+            {
+                Destroy(this.gameObject);
+            }
+            else if (hit.collider.transform.parent.tag == "Terrain")
+            {
+                Destroy(hit.collider.transform.parent.gameObject);
+                spawn();
+            }
             if (!unimportanthouse)
                 if (!transform.parent.GetComponent<GeneratedRoad>().modified)
                 {
@@ -55,9 +44,31 @@ public class SpawnHouse : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    void spawn()
     {
-        
+        GameObject objtobespawned;
+        if (Random.Range(0, 100) < chanceofnonhouse)
+        {
+            objtobespawned = nonhousesprefabs[Random.Range(0, nonhousesprefabs.Length)];
+        }
+        else
+        {
+            objtobespawned = housesprefabs[Random.Range(0, housesprefabs.Length)];
+        }
+        obj = Instantiate(objtobespawned, transform.position, transform.rotation, null);
+        obj.transform.parent = this.transform.parent;
+        if (terrain) obj.GetComponent<HouseScript>().terrainhouse = true;
+        if (!unimportanthouse)
+        {
+            if (obj.transform.parent.GetComponent<GeneratedRoad>().houses[0] == null)
+            {
+                obj.transform.parent.GetComponent<GeneratedRoad>().houses[0] = obj;
+            }
+            else
+            {
+                obj.transform.parent.GetComponent<GeneratedRoad>().houses[1] = obj;
+            }
+        }
     }
+
 }

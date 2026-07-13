@@ -822,6 +822,7 @@ GameObject:
   - component: {fileID: 8430196402351017602}
   - component: {fileID: 4748495179642103462}
   - component: {fileID: 5103502916298057730}
+  - component: {fileID: 2441052817932982822}
   m_Layer: 12
   m_Name: Dense House 1
   m_TagString: Untagged
@@ -931,6 +932,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.8460436, y: 0.8805599, z: 0.9696008}
   m_Center: {x: 0.0637808, y: -0.059720516, z: -0.0032366277}
+--- !u!114 &2441052817932982822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4978829806526119525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b1fa7924e6552e42b1e4724b2f4ad3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GreenDelivery: {fileID: 8670544753631877945}
+  YellowDelivery: {fileID: 184813303066463357}
+  RedDelivery: {fileID: 1498229434884788638}
+  HouseModel: {fileID: 3433628230068971316}
+  terrainhouse: 0
+  slope: 0
 --- !u!1 &5674547834789971982
 GameObject:
   m_ObjectHideFlags: 0
@@ -2034,6 +2053,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 41b3e8d6c781ce14cb63594ca3f0a487,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6647022707905100941, guid: 41b3e8d6c781ce14cb63594ca3f0a487,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2047,6 +2071,12 @@ PrefabInstance:
 --- !u!4 &2660890717633904014 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 41b3e8d6c781ce14cb63594ca3f0a487,
+    type: 3}
+  m_PrefabInstance: {fileID: 2551249052504070757}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3433628230068971316 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 41b3e8d6c781ce14cb63594ca3f0a487,
     type: 3}
   m_PrefabInstance: {fileID: 2551249052504070757}
   m_PrefabAsset: {fileID: 0}
