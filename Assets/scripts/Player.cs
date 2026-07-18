@@ -449,10 +449,10 @@ public class Player : MonoBehaviour
             hitsfx.Play();
             switch (UnityEngine.Random.Range(0, 2)) {
                 case 0:
-                    cycle.transform.DORotate(cycle.transform.rotation.eulerAngles + new Vector3(0, 360, 0), 0.5f, RotateMode.FastBeyond360);
+                    cycle.transform.DOLocalRotate(cycle.transform.localRotation.eulerAngles + new Vector3(0, 360, 0), 0.5f, RotateMode.FastBeyond360);
                     break;
                 case 1:
-                    cycle.transform.DORotate(cycle.transform.rotation.eulerAngles + new Vector3(0, -360, 0), 0.5f, RotateMode.FastBeyond360);
+                    cycle.transform.DOLocalRotate(cycle.transform.localRotation.eulerAngles + new Vector3(0, -360, 0), 0.5f, RotateMode.FastBeyond360);
                     break;
             }
         }
