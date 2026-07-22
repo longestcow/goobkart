@@ -444,22 +444,14 @@ public class Player : MonoBehaviour
 
         AlignKart();
 
-        if (Input.GetButtonDown("Jump"))
-        {
-            hitsfx.Play();
-            switch (UnityEngine.Random.Range(0, 2)) {
-                case 0:
-                    cycle.transform.DOLocalRotate(cycle.transform.localRotation.eulerAngles + new Vector3(0, 360, 0), 0.5f, RotateMode.FastBeyond360);
-                    break;
-                case 1:
-                    cycle.transform.DOLocalRotate(cycle.transform.localRotation.eulerAngles + new Vector3(0, -360, 0), 0.5f, RotateMode.FastBeyond360);
-                    break;
-            }
-        }
 
         if (Input.GetButton("Drift") && !drifting && isgrounded && rb.velocity.magnitude > 0.5f)
         {
             driftstart = true;
+        }
+        if (Input.GetButtonDown("Drift") && !isgrounded)
+        {
+            Trick();
         }
         if (driftstart)
         {
@@ -589,8 +581,7 @@ public class Player : MonoBehaviour
     void AlignKart(){
         Ray ray = new Ray(mesh.transform.position, -mesh.transform.up);
         RaycastHit info;
-
-        isgrounded = Physics.Raycast(ray, out info, groundLayer);
+        isgrounded = Physics.Raycast(ray, out info, 1f, groundLayer);
         if (Physics.Raycast(ray, out info, 2f, groundLayer))
         {
             // mesh.transform.rotation = Quaternion.Lerp(mesh.transform.rotation, 
@@ -696,11 +687,6 @@ public class Player : MonoBehaviour
                 UpdateDeliveryQueue(deliverysys.DecideDelivery(),true);
             }
         }
-    }
-
-    void doChecks()
-    {
-        
     }
     
 
@@ -925,6 +911,21 @@ public class Player : MonoBehaviour
         PlayerPrefs.SetFloat("music", MainMenu.musicvolume);
         PlayerPrefs.SetFloat("sfx", MainMenu.soundvolume);
 
+    }
+
+    public void Trick()
+    {
+
+        hitsfx.Play();
+        switch (UnityEngine.Random.Range(0, 2))
+        {
+            case 0:
+                cycle.transform.DOLocalRotate(cycle.transform.localRotation.eulerAngles + new Vector3(0, 360, 0), 0.5f, RotateMode.FastBeyond360);
+                break;
+            case 1:
+                cycle.transform.DOLocalRotate(cycle.transform.localRotation.eulerAngles + new Vector3(0, -360, 0), 0.5f, RotateMode.FastBeyond360);
+                break;
+        }
     }
 
     public void endrunfunc()
