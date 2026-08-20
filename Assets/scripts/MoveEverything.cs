@@ -25,8 +25,16 @@ public class MoveEverything : MonoBehaviour
 
     public void ShiftOrigin()
     {
+        Vehicle.dontchecknow = true;
         Vector3 delta = PlayerSphere.position;
         Everything.transform.position -= delta;
         playerb.position -= delta;
+        StartCoroutine(NextFrameReenableCheck());
+    }
+
+    IEnumerator NextFrameReenableCheck()
+    {
+        yield return null;
+        Vehicle.dontchecknow = false;
     }
 }

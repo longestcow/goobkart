@@ -69,6 +69,7 @@ public class Player : MonoBehaviour
     public Text starstext;
     public TextMeshProUGUI scoretext;
     public TextMeshProUGUI multipliertext;
+    public TextMeshProUGUI multipliertext2;
     public Image[] starsobjs;
     public AudioSource successjingle;
     public AudioSource failurejingle;
@@ -445,14 +446,14 @@ public class Player : MonoBehaviour
         AlignKart();
 
 
-        if (Input.GetButton("Drift") && !drifting && isgrounded && rb.velocity.magnitude > 0.5f)
+        if (Input.GetButton("Drift") && !drifting /*&& isgrounded */&& rb.velocity.magnitude > 0.5f)
         {
             driftstart = true;
         }
-        if (Input.GetButtonDown("Drift") && !isgrounded)
-        {
-            Trick();
-        }
+        //if (Input.GetButtonDown("Drift") && !isgrounded)
+        //{
+            //Trick();
+        //}
         if (driftstart)
         {
             if (Input.GetAxisRaw("Horizontal") > 0.1f)
@@ -480,7 +481,7 @@ public class Player : MonoBehaviour
         }
 
         rotinput = (driftdir + Input.GetAxisRaw("Horizontal"))/2f;
-        if (!isgrounded) rotinput *= 0.3f;
+        //if (!isgrounded) rotinput *= 0.3f;
 
         mesh.transform.Rotate(0, rotinput * Time.deltaTime * rotspeed * rb.velocity.magnitude ,0, Space.World);
 
@@ -653,7 +654,9 @@ public class Player : MonoBehaviour
             }
         }
         multipliertext.text = multiplier + "x";
-        multipliertext.fontSize = 73 + multiplier;
+        multipliertext.fontSize = 42.4f + multiplier;
+        multipliertext2.text = multiplier + "x";
+        multipliertext2.fontSize = 42.4f + multiplier;
         scoretext.text = score.ToString();
         starstext.text = "";
     }
