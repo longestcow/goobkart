@@ -424,6 +424,11 @@ public class Player : MonoBehaviour
 
         if (gameover) return;
 
+        if (transform.position.y < latestroad.transform.position.y + 1)
+        {
+            rb.AddForce(Vector3.up * (latestroad.transform.position.y + 1 - transform.position.y) * 7.5f);
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape) && !paused)
         {
             PauseGame();
@@ -1013,7 +1018,7 @@ public class Player : MonoBehaviour
 
     IEnumerator returningtoground()
     {
-        returningtimerstarted = true;
+        /*returningtimerstarted = true;
         yield return new WaitForSeconds(3);
         ReturningText.gameObject.SetActive(true);
         for (int i = 5; i > 0; i--)
@@ -1029,7 +1034,8 @@ public class Player : MonoBehaviour
         rb.isKinematic = false;
         basicallytheend:
         returningtimerstarted =  false;
-        ReturningText.gameObject.SetActive(false);
+        ReturningText.gameObject.SetActive(false);*/
+        yield return null;
     }
 
     IEnumerator breakfromdeliveries()

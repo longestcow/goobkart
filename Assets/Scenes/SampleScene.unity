@@ -31402,7 +31402,7 @@ MonoBehaviour:
   controlimage3: {fileID: 858920866}
   EverythingMover: {fileID: 1420267240}
   spawnedparent: {fileID: 1856849850}
-  difficulty: 7.9
+  difficulty: 1
   hitsfx: {fileID: 784190815}
   latestroad: {fileID: 0}
   currentdelivery: 0
