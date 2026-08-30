@@ -102,8 +102,8 @@ public class Outline : MonoBehaviour {
   void OnEnable() {
     foreach (var renderer in renderers) {
 
-            if (renderer.gameObject.GetComponent<ParticleSystem>() != null) continue;
-            if (renderer.gameObject.GetComponent<TrailRenderer>() != null) continue;
+      if (renderer.gameObject.GetComponent<ParticleSystem>() != null) continue;
+      if (renderer.gameObject.GetComponent<TrailRenderer>() != null) continue;
       // Append outline shaders
       var materials = renderer.sharedMaterials.ToList();
 

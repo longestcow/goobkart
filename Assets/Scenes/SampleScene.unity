@@ -122,30 +122,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &457238 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2403faaf79cb18c4e9209e58e3b4f7f8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1921647531}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &457241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 457238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 0, g: 0, b: 0, a: 1}
-  outlineWidth: 9.03
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1 &1358748
 GameObject:
   m_ObjectHideFlags: 0
@@ -12874,6 +12850,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8629522233034351619, guid: 2403faaf79cb18c4e9209e58e3b4f7f8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2403faaf79cb18c4e9209e58e3b4f7f8,
         type: 3}
       propertyPath: m_Name
@@ -13070,7 +13051,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 338592481}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
@@ -14288,7 +14269,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -18.163944, y: -44.864975, z: 50.166794}
-  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 606731646}
@@ -22217,7 +22198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 762188018}
   - component: {fileID: 762188019}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: LHandle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31509,7 +31490,8 @@ MonoBehaviour:
   controlimage3: {fileID: 858920866}
   EverythingMover: {fileID: 1420267240}
   spawnedparent: {fileID: 1856849850}
-  difficulty: 1
+  crayonoutline: {fileID: 11400000, guid: 6ef8ae3c7ae78744c81a9b331d782732, type: 2}
+  difficulty: 3
   hitsfx: {fileID: 784190815}
   latestroad: {fileID: 0}
   currentdelivery: 0
@@ -38641,7 +38623,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1810934188}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: RHandle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39930,83 +39912,6 @@ Transform:
   - {fileID: 350517896}
   m_Father: {fileID: 1420267239}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1921647531
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 2403faaf79cb18c4e9209e58e3b4f7f8,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 9.860092
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2403faaf79cb18c4e9209e58e3b4f7f8,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2403faaf79cb18c4e9209e58e3b4f7f8,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3.1253319
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2403faaf79cb18c4e9209e58e3b4f7f8,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2403faaf79cb18c4e9209e58e3b4f7f8,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2403faaf79cb18c4e9209e58e3b4f7f8,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2403faaf79cb18c4e9209e58e3b4f7f8,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2403faaf79cb18c4e9209e58e3b4f7f8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2403faaf79cb18c4e9209e58e3b4f7f8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 2403faaf79cb18c4e9209e58e3b4f7f8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 2403faaf79cb18c4e9209e58e3b4f7f8,
-        type: 3}
-      propertyPath: m_Name
-      value: CrayonEXEARG
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 2403faaf79cb18c4e9209e58e3b4f7f8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2403faaf79cb18c4e9209e58e3b4f7f8,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 457241}
-  m_SourcePrefab: {fileID: 100100000, guid: 2403faaf79cb18c4e9209e58e3b4f7f8, type: 3}
 --- !u!1 &1927784230
 GameObject:
   m_ObjectHideFlags: 0
@@ -42723,7 +42628,7 @@ GameObject:
   - component: {fileID: 7564432715401244691}
   - component: {fileID: 5670703211710280405}
   - component: {fileID: 773107017815930736}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: cylinder_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43270,7 +43175,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132148148667376}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
@@ -44283,7 +44188,7 @@ GameObject:
   - component: {fileID: 9133184161665222807}
   - component: {fileID: 1364697443541510725}
   - component: {fileID: 3646478743525191768}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: cylinder_16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44525,7 +44430,7 @@ GameObject:
   - component: {fileID: 4978692577719918141}
   - component: {fileID: 8307517169830510861}
   - component: {fileID: 7416969810890691249}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: cylinder_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44723,7 +44628,7 @@ GameObject:
   - component: {fileID: 5723303802991476861}
   - component: {fileID: 1456407883311280572}
   - component: {fileID: 7344238425133426010}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: cylinder_15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45366,6 +45271,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3362047756743690844}
+  - component: {fileID: 4943985457617491639}
   m_Layer: 0
   m_Name: front
   m_TagString: Untagged
@@ -45373,6 +45279,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4943985457617491639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4943985457617491638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 0, g: 0, b: 0, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!4 &4978692577719918141
 Transform:
   m_ObjectHideFlags: 0
@@ -45399,7 +45323,8 @@ GameObject:
   - component: {fileID: 5818122043065718545}
   - component: {fileID: 2511475364488427302}
   - component: {fileID: 3897915755849069554}
-  m_Layer: 0
+  - component: {fileID: 5818122043065718546}
+  m_Layer: 3
   m_Name: rocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45435,7 +45360,7 @@ GameObject:
   - component: {fileID: 805919193132703651}
   - component: {fileID: 6286563174590287871}
   - component: {fileID: 1712223015640728869}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: cylinder_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45540,7 +45465,7 @@ GameObject:
   - component: {fileID: 6851836818659264013}
   - component: {fileID: 8193568972479023395}
   - component: {fileID: 3060551952450547106}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: cylinder_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45879,6 +45804,7 @@ GameObject:
   - component: {fileID: 3384109284957049064}
   - component: {fileID: 249740701986541503}
   - component: {fileID: 434195680601515257}
+  - component: {fileID: 5796029908031821768}
   m_Layer: 0
   m_Name: mesh_5
   m_TagString: Untagged
@@ -45886,6 +45812,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5796029908031821768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5796029908031821767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 0, g: 0, b: 0, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &5805607403308817640
 GameObject:
   m_ObjectHideFlags: 0
@@ -45919,6 +45863,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 543450652424755530}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5818122043065718546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5003512527736684134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 0, g: 0, b: 0, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!4 &5909907661300296693
 Transform:
   m_ObjectHideFlags: 0
@@ -46328,7 +46290,7 @@ GameObject:
   - component: {fileID: 2129860539743788883}
   - component: {fileID: 5190919024381740002}
   - component: {fileID: 3437981700998930542}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: mesh_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46618,6 +46580,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4386292216226742946}
+  - component: {fileID: 7229113704754160148}
   m_Layer: 0
   m_Name: backwheels
   m_TagString: Untagged
@@ -46625,6 +46588,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7229113704754160148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7229113704754160147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 0, g: 0, b: 0, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!4 &7314307931092816890
 Transform:
   m_ObjectHideFlags: 0
@@ -46926,7 +46907,7 @@ GameObject:
   - component: {fileID: 9002958506965404234}
   - component: {fileID: 4815834437466748420}
   - component: {fileID: 660042631586641662}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: cylinder_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46989,7 +46970,7 @@ GameObject:
   - component: {fileID: 655507062449199344}
   - component: {fileID: 3930713805358589244}
   - component: {fileID: 7500790794656576265}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: cylinder_5_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47643,17 +47624,35 @@ GameObject:
   - component: {fileID: 624189504005378932}
   - component: {fileID: 1106461516507791000}
   - component: {fileID: 6124350863216703730}
-  m_Layer: 0
+  - component: {fileID: 9211206492716256255}
+  m_Layer: 3
   m_Name: rocket2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &9211206492716256255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9211206492716256254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 0, g: 0, b: 0, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 558729590}
   - {fileID: 1420267239}
-  - {fileID: 1921647531}

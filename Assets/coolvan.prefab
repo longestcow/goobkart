@@ -405,7 +405,6 @@ GameObject:
   - component: {fileID: 3762609190961065476}
   - component: {fileID: 6014487751170772746}
   - component: {fileID: 8804246261075483340}
-  - component: {fileID: 1570075606404151015}
   m_Layer: 9
   m_Name: coolvan
   m_TagString: Untagged
@@ -602,24 +601,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   music: 0
---- !u!114 &1570075606404151015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4486520393555943172}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 1
-  outlineColor: {r: 0, g: 0, b: 0, a: 1}
-  outlineWidth: 10
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!1 &5641694062428231806
 GameObject:
   m_ObjectHideFlags: 0

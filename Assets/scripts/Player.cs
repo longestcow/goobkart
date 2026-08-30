@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
+using LineworkLite.FreeOutline;
 
 public class Player : MonoBehaviour
 {
@@ -123,6 +124,7 @@ public class Player : MonoBehaviour
     public Image controlimage3;
     public MoveEverything EverythingMover;
     public Transform spawnedparent;
+    public FreeOutlineSettings crayonoutline;
 
     public static int score;
     public float difficulty;
@@ -340,6 +342,7 @@ public class Player : MonoBehaviour
         minimapcamhinge.position = mesh.transform.position;
         if (!aimmode && deliverycam == 0)
         {
+            crayonoutline.Outlines[0].width = Mathf.Lerp(crayonoutline.Outlines[0].width, 2f, 0.05f * 250 * Time.deltaTime);
             //maincamera.transform.position += new Vector3(0, UnityEngine.Random.Range(-0.0002f, 0.0002f) * rb.velocity.magnitude, 0);
             maincamera.transform.position = Vector3.Lerp(maincamera.transform.position, campos1.transform.position, 0.05f * 250 * Time.deltaTime);
             maincamera.transform.rotation = Quaternion.Lerp(maincamera.transform.rotation, campos1.transform.rotation, 0.05f * 250 * Time.deltaTime);
@@ -363,6 +366,7 @@ public class Player : MonoBehaviour
         }
         else if (deliverycam == 0)
         {
+            crayonoutline.Outlines[0].width = Mathf.Lerp(crayonoutline.Outlines[0].width, 0.65f, 0.5f * 250 * Time.deltaTime);
             maincamera.transform.position = Vector3.Lerp(maincamera.transform.position, (campos2.transform.localRotation.eulerAngles.y > 180 ? campos2 : campos3).transform.position, 1 - Mathf.Exp(0.69315f * (-Time.deltaTime / 0.01f)));
             maincamera.transform.rotation = Quaternion.Lerp(maincamera.transform.rotation, (campos2.transform.localRotation.eulerAngles.y > 180 ? campos2 : campos3).transform.rotation, 1 - Mathf.Exp(0.69315f * (-Time.deltaTime / 0.01f)));
             campos2.transform.localRotation = Quaternion.Euler(campos2.transform.localRotation.eulerAngles + (MainMenu.sensitivity + 0.1f) * 2 * new Vector3(-Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0));
@@ -372,7 +376,7 @@ public class Player : MonoBehaviour
             windres.volume = 0;
             wheelsound.volume = 0;
         }
-        else 
+        else
         {
             if (deliverycam == 1)
             {
