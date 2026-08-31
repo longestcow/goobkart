@@ -11,12 +11,13 @@ public class Vehicle : MonoBehaviour
     bool pushing;
     Rigidbody playerb;
     public AudioSource metalhit;
+    public Transform[] Wheels;
 
     // Start is called before the first frame update
     void Start()
     {
         dontchecknow = false;
-        self = gameObject.GetComponent<Rigidbody>();
+        //self = gameObject.GetComponent<Rigidbody>();
         pushing = false;
         //transform.localScale = new Vector3(0.02890174f, 50f, 0.05f);
     }
@@ -24,6 +25,11 @@ public class Vehicle : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        for (int i = 0; i < 4; i++)
+        {
+            Wheels[i].transform.Rotate(transform.up, 5); //Quaternion.Euler(new Vector3(Time.time * 5, 90  * ((i / 2) % 2), 90  * (i % 2)));
+        }
+        
         RaycastHit hit;
         if (!dontchecknow)
         {

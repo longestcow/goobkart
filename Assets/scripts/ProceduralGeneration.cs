@@ -14,6 +14,7 @@ public class ProceduralGeneration : MonoBehaviour
     float slopeheight;
 
     public GameObject player;
+    public Rigidbody playerrb;
     public GameObject flatground;
     public Material turnmat1;
     public Material turnmat2;
@@ -51,8 +52,8 @@ public class ProceduralGeneration : MonoBehaviour
             if (i == RenderDistance / 2)
             {
                 GenerateNextThing(3);
-                player.transform.position = transform.position + new Vector3(0, 0, 0);
-                player.transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles);
+                playerrb.position = transform.position + new Vector3(0, 0, 0);
+                playerrb.rotation = Quaternion.Euler(transform.rotation.eulerAngles);
                 player.SetActive(true);
             }
         }

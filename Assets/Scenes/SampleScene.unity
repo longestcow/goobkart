@@ -31355,7 +31355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1239439982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35450,6 +35450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1239439981}
+  playerrb: {fileID: 1239439987}
   flatground: {fileID: 5990501582966079855, guid: 3244267a9380c8d4186b25bd3ef5f0ee,
     type: 3}
   turnmat1: {fileID: 2100000, guid: f7a344f2ebfd69c499ff9b78fe3ac957, type: 2}
