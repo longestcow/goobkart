@@ -27,7 +27,7 @@ public class Vehicle : MonoBehaviour
     {
         for (int i = 0; i < 4; i++)
         {
-            Wheels[i].transform.Rotate(transform.up, 5); //Quaternion.Euler(new Vector3(Time.time * 5, 90  * ((i / 2) % 2), 90  * (i % 2)));
+            Wheels[i].transform.localRotation = Quaternion.Euler(0,Time.time * 90,0);  //Rotate(transform.up, 5); //Quaternion.Euler(new Vector3(Time.time * 5, 90  * ((i / 2) % 2), 90  * (i % 2)));
         }
         
         RaycastHit hit;
