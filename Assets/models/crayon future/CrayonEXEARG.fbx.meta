@@ -7,6 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: CrayonDefinitive.png
+    second: {fileID: 2100000, guid: 3de815578ad7e9e41be27741aca6c7c3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: new_png_Pbr
     second: {fileID: 2100000, guid: 3de815578ad7e9e41be27741aca6c7c3, type: 2}
   materials:
@@ -21,7 +26,8 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Avatar creation failed:\n\tTransform 'CC_Base_Hip' for human
+      bone 'Hips' not found\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 

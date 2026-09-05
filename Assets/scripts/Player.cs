@@ -347,6 +347,7 @@ public class Player : MonoBehaviour
             maincamera.transform.position = Vector3.Lerp(maincamera.transform.position, campos1.transform.position, 0.05f * 250 * Time.deltaTime);
             maincamera.transform.rotation = Quaternion.Lerp(maincamera.transform.rotation, campos1.transform.rotation, 0.05f * 250 * Time.deltaTime);
             campos1.transform.localRotation = Quaternion.Lerp(campos1.transform.localRotation, Quaternion.Euler(new Vector3(33.27f, 0, (drifting?2f:0) * (rb.velocity.magnitude/5) * rotinput )), 0.1f * 25 * Time.deltaTime);
+            campos1.transform.localPosition = Vector3.Lerp(campos1.transform.localPosition,new Vector3((drifting ? 2f : 0) * (rb.velocity.magnitude / 5) * driftdir, 7.97f, -3.110001f), 0.05f * 50 * Time.deltaTime);
             maincamera.GetComponent<Camera>().fieldOfView = Mathf.Lerp(maincamera.GetComponent<Camera>().fieldOfView, 80 + rb.velocity.magnitude * 2.5f, 0.05f * 250 * Time.deltaTime);
             everythinginsidecnavas.rotation = Quaternion.Lerp(everythinginsidecnavas.rotation,Quaternion.Euler(new Vector3(0, 0, -5 * (rb.velocity.magnitude / 25)  * rotinput)), 0.1f * 25 * Time.deltaTime );
             everythinginsidecnavas.localScale = (1 - 0.002f * rb.velocity.magnitude) * new Vector3(1,1,1);
@@ -550,7 +551,7 @@ public class Player : MonoBehaviour
         if (aimmode && shootstrengthincreasing && Input.GetButtonUp("Shoot"))
         {
             shootstrengthincreasing = false;
-            latestdelivery = Instantiate(delivery, mesh.transform.position, Quaternion.Euler(Vector3.zero), spawnedparent);
+            latestdelivery = Instantiate(delivery, mesh.transform.position + new Vector3(0,0,0), Quaternion.Euler(Vector3.zero), spawnedparent);
             latestdeliveryrb = latestdelivery.GetComponent<Rigidbody>();
             latestdeliveryrb.velocity = maincamera.transform.forward * shootspeed * shootstrength;
             aimmode = false;
