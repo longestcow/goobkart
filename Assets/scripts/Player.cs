@@ -102,6 +102,9 @@ public class Player : MonoBehaviour
     public TrailRenderer trail2;
     public ParticleSystem particles1;
     public ParticleSystem particles2;
+    public ParticleSystem burstparticles1;
+    public ParticleSystem burstparticles2;
+    public ParticleSystem dustparticles;
     public AudioSource skid;
     public AudioSource windres;
     public AudioSource wheelsound;
@@ -298,10 +301,26 @@ public class Player : MonoBehaviour
 
         if (input > 0)
         {
+
             var p1e = particles1.emission;
             var p2e = particles2.emission;
             p1e.enabled = true;
             p2e.enabled = true;
+
+            var p1be = burstparticles1.emission;
+            var p2be = burstparticles2.emission;
+            p1be.enabled = true;
+            p2be.enabled = true;
+
+            var p1bem = burstparticles1.main;
+            p1bem.startSizeY = new ParticleSystem.MinMaxCurve(0,difficulty * 5f / 3f);
+            var p2bem = burstparticles2.main;
+            p2bem.startSizeY = new ParticleSystem.MinMaxCurve(0,difficulty * 5f / 3f);
+
+            var pde = dustparticles.emission;
+            pde.enabled = true;
+            pde.rateOverTime = Mathf.Lerp(0,50,rb.velocity.magnitude * 4/50f);
+
         }
         else
         {
@@ -310,6 +329,14 @@ public class Player : MonoBehaviour
             var p2e = particles2.emission;
             p1e.enabled = false;
             p2e.enabled = false;
+
+            var p1be = burstparticles1.emission;
+            var p2be = burstparticles2.emission;
+            p1be.enabled = false;
+            p2be.enabled = false;
+
+            var pde = dustparticles.emission;
+            pde.enabled = false;
         }
         //Softlock Checks
         bool onroad = Physics.Raycast(mesh.transform.position, -mesh.transform.up, 10 ,roadandfootpath);
