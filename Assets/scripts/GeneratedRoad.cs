@@ -5,6 +5,8 @@ using UnityEngine;
 public class GeneratedRoad : MonoBehaviour
 {
     public GameObject[] houses = new GameObject[2];
+    public GameObject[] poles = new GameObject[2];
+    public HouseScript extrahouse;
     public int index;
     public bool slope;
     public bool modified;

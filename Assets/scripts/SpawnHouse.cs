@@ -17,7 +17,7 @@ public class SpawnHouse : MonoBehaviour
     void Start()
     {
         RaycastHit hit;
-        if (!Physics.Raycast(transform.position + Vector3.up * 50, -Vector3.up, out hit, 50f, LayerMask.GetMask("HouseCheck")))
+        if (!Physics.Raycast(transform.position + Vector3.up * 50, -Vector3.up, out hit, 100f, LayerMask.GetMask("HouseCheck")))
         {
             spawn();   
         }
@@ -27,7 +27,7 @@ public class SpawnHouse : MonoBehaviour
             {
                 Destroy(this.gameObject);
             }
-            else if (hit.collider.transform.parent.tag == "Terrain")
+            else if (hit.collider.transform.parent.gameObject.GetComponent<HouseScript>().terrainhouse)
             {
                 Destroy(hit.collider.transform.parent.gameObject);
                 spawn();

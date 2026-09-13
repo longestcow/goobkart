@@ -84,12 +84,7 @@ public class ProceduralGeneration : MonoBehaviour
                 //transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y + 90, 0);
                 transform.position += transform.forward * (length / 2 + width / 2);
 
-                RaycastHit hitt;
-                if (Physics.Raycast(transform.position + Vector3.up * 50, -Vector3.up, out hitt, 100f, LayerMask.GetMask("HouseCheck")))
-                {
-                    if (hitt.collider.transform.parent.CompareTag("Terrain"))
-                        Destroy(hitt.collider.transform.parent.gameObject);
-                }
+                CheckOverlap();
 
                 GameObject objj = Instantiate(flatground, transform.position, transform.rotation, spawnparent);
                 objj.transform.localScale = new Vector3(width, 0.01f, width);
@@ -106,6 +101,7 @@ public class ProceduralGeneration : MonoBehaviour
                     objj.transform.GetChild(5).GetChild(1).gameObject.SetActive(true);
                     objj.transform.GetChild(6).gameObject.SetActive(false);
                     objj.transform.GetChild(7).gameObject.SetActive(false);
+                    objj.GetComponent<GeneratedRoad>().poles[0].SetActive(true);
                     laststate = 3;
                 }
                 else
@@ -118,6 +114,7 @@ public class ProceduralGeneration : MonoBehaviour
                     objj.transform.GetChild(5).GetChild(0).gameObject.SetActive(true);
                     objj.transform.GetChild(6).gameObject.SetActive(false);
                     objj.transform.GetChild(7).gameObject.SetActive(false);
+                    objj.GetComponent<GeneratedRoad>().poles[1].SetActive(true);
                     laststate = 4;
                 }
                 if (lastobjects.Count > RenderDistance) Destroy(lastobjects.Dequeue());
@@ -141,14 +138,9 @@ public class ProceduralGeneration : MonoBehaviour
         {
             if (Random.Range(1,4) < 3)
             {
+                //turn
                 transform.position += transform.forward * (length / 2 + width / 2);
-
-                RaycastHit hitt;
-                if (Physics.Raycast(transform.position + Vector3.up * 50, -Vector3.up, out hitt, 100f, LayerMask.GetMask("HouseCheck")))
-                {
-                    if (hitt.collider.transform.parent.CompareTag("Terrain"))
-                        Destroy(hitt.collider.transform.parent.gameObject);
-                }
+                CheckOverlap();
                 GameObject objj = Instantiate(flatground, transform.position, transform.rotation, spawnparent);
                 objj.transform.localScale = new Vector3(width, 0.01f, width);
                 objj.layer = 13;
@@ -165,6 +157,7 @@ public class ProceduralGeneration : MonoBehaviour
                     objj.transform.GetChild(5).GetChild(1).gameObject.SetActive(true);
                     objj.transform.GetChild(6).gameObject.SetActive(false);
                     objj.transform.GetChild(7).gameObject.SetActive(false);
+                    objj.GetComponent<GeneratedRoad>().poles[0].SetActive(true);
                     laststate = 3;
                 }
                 else if (transform.rotation.eulerAngles.y > 190)
@@ -177,6 +170,7 @@ public class ProceduralGeneration : MonoBehaviour
                     objj.transform.GetChild(5).GetChild(0).gameObject.SetActive(true);
                     objj.transform.GetChild(6).gameObject.SetActive(false);
                     objj.transform.GetChild(7).gameObject.SetActive(false);
+                    objj.GetComponent<GeneratedRoad>().poles[1].SetActive(true);
                     laststate = 4;
                 }
                 if (lastobjects.Count > RenderDistance) Destroy(lastobjects.Dequeue());
@@ -184,16 +178,13 @@ public class ProceduralGeneration : MonoBehaviour
                 return 3;
             }
         }
-        spawn:
+    spawn:
         transform.position += transform.forward * length;
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position + Vector3.up * 50, -Vector3.up, out hit, 100f, LayerMask.GetMask("HouseCheck")))
-        {
-            if (hit.collider.transform.parent.CompareTag("Terrain"))
-                Destroy(hit.collider.transform.parent.gameObject);
-        }
+        CheckOverlap();
         GameObject obj = Instantiate(flatground, transform.position + new Vector3(0, laststate == 2 ? height / 2 : laststate == 1 ? -(height / 2) : 0, 0), Quaternion.Euler(transform.rotation.eulerAngles + new Vector3(laststate == 2 ? angle : laststate == 1 ? -angle : 0, 0, 0)), spawnparent);
         obj.transform.localScale = new Vector3(width,0.01f,(laststate == 0)?length:slopeheight);
+        obj.GetComponent<GeneratedRoad>().poles[0].SetActive(true);
+        obj.GetComponent<GeneratedRoad>().poles[1].SetActive(true);
         if (!(transform.rotation.eulerAngles.y > 170 && transform.rotation.eulerAngles.y < 190))
         {
             Destroy(obj.transform.GetChild(4).gameObject);
@@ -242,5 +233,15 @@ public class ProceduralGeneration : MonoBehaviour
         return laststate;
 
 
+    }
+
+    void CheckOverlap()
+    {
+        RaycastHit hitt;
+        if (Physics.Raycast(transform.position + Vector3.up * 50, -Vector3.up, out hitt, 100f, LayerMask.GetMask("HouseCheck")))
+        {
+            if (hitt.collider.transform.parent.gameObject.GetComponent<HouseScript>().terrainhouse)
+                Destroy(hitt.collider.transform.parent.gameObject);
+        }
     }
 }

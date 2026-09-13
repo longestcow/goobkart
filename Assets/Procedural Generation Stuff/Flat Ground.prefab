@@ -705,7 +705,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6334424307800695491
 Transform:
   m_ObjectHideFlags: 0
@@ -1095,7 +1095,7 @@ Transform:
   m_LocalScale: {x: 0.8, y: 713.18, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4844413085762998555}
+  m_Father: {fileID: 8785036575398253970}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8192113777418203636
 MonoBehaviour:
@@ -3272,6 +3272,8 @@ Transform:
   - {fileID: 2228204236299786168}
   - {fileID: 7613424838957194134}
   - {fileID: 6186459112599778023}
+  - {fileID: 7979175260836306394}
+  - {fileID: 8912328337164261756}
   - {fileID: 4288385836503262009}
   - {fileID: 5080919065549530454}
   - {fileID: 3584949581795363761}
@@ -3369,6 +3371,10 @@ MonoBehaviour:
   houses:
   - {fileID: 0}
   - {fileID: 0}
+  poles:
+  - {fileID: 1441216197354003678}
+  - {fileID: 2258521670502808305}
+  extrahouse: {fileID: 0}
   index: 0
   slope: 0
   modified: 0
@@ -3387,7 +3393,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4844413085762998555
 Transform:
   m_ObjectHideFlags: 0
@@ -3401,10 +3407,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7979175260836306394}
   - {fileID: 9204157596880168259}
   - {fileID: 5150084185765339077}
-  - {fileID: 8912328337164261756}
   - {fileID: 223426846652257936}
   - {fileID: 7180184355017865421}
   m_Father: {fileID: 7613424838957194134}
@@ -3636,7 +3640,7 @@ Transform:
   m_LocalScale: {x: 0.8, y: 713.18, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4844413085762998555}
+  m_Father: {fileID: 8785036575398253970}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &2866006113982585887
 MonoBehaviour:
@@ -6473,6 +6477,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: electricpole
       objectReference: {fileID: 0}
+    - target: {fileID: 8178544444988689981, guid: c572aeecf5f720e4486faa751068a5c8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8848401720393061511, guid: c572aeecf5f720e4486faa751068a5c8,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -6543,6 +6552,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c572aeecf5f720e4486faa751068a5c8, type: 3}
+--- !u!1 &1441216197354003678 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8178544444988689981, guid: c572aeecf5f720e4486faa751068a5c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 7313912493956960995}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2255154227257230948 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8848401720393061511, guid: c572aeecf5f720e4486faa751068a5c8,
@@ -6561,6 +6576,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: electricpole (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8178544444988689981, guid: c572aeecf5f720e4486faa751068a5c8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8848401720393061511, guid: c572aeecf5f720e4486faa751068a5c8,
         type: 3}
@@ -6635,6 +6655,12 @@ PrefabInstance:
 --- !u!4 &1449087960894349387 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8848401720393061511, guid: c572aeecf5f720e4486faa751068a5c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 7987107179223905484}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2258521670502808305 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8178544444988689981, guid: c572aeecf5f720e4486faa751068a5c8,
     type: 3}
   m_PrefabInstance: {fileID: 7987107179223905484}
   m_PrefabAsset: {fileID: 0}

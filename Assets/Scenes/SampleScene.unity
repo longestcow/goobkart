@@ -43642,6 +43642,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9ec2e096ed1d1a4f88e2946690fd145, type: 3}
+--- !u!198 &908134151 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198274180701648066, guid: a9ec2e096ed1d1a4f88e2946690fd145,
+    type: 3}
+  m_PrefabInstance: {fileID: 908134150}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &913708260
 GameObject:
   m_ObjectHideFlags: 0
@@ -46186,7 +46192,7 @@ MonoBehaviour:
   boostmultiplier: 1
   shootspeed: 2.5
   shootstrengthchargeupspeed: 100
-  deliverycamoffset: 0
+  deliverycamoffset: 1
   mesh: {fileID: 1232479765}
   cycle: {fileID: 919132148148667376}
   parentobject: {fileID: 447281256}
@@ -46273,7 +46279,7 @@ MonoBehaviour:
   particles2: {fileID: 2016967}
   burstparticles1: {fileID: 747882215}
   burstparticles2: {fileID: 539204405}
-  dustparticles: {fileID: 755771892}
+  dustparticles: {fileID: 908134151}
   skid: {fileID: 1376903701}
   windres: {fileID: 1916011362}
   wheelsound: {fileID: 267160198}
@@ -46352,6 +46358,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1232479766}
+  - {fileID: 1560053400}
   m_Father: {fileID: 447281257}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!54 &1239439987
@@ -50724,12 +50731,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1560053399}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 0.09328668, y: 0.84583986, z: 0}
-  m_LocalScale: {x: 1.683578, y: 1.6835771, z: 1.683578}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0100001, y: 1.0100001, z: 1.0100001}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 543450652424755530}
+  m_Father: {fileID: 1239439986}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!135 &1560053403
 SphereCollider:
@@ -57472,7 +57479,6 @@ Transform:
   - {fileID: 539204403}
   - {fileID: 755771890}
   - {fileID: 2097620251}
-  - {fileID: 1560053400}
   - {fileID: 1088795883}
   - {fileID: 11326027}
   m_Father: {fileID: 1232479766}
