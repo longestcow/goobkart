@@ -733,7 +733,6 @@ MonoBehaviour:
   HouseModel: {fileID: 711133818783011112}
   terrainhouse: 0
   slope: 0
-  block: 0
 --- !u!1 &5500155566588756143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1353,17 +1352,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6bd53c7dffd3d7e42aba3d83125741c1, type: 2}
+      objectReference: {fileID: 2100000, guid: 92acd3858cd56d04b81d29fe4d694fd7, type: 2}
     - target: {fileID: -2589679324867485691, guid: 33216f79caada2747bdcf05d64bd8e1f,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 433f327fb581f20409c8a6efe224ecdb, type: 2}
+      objectReference: {fileID: 2100000, guid: 92acd3858cd56d04b81d29fe4d694fd7, type: 2}
     - target: {fileID: 705525777829356259, guid: 33216f79caada2747bdcf05d64bd8e1f,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2657e1acdd17c794c940f6627bf2e3e9, type: 2}
+      objectReference: {fileID: 2100000, guid: 92acd3858cd56d04b81d29fe4d694fd7, type: 2}
     - target: {fileID: 919132149155446097, guid: 33216f79caada2747bdcf05d64bd8e1f,
         type: 3}
       propertyPath: m_Name
@@ -1373,12 +1372,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 433f327fb581f20409c8a6efe224ecdb, type: 2}
+      objectReference: {fileID: 2100000, guid: 92acd3858cd56d04b81d29fe4d694fd7, type: 2}
     - target: {fileID: 6809794263854553803, guid: 33216f79caada2747bdcf05d64bd8e1f,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 46367a52517d1d44c8ef598d50416474, type: 2}
+      objectReference: {fileID: 2100000, guid: bc468416d80959044a154363c6161a82, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

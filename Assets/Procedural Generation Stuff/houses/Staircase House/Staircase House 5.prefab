@@ -1266,7 +1266,6 @@ MonoBehaviour:
   HouseModel: {fileID: 4933052615296132312}
   terrainhouse: 0
   slope: 0
-  block: 0
 --- !u!1 &5674547834789971982
 GameObject:
   m_ObjectHideFlags: 0
@@ -2223,27 +2222,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e2dcf1e79f7889b45843bc9edaf1d8d4, type: 2}
+      objectReference: {fileID: 2100000, guid: fc03d5706eea380459cfaddc97e8e7ea, type: 2}
     - target: {fileID: -5481091942724416025, guid: cb21afa6e23b97c46b559c8eb09bf1e8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 74db8fad55a1c8a419c43ddb368db6b6, type: 2}
+      objectReference: {fileID: 2100000, guid: 3b40da718b4675b449d70285f863081f, type: 2}
     - target: {fileID: -5477804528492009882, guid: cb21afa6e23b97c46b559c8eb09bf1e8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 74db8fad55a1c8a419c43ddb368db6b6, type: 2}
+      objectReference: {fileID: 2100000, guid: 3b40da718b4675b449d70285f863081f, type: 2}
     - target: {fileID: -42730477712144698, guid: cb21afa6e23b97c46b559c8eb09bf1e8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 74db8fad55a1c8a419c43ddb368db6b6, type: 2}
+      objectReference: {fileID: 2100000, guid: 3b40da718b4675b449d70285f863081f, type: 2}
     - target: {fileID: 705525777829356259, guid: cb21afa6e23b97c46b559c8eb09bf1e8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 728e2d98c968d89469ec24978bd5f7c0, type: 2}
+      objectReference: {fileID: 2100000, guid: fc03d5706eea380459cfaddc97e8e7ea, type: 2}
     - target: {fileID: 919132149155446097, guid: cb21afa6e23b97c46b559c8eb09bf1e8,
         type: 3}
       propertyPath: m_Name
@@ -2253,27 +2252,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 74db8fad55a1c8a419c43ddb368db6b6, type: 2}
+      objectReference: {fileID: 2100000, guid: 3b40da718b4675b449d70285f863081f, type: 2}
     - target: {fileID: 6809794263854553803, guid: cb21afa6e23b97c46b559c8eb09bf1e8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 74db8fad55a1c8a419c43ddb368db6b6, type: 2}
+      objectReference: {fileID: 2100000, guid: 3b40da718b4675b449d70285f863081f, type: 2}
     - target: {fileID: 8010831171049455441, guid: cb21afa6e23b97c46b559c8eb09bf1e8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 74db8fad55a1c8a419c43ddb368db6b6, type: 2}
+      objectReference: {fileID: 2100000, guid: 3b40da718b4675b449d70285f863081f, type: 2}
     - target: {fileID: 8187232058427179393, guid: cb21afa6e23b97c46b559c8eb09bf1e8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 74db8fad55a1c8a419c43ddb368db6b6, type: 2}
+      objectReference: {fileID: 2100000, guid: 3b40da718b4675b449d70285f863081f, type: 2}
     - target: {fileID: 8350405964873149524, guid: cb21afa6e23b97c46b559c8eb09bf1e8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 74db8fad55a1c8a419c43ddb368db6b6, type: 2}
+      objectReference: {fileID: 2100000, guid: 3b40da718b4675b449d70285f863081f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

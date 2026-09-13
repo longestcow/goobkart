@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: electricpole.png
-    second: {fileID: 2100000, guid: fe9b859256698844d86d10b582a853c1, type: 2}
+    second: {fileID: 2100000, guid: a94c6ab5b9b3dd7458c4fd0f8f7cbf71, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
